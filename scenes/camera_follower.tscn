@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://3ru5h6bf3d7x"]
+
+[node name="CameraFollower" type="RemoteTransform3D"]
+update_rotation = false
+update_scale = false
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 6, 3.3)
+current = true
+near = 0.01
+far = 50.0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true

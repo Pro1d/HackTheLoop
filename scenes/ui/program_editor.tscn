@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://cp1kod7c3oexq"]
+
+[ext_resource type="Script" path="res://scripts/ui/program_editor.gd" id="1_cg574"]
+[ext_resource type="Script" path="res://scripts/ui/v_loop_container.gd" id="2_s1gjn"]
+
+[node name="ProgramEditor" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cg574")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/CenterContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/CenterContainer/PanelContainer"]
+layout_mode = 2
+
+[node name="InstructionsContainer" type="Container" parent="MarginContainer/CenterContainer/PanelContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(350, 300)
+layout_mode = 2
+script = ExtResource("2_s1gjn")
+
+[node name="InstructionUI" parent="MarginContainer/CenterContainer/PanelContainer/HBoxContainer/InstructionsContainer" instance_placeholder="res://scenes/ui/instruction_ui.tscn"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/CenterContainer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MarginContainer/CenterContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "[^][v] select line
+[<][>] pick mode
+[E] pick / swap
+[R] reset
+[Q] cancel / exit"
+
+[node name="Label" type="Label" parent="MarginContainer/CenterContainer/PanelContainer/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Shoot at paperboy"

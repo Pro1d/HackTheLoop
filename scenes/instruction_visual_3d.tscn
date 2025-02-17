@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://djxptgvpy6738"]
+
+[ext_resource type="Script" path="res://scripts/instruction_visual_3d.gd" id="1_b8nr3"]
+[ext_resource type="Texture2D" uid="uid://wcm5gsg8qdha" path="res://assets/textures/instruction_icons.png" id="2_muxx0"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_6pmue"]
+size = Vector3(0.35, 0.128, 0.015)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6rsn"]
+albedo_color = Color(0.973333, 1, 0.6, 1)
+metallic = 0.8
+roughness = 0.4
+
+[sub_resource type="BoxMesh" id="BoxMesh_3lhhl"]
+size = Vector3(0.11, 0.11, 0.02)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uutjw"]
+albedo_color = Color(0.92, 0.92, 0.92, 1)
+metallic = 0.8
+roughness = 0.4
+
+[node name="InstructionVisual3D" type="Node3D"]
+script = ExtResource("1_b8nr3")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.225)
+
+[node name="BGMeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00914058)
+mesh = SubResource("BoxMesh_6pmue")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_f6rsn")
+
+[node name="TargetBGMeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.087, 0, -0.009)
+mesh = SubResource("BoxMesh_3lhhl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_uutjw")
+
+[node name="TargetSprite3D" type="Sprite3D" parent="Node3D/TargetBGMeshInstance3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.013)
+pixel_size = 0.001
+texture = ExtResource("2_muxx0")
+hframes = 4
+vframes = 4
+frame = 1
+
+[node name="InstructionSprite3D" type="Sprite3D" parent="Node3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.087, 0, 0.001)
+pixel_size = 0.001
+texture = ExtResource("2_muxx0")
+hframes = 4
+vframes = 4

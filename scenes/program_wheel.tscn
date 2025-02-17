@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://ms3lu86p6nn7"]
+
+[ext_resource type="Script" path="res://scripts/program_wheel.gd" id="1_7idj1"]
+[ext_resource type="ArrayMesh" uid="uid://dbog0ell4ovhw" path="res://resources/models/all/ProgramWheelBase.res" id="1_qivsg"]
+[ext_resource type="ArrayMesh" uid="uid://2pgopoc56xhw" path="res://resources/models/all/ProgramBox.res" id="2_x68pd"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_en1ny"]
+
+[node name="ProgramWheel" type="Node3D"]
+script = ExtResource("1_7idj1")
+
+[node name="Spinning" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Spinning"]
+mesh = ExtResource("1_qivsg")
+skeleton = NodePath("../..")
+
+[node name="InstructionVisual3D" parent="Spinning" instance_placeholder="res://scenes/instruction_visual_3d.tscn"]
+
+[node name="InstructionsRoot" type="Node3D" parent="Spinning"]
+unique_name_in_owner = true
+
+[node name="ProgramBox2" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_x68pd")
+
+[node name="Area3D" type="Area3D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.25)
+shape = SubResource("SphereShape3D_en1ny")

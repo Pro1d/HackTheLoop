@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://70aw7gqg2q11"]
+
+[ext_resource type="Script" path="res://scripts/ui/instruction_ui.gd" id="1_ckfkb"]
+[ext_resource type="Texture2D" uid="uid://wcm5gsg8qdha" path="res://assets/textures/instruction_icons.png" id="1_w57o5"]
+[ext_resource type="Texture2D" uid="uid://3kp6mnvn7wj7" path="res://assets/textures/ui.png" id="2_hmlbw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dksse"]
+atlas = ExtResource("2_hmlbw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gx74"]
+resource_local_to_scene = true
+atlas = ExtResource("1_w57o5")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r40iw"]
+resource_local_to_scene = true
+atlas = ExtResource("1_w57o5")
+region = Rect2(0, 0, 64, 64)
+
+[node name="PanelContainer" type="PanelContainer"]
+custom_minimum_size = Vector2(350, 96)
+offset_right = 350.0
+offset_bottom = 96.0
+theme_type_variation = &"PanelContainer_NI"
+script = ExtResource("1_ckfkb")
+
+[node name="CurrentInstructionIndicator" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="TextureRect" type="TextureRect" parent="CurrentInstructionIndicator"]
+modulate = Color(0.87, 0.174, 0, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_dksse")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="InstructionContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="InstructionIcon" type="TextureRect" parent="MarginContainer/InstructionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("AtlasTexture_1gx74")
+stretch_mode = 3
+
+[node name="TargetContainer" type="PanelContainer" parent="MarginContainer/InstructionContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_type_variation = &"PanelContainer_NT"
+
+[node name="TargetIcon" type="TextureRect" parent="MarginContainer/InstructionContainer/TargetContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("AtlasTexture_r40iw")
+stretch_mode = 3
