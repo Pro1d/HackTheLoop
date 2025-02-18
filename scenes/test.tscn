@@ -1,11 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://ctolgapm0q15t"]
+[gd_scene load_steps=18 format=3 uid="uid://ctolgapm0q15t"]
 
 [ext_resource type="MeshLibrary" uid="uid://duy13sblsptvh" path="res://resources/ground.tres" id="1_nfawf"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_vlxbw"]
 [ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="2_8lqll"]
 [ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="3_2ijyu"]
 [ext_resource type="Script" path="res://scripts/resources/program.gd" id="4_d7co4"]
 [ext_resource type="PackedScene" uid="uid://b48ciu6n1h4wi" path="res://scenes/player.tscn" id="4_xhma1"]
 [ext_resource type="PackedScene" uid="uid://3ru5h6bf3d7x" path="res://scenes/camera_follower.tscn" id="5_m0bj2"]
+[ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door_programmable.tscn" id="6_0hhxk"]
+[ext_resource type="PackedScene" uid="uid://cp1kod7c3oexq" path="res://scenes/ui/program_editor.tscn" id="7_0npbs"]
+[ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="7_4lb3r"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_add3l"]
 sky_top_color = Color(0.843389, 0.872306, 0.912732, 1)
@@ -46,7 +50,8 @@ target_type = 1
 script = ExtResource("4_d7co4")
 instructions = Array[ExtResource("3_2ijyu")]([SubResource("Resource_xt21e"), SubResource("Resource_ub8ci"), SubResource("Resource_ub8ci")])
 
-[node name="Node3D" type="Node3D"]
+[node name="Game" type="Node3D"]
+script = ExtResource("1_vlxbw")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.933013, -0.221868, -0.283305, 0.185295, -0.378675, 0.906792, -0.308469, -0.898543, -0.312198, -1.36108, 2.7367, -5.71471)
@@ -91,7 +96,14 @@ shape = SubResource("WorldBoundaryShape3D_aaw63")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 1, 0)
 program = SubResource("Resource_a6mp0")
 
+[node name="DoorProgrammable" parent="Map" instance=ExtResource("6_0hhxk")]
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 3, 0, 0)
+
+[node name="GroundButton" parent="Map" instance=ExtResource("7_4lb3r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+
 [node name="Player" parent="." instance=ExtResource("4_xhma1")]
+unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.661, 0, -1.499)
 
 [node name="CameraFollower" parent="Player" instance=ExtResource("5_m0bj2")]
@@ -101,5 +113,12 @@ remote_path = NodePath("..")
 [node name="Camera3D" parent="Player/CameraFollower" index="0"]
 transform = Transform3D(2.18557e-08, 0.866025, -0.5, 3.78552e-08, 0.5, 0.866025, 1, -3.78552e-08, -2.18557e-08, -3.3, 6, 0)
 fov = 50.0
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgramEditor" parent="UI" instance=ExtResource("7_0npbs")]
+unique_name_in_owner = true
+process_mode = 2
+visible = false
 
 [editable path="Player/CameraFollower"]

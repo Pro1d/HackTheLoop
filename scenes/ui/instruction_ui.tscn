@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://70aw7gqg2q11"]
+[gd_scene load_steps=8 format=3 uid="uid://70aw7gqg2q11"]
 
 [ext_resource type="Script" path="res://scripts/ui/instruction_ui.gd" id="1_ckfkb"]
 [ext_resource type="Texture2D" uid="uid://wcm5gsg8qdha" path="res://assets/textures/instruction_icons.png" id="1_w57o5"]
 [ext_resource type="Texture2D" uid="uid://3kp6mnvn7wj7" path="res://assets/textures/ui.png" id="2_hmlbw"]
+[ext_resource type="Texture2D" uid="uid://bb1kyjenoanux" path="res://assets/textures/target_icons.png" id="4_d4l4h"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dksse"]
 atlas = ExtResource("2_hmlbw")
@@ -15,7 +16,7 @@ region = Rect2(0, 0, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r40iw"]
 resource_local_to_scene = true
-atlas = ExtResource("1_w57o5")
+atlas = ExtResource("4_d4l4h")
 region = Rect2(0, 0, 64, 64)
 
 [node name="PanelContainer" type="PanelContainer"]

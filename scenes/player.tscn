@@ -1,17 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b48ciu6n1h4wi"]
+[gd_scene load_steps=6 format=3 uid="uid://b48ciu6n1h4wi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_0ef8e"]
 [ext_resource type="PackedScene" uid="uid://cg7kmba6e8crg" path="res://resources/models/all/AnimatedPaperBoy.res" id="2_wkx5o"]
 [ext_resource type="Material" uid="uid://6jl15vgswqqn" path="res://resources/materials/gradient_paper.tres" id="3_rv3i7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_51kyv"]
-radius = 0.282
+radius = 0.26
 height = 1.2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_lvcoh"]
+height = 1.2
+radius = 0.1
 
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 2
 collision_mask = 3
-axis_lock_linear_y = true
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 script = ExtResource("1_0ef8e")
@@ -31,5 +34,14 @@ bones/6/rotation = Quaternion(0.957092, 0, 0, -0.289784)
 
 [node name="PaperBoy" parent="AnimatedPaperBoy/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("3_rv3i7")
+
+[node name="CenterArea3D" type="Area3D" parent="."]
+unique_name_in_owner = true
+collision_layer = 2
+collision_mask = 7
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CenterArea3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
+shape = SubResource("CylinderShape3D_lvcoh")
 
 [editable path="AnimatedPaperBoy"]

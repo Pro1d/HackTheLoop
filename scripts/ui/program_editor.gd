@@ -1,7 +1,7 @@
 class_name ProgramEditor
 extends Control
 
-signal request_close()
+signal close_requested()
 
 const InstructionUIPackedScene := preload("res://scenes/ui/instruction_ui.tscn")
 
@@ -25,17 +25,18 @@ var _instruction_ui_list : Array[InstructionUI]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var p := Program.new()
-	p.instructions.append(Instruction.new())
-	p.instructions.append(Instruction.new())
-	p.instructions.append(Instruction.new())
-	p.instructions.append(Instruction.new())
+	#var p := Program.new()
 	#p.instructions.append(Instruction.new())
-	p.instructions[0].target_type = Instruction.TargetType.PLAYER
-	p.instructions[1].type = Instruction.Type.SHOOT
-	p.instructions[3].target_type = Instruction.TargetType.PLAYER
-	p.instructions[2].target_type = Instruction.TargetType.PLAYER
-	set_program(p, 0)
+	#p.instructions.append(Instruction.new())
+	#p.instructions.append(Instruction.new())
+	#p.instructions.append(Instruction.new())
+	##p.instructions.append(Instruction.new())
+	#p.instructions[0].target_type = Instruction.TargetType.PLAYER
+	#p.instructions[1].type = Instruction.Type.SHOOT
+	#p.instructions[3].target_type = Instruction.TargetType.PLAYER
+	#p.instructions[2].target_type = Instruction.TargetType.PLAYER
+	#set_program(p, 0)
+	set_program(_program, 0)
 
 func set_program(p: Program, current_instruction_index: int) -> void:
 	_state = State.NAVIGATING
@@ -75,8 +76,8 @@ func _update_highlight() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		if event.is_action("ui_down") or event.is_action("ui_up"):
-			var dir := -1 if event.is_action("ui_up") else 1
+		if event.is_action("move_down") or event.is_action("move_up"):
+			var dir := -1 if event.is_action("move_up") else 1
 			match _state:
 				State.NAVIGATING:
 					_swap_target_only = false
@@ -89,11 +90,11 @@ func _unhandled_input(event: InputEvent) -> void:
 					)
 			_update_scroll_index(true)
 			_update_highlight()
-		elif event.is_action("ui_left") or event.is_action("ui_right"):
+		elif event.is_action("move_left") or event.is_action("move_right"):
 			match _state:
 				State.NAVIGATING:
 					if _program.instructions[_nav_index].has_target():
-						_swap_target_only = event.is_action("ui_right")
+						_swap_target_only = event.is_action("move_right")
 						_update_highlight()
 		elif event.is_action("interact"):
 			match _state:
@@ -112,7 +113,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		elif event.is_action("back"):
 			match _state:
 				State.NAVIGATING:
-					request_close.emit()
+					close_requested.emit()
 				State.SWAPPING:
 					_swap_index = -1
 					_state = State.NAVIGATING

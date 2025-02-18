@@ -1,3 +1,4 @@
+class_name ProgramWheel
 extends Node3D
 
 const InstructionVisual3DPackedScene := preload("res://scenes/instruction_visual_3d.tscn")
@@ -7,16 +8,12 @@ const InstructionVisual3DPackedScene := preload("res://scenes/instruction_visual
 	set(p):
 		program = p
 		_update_program()
-@export var current_instruction_index := 0
+var current_instruction_index := 0
 
-var current_instruction : Instruction :
-	get(): return program.instructions[current_instruction_index]
-
-#@onready var _area := %Area3D as Area3D
 @onready var _spinning := %Spinning as Node3D
 @onready var _instructions_root := %InstructionsRoot as Node3D
 
-var spin_tween : Tween
+var _spin_tween : Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,27 +22,31 @@ func _ready() -> void:
 		#await get_tree().create_timer(2.0).timeout
 		#spin_once()
 
-func spin_once() -> void:
-	current_instruction_index = (current_instruction_index + 1) % program.instruction_count()
-	_update_spin_position(true)
+func set_current_instruction_index(index: int, animate: bool) -> void:
+	prints(
+		"set_current_instruction_index",
+		index,
+		Instruction.Type.find_key(program.instructions[index].type))
+	current_instruction_index = index
+	_update_spin_position(animate)
 
 func _update_spin_position(animate: bool) -> void:
 	var current_angle := _spinning.rotation.x
 	var icount := program.instruction_count() if program != null else 1
-	var target_angle := -TAU / icount * current_instruction_index
+	var target_angle := TAU / icount * current_instruction_index
 	
-	if spin_tween != null:
-		spin_tween.kill()
+	if _spin_tween != null:
+		_spin_tween.kill()
 	
 	if not animate:
 		_spinning.rotation.x = target_angle
 		return
 	
-	spin_tween = create_tween()
+	_spin_tween = create_tween()
 	target_angle = current_angle + angle_difference(current_angle, target_angle)
 	if is_equal_approx(target_angle, current_angle):
 		target_angle += TAU
-	spin_tween.tween_property(_spinning, "rotation:x", target_angle, 0.5) \
+	_spin_tween.tween_property(_spinning, "rotation:x", target_angle, 0.5) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 	
 func _update_program() -> void:
@@ -67,3 +68,6 @@ func _update_program() -> void:
 		_instructions_root.get_child(i).queue_free()
 		
 	_update_spin_position(false)
+
+static func find_parent_program_wheel(area: Area3D) -> ProgramWheel:
+	return area.get_parent() as ProgramWheel

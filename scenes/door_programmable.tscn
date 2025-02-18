@@ -1,0 +1,69 @@
+[gd_scene load_steps=15 format=3 uid="uid://yclgl22kcddo"]
+
+[ext_resource type="Script" path="res://scripts/door_programmable.gd" id="1_fb4vm"]
+[ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="1_nlqf5"]
+[ext_resource type="ArrayMesh" uid="uid://hmnv1vuocfan" path="res://resources/models/all/door_frame.res" id="2_hx4we"]
+[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="3_sjxv4"]
+[ext_resource type="PackedScene" uid="uid://c56dtreab5jbu" path="res://resources/models/all/AnimatedWireDoor.res" id="3_ylk0w"]
+[ext_resource type="Script" path="res://scripts/resources/program.gd" id="4_l37og"]
+[ext_resource type="Script" path="res://scripts/animated_wire_door.gd" id="4_noy5v"]
+[ext_resource type="Script" path="res://scripts/program_runners/program_runner_door.gd" id="8_5qbqx"]
+
+[sub_resource type="Resource" id="Resource_q3ngh"]
+script = ExtResource("3_sjxv4")
+type = 2
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_yk77n"]
+script = ExtResource("3_sjxv4")
+type = 3
+target_type = 1
+
+[sub_resource type="Resource" id="Resource_uynov"]
+script = ExtResource("3_sjxv4")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_fm8ew"]
+script = ExtResource("4_l37og")
+instructions = Array[ExtResource("3_sjxv4")]([SubResource("Resource_q3ngh"), SubResource("Resource_yk77n"), SubResource("Resource_uynov")])
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_exyx2"]
+size = Vector3(0.2, 1.5, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_826a0"]
+size = Vector3(0.6, 1.5, 0.05)
+
+[node name="DoorProgrammable" type="Node3D"]
+script = ExtResource("1_fb4vm")
+
+[node name="ProgramRunner" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("8_5qbqx")
+program = SubResource("Resource_fm8ew")
+
+[node name="ProgramWheel" parent="." instance=ExtResource("1_nlqf5")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.8, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="FrameCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.75, 0)
+shape = SubResource("BoxShape3D_exyx2")
+
+[node name="FrameCollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.75, 0)
+shape = SubResource("BoxShape3D_exyx2")
+
+[node name="DoorCollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+shape = SubResource("BoxShape3D_826a0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = ExtResource("2_hx4we")
+
+[node name="AnimatedWireDoor" parent="." instance=ExtResource("3_ylk0w")]
+unique_name_in_owner = true
+script = ExtResource("4_noy5v")

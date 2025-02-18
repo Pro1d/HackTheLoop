@@ -85,6 +85,8 @@ func _replace_materials(node: Node) -> void:
 			match mat.resource_name:
 				"Cardboard":
 					m.surface_set_material(i, preload("res://resources/materials/cardboard.tres"))
+				"Fence":
+					m.surface_set_material(i, preload("res://resources/materials/fence.tres"))
 				"PlasticRed":
 					pass #m.surface_set_material(i, preload("res://resources/materials/cardboard.tres"))
 	if node != null:

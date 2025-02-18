@@ -3,6 +3,9 @@ extends Resource
 
 enum Type {
 	RELOAD_AMMO, # | reload icon
+	OPEN, # | open door / unlocked padlock icon
+	CLOSE, # | open door / unlocked padlock icon
+	WAIT_BUTTON, # | hourglass icon
 	SHOOT, # + obj | aim ¤ icon
 	SHOOT_AT, # + obj | aim ¤ icon
 	CHARGE, # + obj | arrow dash icon
@@ -13,18 +16,20 @@ enum Type {
 	MOVE_TO, # + obj | arrow jump incon 
 	SCAN, # + obj | antenna or radar icon
 	WAIT, # | hourglass icon
-	WAIT_FOR, # + obj | 
 	SKIP_NEXT_IF, # + obj | ? <_|  question mark + next line icon
 	TURN_ON, # + obj | ON
 	TURN_OFF, # + obj | OFF
 	ROTATE_LEFT, # | <-, rotate icon
 	ROTATE_RIGHT, # | ,-> rotate icon
 	ROTATE_TOWARD, # + obj | rotate icon
-	UNLOCK, # | open door / unlocked padlock icon
 }
 
 enum TargetType {
 	NONE,
+	BUTTON_GREEN,
+	BUTTON_BLUE,
+	BUTTON_PURPLE,
+	BUTTON_YELLOW,
 	PLAYER, # [ paperboy icon
 	ALLY, # nearest or ref | [°++°] robot head icon
 	SELF, # | 

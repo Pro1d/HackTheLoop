@@ -17,7 +17,8 @@ func _ready() -> void:
 		_update()
 
 func _update() -> void:
-	if _instruction_sprite == null: return
+	if _instruction_sprite == null or instruction == null:
+		return
 	_instruction_sprite.frame = instruction.type
 	_target_sprite.frame = instruction.target_type
 	var has_target := instruction.has_target()
