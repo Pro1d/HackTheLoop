@@ -9,6 +9,7 @@ const ACCEL = MAX_SPEED / 0.08
 @export var handle_input := true
 
 var current_interactable : Node = null
+var target_orientation := 0.0
 
 @onready var center_area := %CenterArea3D as Area3D
 
@@ -32,15 +33,27 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	#var direction := (Vector3(input_dir.x, 0, input_dir.y)).normalized() # transform.basis *
+	
+	var current_h_speed := Vector2(velocity.x, velocity.z)
+	var new_h_speed := current_h_speed
+	
 	if not input_dir.is_zero_approx():
-		velocity = velocity.move_toward(direction * MAX_SPEED, ACCEL * delta)
+		input_dir = input_dir.normalized()
+		new_h_speed = current_h_speed.move_toward(input_dir * MAX_SPEED, ACCEL * delta)
+		target_orientation = input_dir.angle_to(Vector2(0, -1))
 	else:
-		velocity = velocity.move_toward(Vector3.ZERO, ACCEL * delta)
-		#velocity.x = move_toward(velocity.x, 0, SPEED)
-		#velocity.z = move_toward(velocity.z, 0, SPEED)
+		new_h_speed = current_h_speed.move_toward(Vector2.ZERO, ACCEL * delta)
+	
+	var current_v_speed := velocity.y
+	var new_v_speed := current_v_speed
 	if not is_on_floor():
-		velocity -= get_gravity() * delta
+		new_v_speed += get_gravity().y * delta
+	else:
+		new_v_speed = 0
+		
+	velocity = Vector3(new_h_speed.x, new_v_speed, new_h_speed.y)
+	rotation.y = lerp_angle(rotation.y, target_orientation, delta ** 0.5)
 	move_and_slide()
 
 #func _on_area_entered_center(area: Area3D) -> void:

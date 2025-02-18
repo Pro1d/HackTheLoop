@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://c216tmxu3geod"]
+[gd_scene load_steps=15 format=3 uid="uid://c216tmxu3geod"]
 
 [ext_resource type="ArrayMesh" uid="uid://4uyk0v4dtf2p" path="res://resources/models/all/grid-floor.res" id="1_7mv0b"]
 [ext_resource type="Material" uid="uid://2d2jur3tu7uh" path="res://resources/materials/cardboard.tres" id="2_ht4vs"]
@@ -8,6 +8,9 @@
 [ext_resource type="ArrayMesh" uid="uid://dbtsxrpteubvl" path="res://resources/models/all/grid-wall-cylinder.res" id="5_1d865"]
 [ext_resource type="ArrayMesh" uid="uid://cptqkrheqxfkr" path="res://resources/models/all/grid-wall-cylinder-stack.res" id="6_6ehww"]
 [ext_resource type="Material" uid="uid://cm3nd83b43s7s" path="res://resources/materials/fence.tres" id="8_s5187"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tqa1r"]
+size = Vector3(1, 0.05, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mobhm"]
 size = Vector3(0.05, 1.5, 1.41)
@@ -31,6 +34,12 @@ size = Vector2(1, 1)
 [node name="Grid-floor" type="MeshInstance3D" parent="."]
 mesh = ExtResource("1_7mv0b")
 surface_material_override/0 = ExtResource("2_ht4vs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grid-floor"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-floor/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_tqa1r")
 
 [node name="Grid-wall-diag" type="MeshInstance3D" parent="."]
 mesh = ExtResource("2_n6ee2")

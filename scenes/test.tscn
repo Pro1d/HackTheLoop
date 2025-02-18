@@ -1,118 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://ctolgapm0q15t"]
+[gd_scene load_steps=3 format=3 uid="uid://ctolgapm0q15t"]
 
-[ext_resource type="MeshLibrary" uid="uid://duy13sblsptvh" path="res://resources/ground.tres" id="1_nfawf"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_vlxbw"]
-[ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="2_8lqll"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="3_2ijyu"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="4_d7co4"]
-[ext_resource type="PackedScene" uid="uid://b48ciu6n1h4wi" path="res://scenes/player.tscn" id="4_xhma1"]
-[ext_resource type="PackedScene" uid="uid://3ru5h6bf3d7x" path="res://scenes/camera_follower.tscn" id="5_m0bj2"]
-[ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door_programmable.tscn" id="6_0hhxk"]
 [ext_resource type="PackedScene" uid="uid://cp1kod7c3oexq" path="res://scenes/ui/program_editor.tscn" id="7_0npbs"]
-[ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="7_4lb3r"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_add3l"]
-sky_top_color = Color(0.843389, 0.872306, 0.912732, 1)
-ground_bottom_color = Color(0.0734728, 0.0577046, 0.0393757, 1)
-
-[sub_resource type="Sky" id="Sky_l3rku"]
-sky_material = SubResource("ProceduralSkyMaterial_add3l")
-
-[sub_resource type="Environment" id="Environment_5j3dh"]
-background_mode = 2
-sky = SubResource("Sky_l3rku")
-ambient_light_source = 2
-ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_sky_contribution = 0.0
-ambient_light_energy = 0.5
-tonemap_mode = 2
-glow_enabled = true
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.182079, 0.0089719, 0.131794, 1)
-fog_density = 1.0
-fog_depth_begin = 4.0
-fog_depth_end = 16.0
-
-[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_aaw63"]
-
-[sub_resource type="Resource" id="Resource_xt21e"]
-script = ExtResource("3_2ijyu")
-type = 0
-target_type = 0
-
-[sub_resource type="Resource" id="Resource_ub8ci"]
-script = ExtResource("3_2ijyu")
-type = 2
-target_type = 1
-
-[sub_resource type="Resource" id="Resource_a6mp0"]
-script = ExtResource("4_d7co4")
-instructions = Array[ExtResource("3_2ijyu")]([SubResource("Resource_xt21e"), SubResource("Resource_ub8ci"), SubResource("Resource_ub8ci")])
 
 [node name="Game" type="Node3D"]
 script = ExtResource("1_vlxbw")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.933013, -0.221868, -0.283305, 0.185295, -0.378675, 0.906792, -0.308469, -0.898543, -0.312198, -1.36108, 2.7367, -5.71471)
-light_energy = 0.2
-shadow_enabled = true
-shadow_normal_bias = 3.677
-directional_shadow_mode = 1
-directional_shadow_split_1 = 0.332
-directional_shadow_max_distance = 50.0
-sky_mode = 1
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_5j3dh")
-
-[node name="Map" type="Node3D" parent="."]
-
-[node name="GroundGridMap" type="GridMap" parent="Map"]
-mesh_library = ExtResource("1_nfawf")
-cell_size = Vector3(1, 1, 1)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(0, 1, 0, 65533, 0, 0, 65533, 65531, 0, 65532, 65531, 0, 3, 2, 0, 2, 3, 0, 2, 2, 0, 1, 2, 0, 1, 3, 0, 0, 3, 0, 65535, 3, 0, 65533, 4, 0, 65532, 4, 0, 65531, 3, 0, 65531, 2, 0, 0, 2, 0, 65535, 2, 0, 65531, 4, 0, 65534, 4, 0, 65534, 0, 0, 2, 0, 0, 2, 65535, 0, 65535, 65535, 0, 65534, 65535, 0, 65533, 65535, 0, 65533, 65534, 0, 65534, 65534, 0, 65535, 65534, 0, 0, 65534, 0, 1, 65534, 0, 2, 65534, 0, 2, 65533, 0, 1, 65533, 0, 0, 65533, 0, 0, 65532, 0, 1, 65532, 0, 2, 1, 0, 1, 1, 0, 65533, 1, 0, 65531, 1, 0, 65531, 0, 0, 65531, 65535, 0, 65532, 1, 0, 65532, 0, 0, 65532, 65535, 0, 65532, 65534, 0, 65531, 65534, 0, 65531, 65533, 0, 65531, 65532, 0, 3, 65532, 0, 3, 65533, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 3, 0, 4, 3, 0, 4, 2, 0, 4, 1, 0, 4, 0, 0, 4, 65535, 0, 4, 65534, 0, 4, 65533, 0, 4, 65532, 0, 4, 4, 0, 3, 4, 0, 2, 4, 0, 1, 4, 0, 0, 4, 0, 65535, 4, 0, 4, 65531, 0, 3, 65531, 0, 2, 65531, 0, 1, 65531, 0, 0, 65531, 0, 65535, 65531, 0, 65534, 65531, 0, 65531, 65531, 0, 65535, 1, 655365, 65535, 0, 5, 65534, 1, 5, 65535, 65533, 655365, 65535, 65532, 1441797, 2, 65532, 0)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="WallGridMap" type="GridMap" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0, 0.25)
-mesh_library = ExtResource("1_nfawf")
-cell_size = Vector3(0.5, 0.5, 0.5)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(65532, 65531, 655364, 65530, 65531, 655364, 65528, 65531, 655364, 65528, 65527, 655364, 65530, 65527, 655364, 65532, 65527, 655364, 65526, 9, 3, 65528, 9, 3, 65530, 9, 3, 65534, 2, 1, 65533, 6, 1441795, 65533, 4, 1441795, 3, 0, 1441795, 3, 65534, 1441795, 9, 8, 1441795, 9, 6, 1441795, 9, 4, 1441795, 9, 2, 1441795, 9, 0, 1441795, 9, 65534, 1441795, 9, 65532, 1441795, 9, 65530, 1441795, 9, 65528, 1441795, 9, 65526, 1441795, 65527, 65528, 1048580, 65527, 65530, 1048580, 65527, 4, 1441795, 65527, 6, 1441795, 65525, 8, 1441795, 65525, 6, 1441795, 65525, 4, 1441795, 65525, 2, 1441795, 65525, 0, 1441795, 65525, 65534, 1441795, 65525, 65532, 1441795, 65525, 65530, 1441795, 65525, 65528, 1441795, 65525, 65526, 1441795, 65528, 7, 655363, 65530, 7, 655363, 65532, 7, 655363, 65532, 9, 3, 65534, 9, 3, 0, 9, 3, 2, 9, 3, 4, 9, 3, 6, 9, 3, 8, 9, 3, 8, 65525, 3, 6, 65525, 3, 4, 65525, 3, 2, 65525, 3, 0, 65525, 3, 65534, 65525, 3, 65532, 65525, 3, 65530, 65525, 3, 65528, 65525, 3, 65526, 65525, 3, 2, 1, 655363, 0, 1, 655363, 0, 65533, 655363, 2, 65533, 655363, 5, 3, 655365, 65535, 65534, 1441795, 65528, 3, 655363, 65530, 3, 655363, 65532, 2, 1, 65534, 0, 1, 65534, 65530, 655362, 65534, 65528, 1048578, 3, 65529, 6, 5, 5, 7, 65530, 65535, 6)
-}
-metadata/_editor_floor_ = Vector3(0, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Map"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Map/StaticBody3D"]
-shape = SubResource("WorldBoundaryShape3D_aaw63")
-
-[node name="ProgramWheel" parent="Map" instance=ExtResource("2_8lqll")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2, 1, 0)
-program = SubResource("Resource_a6mp0")
-
-[node name="DoorProgrammable" parent="Map" instance=ExtResource("6_0hhxk")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 3, 0, 0)
-
-[node name="GroundButton" parent="Map" instance=ExtResource("7_4lb3r")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
-
-[node name="Player" parent="." instance=ExtResource("4_xhma1")]
-unique_name_in_owner = true
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3.661, 0, -1.499)
-
-[node name="CameraFollower" parent="Player" instance=ExtResource("5_m0bj2")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
-remote_path = NodePath("..")
-
-[node name="Camera3D" parent="Player/CameraFollower" index="0"]
-transform = Transform3D(2.18557e-08, 0.866025, -0.5, 3.78552e-08, 0.5, 0.866025, 1, -3.78552e-08, -2.18557e-08, -3.3, 6, 0)
-fov = 50.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -121,4 +13,12 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 
-[editable path="Player/CameraFollower"]
+[node name="FadeRect" type="ColorRect" parent="UI"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)

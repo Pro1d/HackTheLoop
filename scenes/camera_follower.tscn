@@ -1,12 +1,29 @@
-[gd_scene format=3 uid="uid://3ru5h6bf3d7x"]
+[gd_scene load_steps=2 format=3 uid="uid://3ru5h6bf3d7x"]
 
-[node name="CameraFollower" type="RemoteTransform3D"]
-update_rotation = false
-update_scale = false
+[sub_resource type="GDScript" id="GDScript_6kwgl"]
+script/source = "extends Node3D
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.573576, 0.819152, 0, -0.819152, 0.573576, 0, 6, 3.3)
+@onready var _cam_focus_point := %CamFocusPoint as Node3D
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	RenderingServer.frame_pre_draw.connect(func() -> void:
+		_cam_focus_point.global_position = global_position
+		_cam_focus_point.global_position.y = maxf(global_position.y, 0)
+	)
+"
+
+[node name="Remote" type="Node3D"]
+script = SubResource("GDScript_6kwgl")
+
+[node name="CamFocusPoint" type="Marker3D" parent="."]
+unique_name_in_owner = true
+top_level = true
+
+[node name="Camera3D" type="Camera3D" parent="CamFocusPoint"]
+transform = Transform3D(1, 0, 0, 0, 0.481646, 0.876366, 0, -0.876366, 0.481646, 0, 6, 3.3)
 current = true
+fov = 60.0
 near = 0.01
 far = 50.0
 
