@@ -4,8 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://da2eilvvdjtai" path="res://assets/textures/materials/Paper003_1K-JPG_Roughness.jpg" id="3_aju0j"]
 
 [sub_resource type="Gradient" id="Gradient_jch5c"]
-offsets = PackedFloat32Array(0.125984, 0.15812, 0.388889, 0.429134, 0.503937, 0.538462, 0.683761, 0.732283, 0.807087, 0.854701, 0.965812, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.865376, 0.964252, 0.989704, 1, 0.866621, 0.964813, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.862715, 0.960906, 0.988266, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.862715, 0.960906, 0.988266, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0.0629921, 0.102362, 0.318898, 0.389764, 0.437008, 0.472441, 0.69685, 0.751969, 0.80315, 0.834646, 0.968504, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.30976, 0.759991, 0.859469, 1, 0.866621, 0.964813, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.309712, 0.761105, 0.858808, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.309712, 0.761105, 0.858808, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_noerg"]
 gradient = SubResource("Gradient_jch5c")
@@ -20,6 +20,7 @@ fill_to = Vector2(0, 0.5)
 repeat = 1
 
 [resource]
+resource_local_to_scene = true
 cull_mode = 2
 albedo_color = Color(0.89059, 0.89059, 0.89059, 1)
 albedo_texture = SubResource("GradientTexture2D_noerg")

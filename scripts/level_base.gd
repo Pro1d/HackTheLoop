@@ -18,25 +18,25 @@ var _state := State.INITIALIZING
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	_player.program_wheel_interaction_requested.connect(_on_program_wheel_interaction_requested)
-	
+	_player.died.connect(_on_player_died)
 	_end_level_area.area_entered.connect(_on_player_reach_end_level.unbind(1))
-	_player.process_mode = Node.PROCESS_MODE_DISABLED
+	#_player.process_mode = Node.PROCESS_MODE_DISABLED
 
 func start() -> void:
 	_state = State.PLAYING
-	_player.process_mode = Node.PROCESS_MODE_INHERIT
+	_player.unlock()
+	#_player.process_mode = Node.PROCESS_MODE_INHERIT
 
 func _on_program_wheel_interaction_requested(pw: ProgramWheel) -> void:
 	match _state:
 		State.PLAYING:
 			Game.get_instance().on_program_wheel_interaction_requested(pw)
 	
-func _physics_process(_delta: float) -> void:
+func _on_player_died() -> void:
 	match _state:
 		State.PLAYING:
-			if _player.global_position.y < -2.0:
-				level_failed.emit()
-				_state = State.ENDED
+			level_failed.emit()
+			_state = State.ENDED
 
 func _on_player_reach_end_level() -> void:
 	match _state:

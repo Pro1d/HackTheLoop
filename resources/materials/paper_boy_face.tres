@@ -1,0 +1,23 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b4d680377ep8l"]
+
+[ext_resource type="Texture2D" uid="uid://mf73n07icm6h" path="res://assets/textures/materials/Paper003_1K-JPG_NormalGL.jpg" id="1_f728o"]
+[ext_resource type="Texture2D" uid="uid://do3cxpf06pwps" path="res://assets/textures/faces/face-neutral.png" id="1_x3ugc"]
+
+[sub_resource type="Gradient" id="Gradient_jch5c"]
+offsets = PackedFloat32Array(0.125984, 0.15812, 0.388889, 0.429134, 0.503937, 0.538462, 0.683761, 0.732283, 0.807087, 0.854701, 0.965812, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.865376, 0.964252, 0.989704, 1, 0.866621, 0.964813, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.862715, 0.960906, 0.988266, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.862715, 0.960906, 0.988266, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uq24f"]
+gradient = SubResource("Gradient_jch5c")
+fill_from = Vector2(0.807692, 1)
+fill_to = Vector2(0, 0.5)
+repeat = 1
+
+[resource]
+transparency = 2
+alpha_scissor_threshold = 0.5
+alpha_antialiasing_mode = 0
+albedo_texture = ExtResource("1_x3ugc")
+normal_texture = ExtResource("1_f728o")
+detail_blend_mode = 3
+detail_albedo = SubResource("GradientTexture2D_uq24f")

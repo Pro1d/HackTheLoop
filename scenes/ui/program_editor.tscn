@@ -1,12 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cp1kod7c3oexq"]
+[gd_scene load_steps=3 format=3 uid="uid://cp1kod7c3oexq"]
 
 [ext_resource type="Script" path="res://scripts/ui/program_editor.gd" id="1_cg574"]
 [ext_resource type="Script" path="res://scripts/ui/v_loop_container.gd" id="2_s1gjn"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_8vjeu"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_mhm1p"]
-font_color = Color(1, 0.57, 0.57, 1)
 
 [node name="ProgramEditor" type="Control"]
 process_mode = 3
@@ -65,7 +60,7 @@ text = "How to modify the program:"
 
 [node name="Label7" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "[^][v] select line"
+text = "[^][v] select line."
 
 [node name="Label3" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -73,15 +68,15 @@ text = "[<][>] select target / instruction"
 
 [node name="Label4" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "[E] select / swap"
+text = "[E] select / swap."
 
 [node name="Label5" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "[R] reset"
+text = "[R] reset."
 
 [node name="Label6" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
-text = "[Q] cancel / exit"
+text = "[Q] cancel / exit!"
 
 [node name="Control" type="Control" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
@@ -89,14 +84,14 @@ size_flags_vertical = 3
 
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.4, 0.4, 0.4, 1)
 text = "Shoot at paperboy"
-label_settings = SubResource("LabelSettings_8vjeu")
 
 [node name="ROLabel" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2
+theme_override_colors/font_color = Color(0.72, 0, 0, 1)
 text = "This instruction is being executed.
 I cannot modify it."
-label_settings = SubResource("LabelSettings_mhm1p")
 
 [node name="Control2" type="Control" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2"]
 layout_mode = 2

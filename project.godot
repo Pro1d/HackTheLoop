@@ -8,16 +8,25 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="Escape The Machines"
-run/main_scene="res://scenes/test.tscn"
+run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
 
 buses/default_bus_layout="res://resources/audio/default_bus_layout.tres"
+
+[autoload]
+
+MusicManager="*res://scripts/singleton/MusicManager.gd"
+Config="*res://scripts/singleton/Config.gd"
 
 [debug]
 
@@ -126,7 +135,7 @@ back={
 3d_physics/layer_3="interactable"
 3d_physics/layer_4="button"
 3d_physics/layer_5="robots"
-3d_physics/layer_6="player_logic"
+3d_physics/layer_6="Layer 6"
 
 [rendering]
 

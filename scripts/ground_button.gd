@@ -18,6 +18,8 @@ const colors := {
 @onready var _move_on_pressed := %MoveOnPressed as Node3D
 @onready var _area := self
 @onready var _mat := (%MeshInstance3D as MeshInstance3D).get_surface_override_material(0) as StandardMaterial3D
+@onready var _press_audio := %PressAudio3D as AudioStreamPlayer3D
+@onready var _release_audio := %ReleaseAudio3D as AudioStreamPlayer3D
 
 var _is_pressed := false
 
@@ -29,12 +31,24 @@ func _ready() -> void:
 
 func _on_overlapping_bodies_changed() -> void:
 	var is_pressed := not get_overlapping_bodies().is_empty()
-	if not _is_pressed and is_pressed:
-		pressed.emit()
-	
-	_move_on_pressed.position.y = 0.0 if pressed else 0.05
-	_is_pressed = is_pressed
+	if _is_pressed != is_pressed:
+		_is_pressed = is_pressed
+		animate_pressed_state()
+		if is_pressed:
+			pressed.emit()
 
+var _anim_tween : Tween
+func animate_pressed_state() -> void:
+	if _anim_tween != null:
+		_anim_tween.kill()
+	_anim_tween = create_tween()
+	_anim_tween.tween_property(_move_on_pressed, "position:y", -0.05 if _is_pressed else 0.05, 0.3) \
+		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	if _is_pressed:
+		_press_audio.play()
+	else:
+		_release_audio.play()
+	
 func _update_color() -> void:
 	if _mat == null: return
 	_mat.albedo_color = colors[button_type]

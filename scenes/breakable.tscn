@@ -1,0 +1,26 @@
+[gd_scene load_steps=7 format=3 uid="uid://7qflv08mgwhp"]
+
+[ext_resource type="Texture2D" uid="uid://cum1jsyc712mp" path="res://assets/textures/materials/Styrofoam002_1K-JPG_Color.jpg" id="1_08uhe"]
+[ext_resource type="Texture2D" uid="uid://bpsca5qcq7pt4" path="res://assets/textures/materials/Styrofoam002_1K-JPG_NormalGL.jpg" id="2_ltpso"]
+[ext_resource type="Texture2D" uid="uid://ch86ve8k5c27j" path="res://assets/textures/materials/Styrofoam002_1K-JPG_Roughness.jpg" id="3_3o1y8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0m0sg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_qj5pp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q34yb"]
+albedo_texture = ExtResource("1_08uhe")
+metallic = 0.25
+roughness_texture = ExtResource("3_3o1y8")
+normal_enabled = true
+normal_texture = ExtResource("2_ltpso")
+uv1_scale = Vector3(0.5, 0.5, 0.5)
+
+[node name="Breakable" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_0m0sg")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_qj5pp")
+surface_material_override/0 = SubResource("StandardMaterial3D_q34yb")

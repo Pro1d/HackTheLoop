@@ -21,11 +21,12 @@ unique_name_in_owner = true
 top_level = true
 
 [node name="Camera3D" type="Camera3D" parent="CamFocusPoint"]
-transform = Transform3D(1, 0, 0, 0, 0.481646, 0.876366, 0, -0.876366, 0.481646, 0, 6, 3.3)
+transform = Transform3D(1, 0, 0, 0, 0.659345, 0.75184, 0, -0.75184, 0.659345, 0, 5.60998, 4.56547)
 current = true
-fov = 60.0
+fov = 45.0
 near = 0.01
 far = 50.0
 
 [node name="AudioListener3D" type="AudioListener3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 current = true

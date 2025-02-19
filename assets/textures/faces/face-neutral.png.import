@@ -2,20 +2,17 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bc2atnu7meuq5"
-path.s3tc="res://.godot/imported/card_test_cardboard-albedo.png-0f1580274bc791d3d035534a0d3415c3.s3tc.ctex"
+uid="uid://do3cxpf06pwps"
+path.s3tc="res://.godot/imported/face-neutral.png-1249638bf5887372f36ffee7b511d5ac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "3821251618cd214502cfb101695a38fb"
-}
 
 [deps]
 
-source_file="res://assets/models/card_test_cardboard-albedo.png"
-dest_files=["res://.godot/imported/card_test_cardboard-albedo.png-0f1580274bc791d3d035534a0d3415c3.s3tc.ctex"]
+source_file="res://assets/textures/faces/face-neutral.png"
+dest_files=["res://.godot/imported/face-neutral.png-1249638bf5887372f36ffee7b511d5ac.s3tc.ctex"]
 
 [params]
 

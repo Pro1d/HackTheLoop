@@ -19,8 +19,8 @@ func _ready() -> void:
 
 func _update_size() -> void:
 	if _mesh == null: return
-	_box.size = size
+	_box.size = size + Vector3.ONE * (0.05 + 0.02)
 	_mesh.position.y = size.y / 2
 	#_shape.size = Vector3(size.x, 1, size.z)
-	_mat.set_shader_parameter("offset", Vector3(0, 0, size.z / 2))
+	_mat.set_shader_parameter("offset", Vector3(0, 0, (size.z / 2 - .1)))
 	_mat.set_shader_parameter("max_depth", 1.0)

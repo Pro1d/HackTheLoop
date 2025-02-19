@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctolgapm0q15t"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_vlxbw"]
-[ext_resource type="PackedScene" uid="uid://cp1kod7c3oexq" path="res://scenes/ui/program_editor.tscn" id="7_0npbs"]
+[ext_resource type="Script" path="res://scripts/game.gd" id="1_bxkv1"]
+[ext_resource type="PackedScene" uid="uid://cp1kod7c3oexq" path="res://scenes/ui/program_editor.tscn" id="2_b7ri0"]
 
 [node name="Game" type="Node3D"]
-script = ExtResource("1_vlxbw")
+script = ExtResource("1_bxkv1")
 
 [node name="UI" type="CanvasLayer" parent="."]
 
-[node name="ProgramEditor" parent="UI" instance=ExtResource("7_0npbs")]
+[node name="ProgramEditor" parent="UI" instance=ExtResource("2_b7ri0")]
 unique_name_in_owner = true
 process_mode = 2
 visible = false

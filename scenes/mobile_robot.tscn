@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://bltbmo7reo0oc"]
+
+[ext_resource type="Script" path="res://scripts/mobile_robot.gd" id="1_2f6pu"]
+[ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="2_mqq52"]
+[ext_resource type="Script" path="res://scripts/program_runners/program_runner_robot.gd" id="4_yiapt"]
+[ext_resource type="AudioStream" uid="uid://dmuifebilpt6u" path="res://assets/sounds/alt-toasterstep1.ogg" id="5_r107r"]
+[ext_resource type="AudioStream" uid="uid://diw68oi8my37o" path="res://assets/sounds/alt-toasterstep2.ogg" id="6_0wiwa"]
+[ext_resource type="AudioStream" uid="uid://chrfnh2tklk4t" path="res://assets/sounds/robotics1.ogg" id="7_vse66"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_63u11"]
+playback_mode = 1
+random_pitch = 1.4
+random_volume_offset_db = 3.0
+streams_count = 2
+stream_0/stream = ExtResource("5_r107r")
+stream_1/stream = ExtResource("6_0wiwa")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_gadat"]
+playback_mode = 1
+random_pitch = 1.2
+random_volume_offset_db = 3.0
+streams_count = 1
+stream_0/stream = ExtResource("7_vse66")
+
+[node name="MobileRobot" type="CharacterBody3D"]
+collision_layer = 16
+collision_mask = 19
+wall_min_slide_angle = 1.0472
+platform_floor_layers = 17
+script = ExtResource("1_2f6pu")
+max_speed = 2.0
+rotation_speed = 3.142
+stop_on_player = false
+
+[node name="ProgramWheel" parent="." instance=ExtResource("2_mqq52")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.944376, 0.328867, 0, -0.328867, 0.944376, 0, 0.495039, 0.344981)
+
+[node name="ProgramRunner" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("4_yiapt")
+
+[node name="HitAudio3D" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_63u11")
+attenuation_model = 3
+volume_db = 3.0
+max_distance = 10.0
+bus = &"SoundFx"
+
+[node name="RotateAudio3D" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_gadat")
+attenuation_model = 3
+volume_db = -6.0
+max_distance = 10.0
+bus = &"SoundFx"
+
+[node name="MoveAudio3D" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_gadat")
+attenuation_model = 3
+volume_db = -6.0
+max_distance = 10.0
+bus = &"SoundFx"

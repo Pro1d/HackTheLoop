@@ -5,16 +5,16 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_u6uhr"]
 resource_local_to_scene = true
-size = Vector3(1, 1.51, 1)
+size = Vector3(1.07, 1.58, 1.07)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tic5c"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_g3y51")
-shader_parameter/max_depth = 0.8
-shader_parameter/offset = Vector3(0, 0, 0.5)
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 0.4)
 shader_parameter/direction = Vector3(0, 0, 1)
-shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4csr4"]
 resource_local_to_scene = true
@@ -35,3 +35,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_tic5c")
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 shape = SubResource("BoxShape3D_4csr4")
+
+[node name="Marker3D" type="Marker3D" parent="."]
+gizmo_extents = 0.5

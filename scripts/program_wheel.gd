@@ -12,6 +12,7 @@ var current_instruction_index := 0
 
 @onready var _spinning := %Spinning as Node3D
 @onready var _instructions_root := %InstructionsRoot as Node3D
+@onready var _ticking := %TickingAudio3D as AudioStreamPlayer3D
 
 var _spin_tween : Tween
 
@@ -23,14 +24,11 @@ func _ready() -> void:
 		#spin_once()
 
 func set_current_instruction_index(index: int, animate: bool) -> void:
-	prints(
-		"set_current_instruction_index",
-		index,
-		Instruction.Type.find_key(program.instructions[index].type))
 	current_instruction_index = index
 	_update_spin_position(animate)
 
 func _update_spin_position(animate: bool) -> void:
+	if program == null: return
 	var current_angle := _spinning.rotation.x
 	var icount := program.instruction_count() if program != null else 1
 	var target_angle := TAU / icount * current_instruction_index
@@ -44,13 +42,14 @@ func _update_spin_position(animate: bool) -> void:
 	
 	_spin_tween = create_tween()
 	target_angle = current_angle + angle_difference(current_angle, target_angle)
-	if is_equal_approx(target_angle, current_angle):
+	if current_angle - target_angle > -1e-4:
 		target_angle += TAU
 	_spin_tween.tween_property(_spinning, "rotation:x", target_angle, 0.5) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
-	
+	_spin_tween.parallel().tween_callback(_ticking.play).set_delay(0.3)
+
 func _update_program() -> void:
-	if _instructions_root == null: return
+	if _instructions_root == null or program == null: return
 	
 	var icount := program.instruction_count() if program != null else 0
 	

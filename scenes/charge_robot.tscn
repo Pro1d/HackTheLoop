@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvxc8c0nrgkl"]
+
+[ext_resource type="PackedScene" uid="uid://bltbmo7reo0oc" path="res://scenes/mobile_robot.tscn" id="1_5nj6x"]
+[ext_resource type="ArrayMesh" uid="uid://big5b6q7jkcoi" path="res://resources/models/all/robot-charge-attack.res" id="2_m4pdl"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ugq0p"]
+height = 1.1
+radius = 0.755807
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cq10i"]
+size = Vector3(1.6, 1.1, 2)
+
+[node name="ChargeRobot" instance=ExtResource("1_5nj6x")]
+max_speed = 5.0
+accel = 10.0
+rotation_speed = 20.0
+stop_on_player = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("CylinderShape3D_ugq0p")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
+shape = SubResource("BoxShape3D_cq10i")
+
+[node name="ProgramWheel" parent="." index="2"]
+transform = Transform3D(1, 1.32357e-07, -1.14248e-07, 3.55271e-15, 0.65342, 0.756995, 1.74846e-07, -0.756995, 0.65342, 1.06926e-07, 0.630547, 0.843331)
+
+[node name="MoveAudio3D" parent="." index="6"]
+max_db = 6.0
+
+[node name="Robot-charge-attack" type="MeshInstance3D" parent="." index="7"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+mesh = ExtResource("2_m4pdl")

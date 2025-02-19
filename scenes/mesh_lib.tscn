@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://c216tmxu3geod"]
+[gd_scene load_steps=24 format=3 uid="uid://c216tmxu3geod"]
 
 [ext_resource type="ArrayMesh" uid="uid://4uyk0v4dtf2p" path="res://resources/models/all/grid-floor.res" id="1_7mv0b"]
 [ext_resource type="Material" uid="uid://2d2jur3tu7uh" path="res://resources/materials/cardboard.tres" id="2_ht4vs"]
@@ -8,6 +8,10 @@
 [ext_resource type="ArrayMesh" uid="uid://dbtsxrpteubvl" path="res://resources/models/all/grid-wall-cylinder.res" id="5_1d865"]
 [ext_resource type="ArrayMesh" uid="uid://cptqkrheqxfkr" path="res://resources/models/all/grid-wall-cylinder-stack.res" id="6_6ehww"]
 [ext_resource type="Material" uid="uid://cm3nd83b43s7s" path="res://resources/materials/fence.tres" id="8_s5187"]
+[ext_resource type="ArrayMesh" uid="uid://dmngb4cpjlv2v" path="res://resources/models/all/grid-floor-slope.res" id="9_dy3co"]
+[ext_resource type="ArrayMesh" uid="uid://cgcq3hax5odys" path="res://resources/models/all/grid-wall-diag-small.res" id="10_pxe7o"]
+[ext_resource type="ArrayMesh" uid="uid://dnwwbbyo8vikp" path="res://resources/models/all/grid-wall-small-slope.res" id="11_xl5k7"]
+[ext_resource type="ArrayMesh" uid="uid://cf4fnsi2tunn6" path="res://resources/models/all/grid-wall-small.res" id="12_vvfbb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_tqa1r"]
 size = Vector3(1, 0.05, 1)
@@ -17,6 +21,9 @@ size = Vector3(0.05, 1.5, 1.41)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5s4ua"]
 size = Vector3(0.05, 1.5, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vthu1"]
+points = PackedVector3Array(-0.5, -0.05, -0.5, -0.5, 7.45058e-09, -0.5, 0.5, -0.05, -0.5, -0.5, -0.05, 0.5, -0.5, 7.45058e-09, 0.5, 0.5, 7.45058e-09, -0.5)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r2m0n"]
 height = 1.5
@@ -28,6 +35,18 @@ radius = 0.25
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_s5xvy"]
 size = Vector2(1, 1)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_451ap"]
+points = PackedVector3Array(-0.5, -0.8, -0.5, -0.5, -0.750039, -0.5, 0.5, -0.0500392, -0.5, -0.5, -0.8, 0.5, -0.5, -0.750039, 0.5, 0.5, 0, -0.5, 0.5, -0.0500392, 0.5, 0.5, 0, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5yoxf"]
+size = Vector3(0.05, 0.77, 1.41)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2qlt2"]
+points = PackedVector3Array(0.501155, 0.72, 0.025, 0.525, 0.718943, -5.58794e-09, 0.501155, 0.72, -0.025, -0.525, 0.0189585, -5.58794e-09, -0.501258, 0.0199452, 0.025, 0.501155, 0, 0.025, 0.525, 0, -5.58794e-09, 0.501155, 0, -0.025, -0.501258, 0.0199452, -0.025, -0.525, 0, -5.58794e-09, -0.501258, 0, 0.025, -0.501258, 0, -0.025)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ovn7u"]
+size = Vector3(0.05, 0.77, 1)
 
 [node name="Node3D" type="Node3D"]
 
@@ -52,7 +71,7 @@ transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 
 shape = SubResource("BoxShape3D_mobhm")
 
 [node name="Grid-cliff-diag" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48, 0)
 mesh = ExtResource("2_n6ee2")
 surface_material_override/0 = ExtResource("2_ht4vs")
 
@@ -73,7 +92,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.7
 shape = SubResource("BoxShape3D_5s4ua")
 
 [node name="Grid-cliff" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.45, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.48, 0)
 mesh = ExtResource("3_sl81o")
 surface_material_override/0 = ExtResource("2_ht4vs")
 
@@ -86,6 +105,11 @@ shape = SubResource("BoxShape3D_5s4ua")
 [node name="Grid-floor-diag" type="MeshInstance3D" parent="."]
 mesh = ExtResource("4_8rwam")
 surface_material_override/0 = ExtResource("2_ht4vs")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grid-floor-diag"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-floor-diag/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_vthu1")
 
 [node name="Grid-wall-cylinder" type="MeshInstance3D" parent="."]
 mesh = ExtResource("5_1d865")
@@ -111,3 +135,43 @@ shape = SubResource("CylinderShape3D_ms8db")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00574625, 0)
 mesh = SubResource("PlaneMesh_s5xvy")
 surface_material_override/0 = ExtResource("8_s5187")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grid-floor2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-floor2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.025, 0)
+shape = SubResource("BoxShape3D_tqa1r")
+
+[node name="Grid-floor-slope" type="MeshInstance3D" parent="."]
+mesh = ExtResource("9_dy3co")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grid-floor-slope"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-floor-slope/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_451ap")
+
+[node name="Grid-wall-diag-small" type="MeshInstance3D" parent="."]
+mesh = ExtResource("10_pxe7o")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grid-wall-diag-small"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-wall-diag-small/StaticBody3D"]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 0.385, 0)
+shape = SubResource("BoxShape3D_5yoxf")
+
+[node name="Grid-wall-small-slope" type="MeshInstance3D" parent="."]
+mesh = ExtResource("11_xl5k7")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grid-wall-small-slope"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-wall-small-slope/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_2qlt2")
+
+[node name="Grid-wall-small" type="MeshInstance3D" parent="."]
+mesh = ExtResource("12_vvfbb")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grid-wall-small"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-wall-small/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.385, 0)
+shape = SubResource("BoxShape3D_ovn7u")

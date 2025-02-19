@@ -5,8 +5,8 @@ extends Node3D
 @onready var _fade_rect := %FadeRect as ColorRect
 
 const _levels : Array[PackedScene] = [
-	preload("res://scenes/level_base.tscn"),
-	preload("res://scenes/level_base.tscn"),
+	preload("res://scenes/levels/level_arena.tscn"),
+	#preload("res://scenes/level_base.tscn"),
 ]
 var _current_level_index := 0
 var _current_level_scene : LevelBase
@@ -20,6 +20,7 @@ func _ready() -> void:
 	
 	_current_level_index = 0
 	switch_level()
+	MusicManager.start_game_music()
 
 func _load_level(index: int) -> void:
 	if _current_level_scene != null:
@@ -40,15 +41,21 @@ func _on_level_failed() -> void:
 	switch_level()
 
 func switch_level() -> void:
-	var t := create_tween()
+	var t : Tween
+	
 	_fade_rect.show()
-	t.tween_property(_fade_rect, "modulate:a", 1.0, 2.0).from(0.0)
-	await t.finished
+	if _current_level_scene != null:
+		t = create_tween()
+		t.tween_property(_fade_rect, "modulate:a", 1.0, 2.0).from(0.0)
+		await t.finished
+	
 	_load_level(_current_level_index)
+	
 	t = create_tween()
 	t.tween_property(_fade_rect, "modulate:a", 0.0, 2.0).from(1.0)
 	await t.finished
 	_fade_rect.hide()
+	
 	_current_level_scene.start()
 
 func on_program_wheel_interaction_requested(pw: ProgramWheel) -> void:
