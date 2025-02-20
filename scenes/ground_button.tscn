@@ -24,7 +24,7 @@ roughness = 0.9
 
 [node name="GroundButton" type="Area3D"]
 collision_layer = 8
-collision_mask = 18
+collision_mask = 82
 monitorable = false
 script = ExtResource("1_l8sjn")
 

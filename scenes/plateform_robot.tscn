@@ -8,8 +8,10 @@ radius = 0.37
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jgxk3"]
 height = 0.1
+radius = 0.45
 
 [node name="PlateformRobot" instance=ExtResource("1_q35c5")]
+collision_mask = 17
 max_speed = null
 accel = null
 rotation_speed = 1.571
@@ -28,4 +30,4 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 mesh = ExtResource("2_phfjj")
 
 [node name="ProgramWheel" parent="." index="3"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.456325, 0.397714)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.375965, 0.362476)

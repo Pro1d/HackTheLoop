@@ -63,7 +63,7 @@ update_rotation = false
 update_scale = false
 
 [node name="DeathPitArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
 collision_layer = 0
 collision_mask = 18
 monitorable = false

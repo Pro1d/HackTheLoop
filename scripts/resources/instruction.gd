@@ -37,7 +37,7 @@ enum TargetType {
 	PLAYER, # | paperboy icon
 	PING, # | "you are here" icon
 	RANDOM, # | dice icon
-	
+	ROBOT, # | robot head icon
 	# no icon yet
 	
 	ALLY, # nearest or ref | [°++°] robot head icon

@@ -24,5 +24,6 @@ type = 11
 target_type = 0
 
 [resource]
+resource_local_to_scene = true
 script = ExtResource("2_7nqf0")
 instructions = Array[ExtResource("1_vj8pq")]([SubResource("Resource_l36ij"), SubResource("Resource_0b28i"), SubResource("Resource_thcfk"), SubResource("Resource_uth20")])

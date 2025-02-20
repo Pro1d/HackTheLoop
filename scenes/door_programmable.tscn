@@ -12,7 +12,7 @@ program = null
 [node name="ProgramRunner" type="Node" parent="." index="0"]
 unique_name_in_owner = true
 script = ExtResource("8_5qbqx")
-max_target_range = 2.0
+max_target_range = 1.25
 
 [node name="ProgramWheel" parent="Offset" index="5" instance=ExtResource("1_nlqf5")]
 unique_name_in_owner = true

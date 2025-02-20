@@ -83,8 +83,13 @@ func wait_target(i: Instruction.TargetType, max_range: float) -> bool:
 			Instruction.TargetType.PING:
 				return false # TODO
 			Instruction.TargetType.RANDOM:
-				await get_tree().create_timer(randf_range(0.5, 2.0), false, true).timeout
+				await get_tree().create_timer(randf_range(1.0, 3.5), false, true).timeout
 				return true
+			Instruction.TargetType.ROBOT:
+				var robot := _find_nearest_body(max_range, Config.LAYER_ROBOT) as MobileRobot
+				if robot != null:
+					return true
+				# else: retry in next frame
 			_:
 				return false
 		
@@ -110,9 +115,42 @@ func find_target_location(i: Instruction.TargetType, max_range: float) -> Vector
 			return Vector3(
 				randf_range(1.0, max_range), self_loc.y, 0
 			).rotated(Vector3.UP, randf() * TAU)
+		Instruction.TargetType.ROBOT:
+			var robot := _find_nearest_body(max_range, Config.LAYER_ROBOT) as MobileRobot
+			if robot != null:
+				node_3d = robot
 	
 	if node_3d != null:
 		var relative := node_3d.global_position - self_loc
 		if relative.length_squared() < max_range * max_range:
 			return relative
 	return Vector3.ZERO
+
+static var _cache_params := PhysicsShapeQueryParameters3D.new()
+func _find_nearest_body(radius: float, layer_mask: int) -> PhysicsBody3D:
+	var parent := get_parent() as Node3D
+	var params := ProgramRunnerBase._cache_params
+	
+	params.transform = Transform3D(Basis(), parent.global_position + Vector3(0, 0.75, 0))
+	params.collision_mask = layer_mask
+	
+	if params.shape == null:
+		params.shape = CylinderShape3D.new()
+
+	var cylinder := params.shape as CylinderShape3D
+	cylinder.height = 1.2
+	cylinder.radius = radius
+	
+	var state := parent.get_world_3d().direct_space_state
+	var dmin := INF
+	var body_min : PhysicsBody3D
+	for dict in state.intersect_shape(params, 32):
+		var b := dict["collider"] as PhysicsBody3D
+		prints(b)
+		if b != null:
+			var d := b.global_position.distance_to(parent.global_position)
+			if d < dmin:
+				dmin = d
+				body_min = b
+
+	return body_min

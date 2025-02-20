@@ -107,11 +107,11 @@ func _physics_process(delta: float) -> void:
 		State.ROLLING:
 			new_h_speed = _current_dir * ROLL_SPEED
 		State.DEAD:
-			return
+			new_h_speed = current_h_speed.move_toward(Vector2.ZERO, ACCEL * delta)
 	
 	var current_v_speed := velocity.y
 	var new_v_speed := current_v_speed
-	if not on_floor:
+	if not on_floor and _state != State.DEAD: # player has no shape when dead (on_floor is always false)
 		new_v_speed += get_gravity().y * delta
 	else:
 		new_v_speed = 0
@@ -158,7 +158,7 @@ func kill(hit_direction: Vector2 = Vector2.ZERO) -> void:
 		angle = deg_to_rad(30)
 	else:
 		axis = Vector3.RIGHT.rotated(Vector3.UP, randf() * TAU)
-		angle = deg_to_rad(10)
+		angle = deg_to_rad(5)
 	(_visual.get_parent() as Node3D).global_rotate(axis, angle)
 	#_visual.global_scale(Vector3(1.0, 0.1, 1.0))
 	#_visual_mat.normal_scale = 6.0

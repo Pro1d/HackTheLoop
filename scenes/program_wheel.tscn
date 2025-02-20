@@ -38,7 +38,7 @@ shape = SubResource("SphereShape3D_en1ny")
 
 [node name="ShortcutSprite3D" type="Sprite3D" parent="Area3D/CollisionShape3D"]
 unique_name_in_owner = true
-offset = Vector2(-128, 220)
+offset = Vector2(-178, 180)
 pixel_size = 0.0005
 billboard = 1
 no_depth_test = true
@@ -49,7 +49,7 @@ region_rect = Rect2(129, 1, 62, 62)
 
 [node name="Label3D" type="Label3D" parent="Area3D/CollisionShape3D/ShortcutSprite3D"]
 pixel_size = 0.001
-offset = Vector2(-40, 110)
+offset = Vector2(-65, 90)
 billboard = 1
 no_depth_test = true
 fixed_size = true

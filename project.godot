@@ -148,7 +148,11 @@ no={
 3d_physics/layer_4="button"
 3d_physics/layer_5="robots"
 3d_physics/layer_6="projectile"
-3d_physics/layer_7="Layer 7"
+3d_physics/layer_7="moveable"
+
+[physics]
+
+common/enable_object_picking=false
 
 [rendering]
 

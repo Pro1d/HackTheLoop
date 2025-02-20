@@ -76,7 +76,8 @@ func switch_level(success: bool) -> void:
 	if _current_level_scene != null:
 		_state = State.ENDING_LEVEL
 		t = create_tween()
-		t.tween_property(_fade_rect, "modulate:a", 1.0, 2.0).from(0.0)
+		t.tween_property(_fade_rect, "modulate:a", 1.0, 2.0).from(0.0) \
+			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 		await t.finished
 		if success:
 			($SuccessAudio as AudioStreamPlayer).play()
@@ -87,7 +88,8 @@ func switch_level(success: bool) -> void:
 	
 	_state = State.STARTING_LEVEL
 	t = create_tween()
-	t.tween_property(_fade_rect, "modulate:a", 0.0, 2.0).from(1.0)
+	t.tween_property(_fade_rect, "modulate:a", 0.0, 1.0).from(1.0) \
+			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
 	await t.finished
 	_fade_rect.hide()
 	
