@@ -21,9 +21,9 @@ unique_name_in_owner = true
 top_level = true
 
 [node name="Camera3D" type="Camera3D" parent="CamFocusPoint"]
-transform = Transform3D(1, 0, 0, 0, 0.659345, 0.75184, 0, -0.75184, 0.659345, 0, 5.60998, 4.56547)
+transform = Transform3D(1, 0, 0, 0, 0.659345, 0.75184, 0, -0.75184, 0.659345, 0, 5.15434, 4.16588)
 current = true
-fov = 45.0
+fov = 50.0
 near = 0.01
 far = 50.0
 

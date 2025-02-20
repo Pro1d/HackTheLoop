@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bij7hjjbwv2yp"]
+
+[resource]
+resource_local_to_scene = true
+albedo_color = Color(0.16, 0.524, 1, 1)
+metallic = 0.7
+clearcoat_enabled = true
+clearcoat_roughness = 0.7

@@ -28,9 +28,6 @@ collision_mask = 19
 wall_min_slide_angle = 1.0472
 platform_floor_layers = 17
 script = ExtResource("1_2f6pu")
-max_speed = 2.0
-rotation_speed = 3.142
-stop_on_player = false
 
 [node name="ProgramWheel" parent="." instance=ExtResource("2_mqq52")]
 unique_name_in_owner = true

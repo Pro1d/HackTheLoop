@@ -7,7 +7,7 @@
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dksse"]
 atlas = ExtResource("2_hmlbw")
-region = Rect2(0, 0, 64, 64)
+region = Rect2(4, 4, 56, 56)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1gx74"]
 resource_local_to_scene = true
@@ -19,56 +19,60 @@ resource_local_to_scene = true
 atlas = ExtResource("4_d4l4h")
 region = Rect2(0, 0, 64, 64)
 
-[node name="PanelContainer" type="PanelContainer"]
-custom_minimum_size = Vector2(350, 96)
-offset_right = 350.0
+[node name="VBoxContainer" type="HBoxContainer"]
+offset_right = 260.0
 offset_bottom = 96.0
-theme_type_variation = &"PanelContainer_NI"
 script = ExtResource("1_ckfkb")
 
 [node name="CurrentInstructionIndicator" type="Control" parent="."]
-unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 
 [node name="TextureRect" type="TextureRect" parent="CurrentInstructionIndicator"]
+unique_name_in_owner = true
 modulate = Color(0.87, 0.174, 0, 1)
+z_index = 1
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -8.0
-offset_top = -8.0
-offset_right = 8.0
-offset_bottom = 8.0
-grow_horizontal = 2
+offset_top = -32.0
+offset_right = 56.0
+offset_bottom = 24.0
 grow_vertical = 2
 texture = SubResource("AtlasTexture_dksse")
+stretch_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="PanelContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(231, 96)
+layout_mode = 2
+theme_type_variation = &"PanelContainer_SI"
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
 layout_mode = 2
 
-[node name="InstructionContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="InstructionContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
 layout_mode = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="InstructionIcon" type="TextureRect" parent="MarginContainer/InstructionContainer"]
+[node name="InstructionIcon" type="TextureRect" parent="PanelContainer/MarginContainer/InstructionContainer"]
 unique_name_in_owner = true
+modulate = Color(0, 0.00392157, 0.337255, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 texture = SubResource("AtlasTexture_1gx74")
 stretch_mode = 3
 
-[node name="TargetContainer" type="PanelContainer" parent="MarginContainer/InstructionContainer"]
+[node name="TargetContainer" type="PanelContainer" parent="PanelContainer/MarginContainer/InstructionContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_type_variation = &"PanelContainer_NT"
 
-[node name="TargetIcon" type="TextureRect" parent="MarginContainer/InstructionContainer/TargetContainer"]
+[node name="TargetIcon" type="TextureRect" parent="PanelContainer/MarginContainer/InstructionContainer/TargetContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 texture = SubResource("AtlasTexture_r40iw")

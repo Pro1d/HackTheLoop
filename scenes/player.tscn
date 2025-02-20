@@ -11,9 +11,8 @@
 radius = 0.26
 height = 1.2
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_lvcoh"]
-height = 1.2
-radius = 0.1
+[sub_resource type="SphereShape3D" id="SphereShape3D_tsb34"]
+radius = 0.785521
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_3e2vy"]
 playback_mode = 1
@@ -51,14 +50,15 @@ shape = SubResource("CapsuleShape3D_51kyv")
 unique_name_in_owner = true
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="CenterArea3D" type="Area3D" parent="."]
+[node name="InteractArea3D" type="Area3D" parent="."]
 unique_name_in_owner = true
-collision_layer = 32
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.702564, -0.485555)
+collision_layer = 0
 collision_mask = 4
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CenterArea3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, 0)
-shape = SubResource("CylinderShape3D_lvcoh")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractArea3D"]
+shape = SubResource("SphereShape3D_tsb34")
 
 [node name="RollAudio3D" type="AudioStreamPlayer3D" parent="."]
 stream = SubResource("AudioStreamRandomizer_3e2vy")

@@ -1,57 +1,52 @@
-[gd_scene load_steps=8 format=3 uid="uid://djxptgvpy6738"]
+[gd_scene load_steps=6 format=3 uid="uid://djxptgvpy6738"]
 
 [ext_resource type="Script" path="res://scripts/instruction_visual_3d.gd" id="1_b8nr3"]
 [ext_resource type="Texture2D" uid="uid://wcm5gsg8qdha" path="res://assets/textures/instruction_icons.png" id="2_muxx0"]
+[ext_resource type="Material" uid="uid://8h5pj4vki56d" path="res://resources/materials/glossy_paper.tres" id="2_pvksa"]
 [ext_resource type="Texture2D" uid="uid://bb1kyjenoanux" path="res://assets/textures/target_icons.png" id="3_ciy3g"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_6pmue"]
-size = Vector3(0.35, 0.128, 0.015)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f6rsn"]
-albedo_color = Color(0.973333, 1, 0.6, 1)
-metallic = 0.8
-roughness = 0.4
-
-[sub_resource type="BoxMesh" id="BoxMesh_3lhhl"]
-size = Vector3(0.11, 0.11, 0.02)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uutjw"]
-albedo_color = Color(0.92, 0.92, 0.92, 1)
-metallic = 0.8
-roughness = 0.4
+[sub_resource type="CylinderMesh" id="CylinderMesh_uau85"]
+top_radius = 0.1
+bottom_radius = 0.1
+height = 0.35
+radial_segments = 8
+rings = 3
+cap_top = false
+cap_bottom = false
 
 [node name="InstructionVisual3D" type="Node3D"]
 script = ExtResource("1_b8nr3")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.228)
 
 [node name="BGMeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.00914058)
-mesh = SubResource("BoxMesh_6pmue")
+transform = Transform3D(-7.54979e-08, -1, 4.22788e-08, -1, 7.54979e-08, 2.44784e-08, -8.74228e-08, -1.50996e-07, -0.28, 0, 0, -0.0271596)
+mesh = SubResource("CylinderMesh_uau85")
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_f6rsn")
+surface_material_override/0 = ExtResource("2_pvksa")
 
 [node name="InstructionSprite3D" type="Sprite3D" parent="Node3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.087, 0, 0.001)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -0.087, 0, 0.00294144)
+modulate = Color(0, 0.00392157, 0.337255, 1)
 pixel_size = 0.001
+shaded = true
 texture = ExtResource("2_muxx0")
 hframes = 4
 vframes = 4
 
 [node name="TargetBGMeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.087, 0, -0.009)
-mesh = SubResource("BoxMesh_3lhhl")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.087, 0, -0.00705856)
 skeleton = NodePath("../..")
-surface_material_override/0 = SubResource("StandardMaterial3D_uutjw")
 
 [node name="TargetSprite3D" type="Sprite3D" parent="Node3D/TargetBGMeshInstance3D"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.013)
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0.013)
 pixel_size = 0.001
+shaded = true
 texture = ExtResource("3_ciy3g")
 hframes = 4
 vframes = 4

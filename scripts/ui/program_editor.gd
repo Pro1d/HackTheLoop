@@ -6,22 +6,28 @@ signal close_requested()
 const InstructionUIPackedScene := preload("res://scenes/ui/instruction_ui.tscn")
 
 enum State {
+	INITIALIZING,
 	NAVIGATING,
 	SWAPPING,
 }
 
 var _program : Program = Program.new()
+var _source_program : Program
 
 var _current_instruction_index := 0
-var _nav_index := 0
+var _nav_index := 0 : set=set_nav_index
 var _displayed_index := float(_nav_index)
 var _swap_target_only := false
 var _swap_index := -1
-var _state := State.NAVIGATING
+var _state := State.INITIALIZING
 
 var _instruction_ui_list : Array[InstructionUI]
 
 @onready var _instr_container := %InstructionsContainer as VLoopContainer
+@onready var _desc_label := %DescriptionLabel as Label
+@onready var _ro_label := %ROLabel as Label
+@onready var _swap_audio := %SwapAudio as AudioStreamPlayer
+@onready var _select_audio := %SelectAudio as AudioStreamPlayer
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -38,11 +44,22 @@ func _ready() -> void:
 	#set_program(p, 0)
 	set_program(_program, 0)
 
-func set_program(p: Program, current_instruction_index: int) -> void:
+func _reset_program() -> void:
+	_swap_audio.play()
+	for i in range(_program.instruction_count()):
+		_program.instructions[i] = _source_program.instructions[i].duplicate(true)
+	_update_program()
 	_state = State.NAVIGATING
+
+func set_program(p: Program, current_instruction_index: int) -> void:
+	_state = State.INITIALIZING
+	_source_program = p.duplicate(true)
 	_program = p
 	_current_instruction_index = current_instruction_index
-	_nav_index = current_instruction_index
+	_update_program()
+	_state = State.NAVIGATING
+
+func _update_program() -> void:
 	_swap_target_only = false
 	_swap_index = -1
 	for ui in _instruction_ui_list:
@@ -51,45 +68,29 @@ func set_program(p: Program, current_instruction_index: int) -> void:
 	for i in range(_program.instruction_count()):
 		var ui := InstructionUIPackedScene.instantiate() as InstructionUI
 		ui.instruction = _program.instructions[i]
-		ui.is_current = (current_instruction_index == i)
+		ui.is_current = (_current_instruction_index == i)
 		_instruction_ui_list.append(ui)
 		_instr_container.add_child(ui)
-	_update_highlight()
-	_update_scroll_index(false)
-
-func _update_highlight() -> void:
-	for i in range(_program.instruction_count()):
-		if i == _swap_index:
-			_instruction_ui_list[i].highlight_type = (
-				InstructionUI.HighlightType.SELECT_INSTR
-				if not _swap_target_only
-				else InstructionUI.HighlightType.SELECT_TARGET
-			)
-		elif i == _nav_index:
-			_instruction_ui_list[i].highlight_type = (
-				InstructionUI.HighlightType.FOCUS_INSTR
-				if not _swap_target_only
-				else InstructionUI.HighlightType.FOCUS_TARGET
-			)
-		else:
-			_instruction_ui_list[i].highlight_type = InstructionUI.HighlightType.NONE
+	set_nav_index(_current_instruction_index)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():
-		if event.is_action("move_down") or event.is_action("move_up"):
+		if event.is_action("reset"):
+			match _state:
+				State.NAVIGATING, State.SWAPPING:
+					_reset_program()
+		elif event.is_action("move_down") or event.is_action("move_up"):
 			var dir := -1 if event.is_action("move_up") else 1
 			match _state:
 				State.NAVIGATING:
 					_swap_target_only = false
-					_nav_index = posmod(_nav_index + dir, _program.instruction_count())
+					set_nav_index(posmod(_nav_index + dir, _program.instruction_count()))
 				State.SWAPPING:
-					_nav_index = (
+					set_nav_index(
 						_next_swappable_instr_index(dir)
 						if not _swap_target_only
 						else _next_swappable_target_index(dir)
 					)
-			_update_scroll_index(true)
-			_update_highlight()
 		elif event.is_action("move_left") or event.is_action("move_right"):
 			match _state:
 				State.NAVIGATING:
@@ -102,11 +103,20 @@ func _unhandled_input(event: InputEvent) -> void:
 					if _nav_index != _current_instruction_index:
 						_swap_index = _nav_index
 						_update_highlight()
+						_select_audio.play()
 						_state = State.SWAPPING
 				State.SWAPPING:
-					_do_swap()
-					_swap_index = -1
-					_update_highlight()
+					# if _nav_index != _current_instruction_index: # not possible with swapping navigation mode
+					if _nav_index != _swap_index:
+						_do_swap()
+						_swap_index = -1
+						_update_highlight()
+						_update_description()
+						_swap_audio.play()
+					else:
+						_swap_index = -1
+						_update_highlight()
+						_select_audio.play()
 					_state = State.NAVIGATING
 		elif event.is_action("reset"):
 			pass # TODO
@@ -134,6 +144,23 @@ func _do_swap() -> void:
 	_instruction_ui_list[_swap_index].instruction = _program.instructions[_swap_index]
 	_instruction_ui_list[_nav_index].instruction = _program.instructions[_nav_index]
 
+func _update_highlight() -> void:
+	for i in range(_program.instruction_count()):
+		if i == _swap_index:
+			_instruction_ui_list[i].highlight_type = (
+				InstructionUI.HighlightType.SELECT_INSTR
+				if not _swap_target_only
+				else InstructionUI.HighlightType.SELECT_TARGET
+			)
+		elif i == _nav_index:
+			_instruction_ui_list[i].highlight_type = (
+				InstructionUI.HighlightType.FOCUS_INSTR
+				if not _swap_target_only
+				else InstructionUI.HighlightType.FOCUS_TARGET
+			)
+		else:
+			_instruction_ui_list[i].highlight_type = InstructionUI.HighlightType.NONE
+
 var _tween_scroll : Tween
 func _update_scroll_index(animate: bool) -> void:
 	if _tween_scroll != null:
@@ -141,16 +168,16 @@ func _update_scroll_index(animate: bool) -> void:
 	
 	if not animate:
 		_set_displayed_scroll_index(float(_nav_index))
-	
-	var findex_max := float(_program.instruction_count())
-	var current_findex := _displayed_index
-	var target_findex := float(_nav_index)
-	var diff_findex := wrapf(target_findex - current_findex, -findex_max / 2, findex_max / 2)
-	
-	_tween_scroll = create_tween()
-	_tween_scroll.tween_method(
-		_set_displayed_scroll_index, current_findex, current_findex + diff_findex, 0.6
-	).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
+	else:
+		var findex_max := float(_program.instruction_count())
+		var current_findex := _displayed_index
+		var target_findex := float(_nav_index)
+		var diff_findex := wrapf(target_findex - current_findex, -findex_max / 2, findex_max / 2)
+		
+		_tween_scroll = create_tween()
+		_tween_scroll.tween_method(
+			_set_displayed_scroll_index, current_findex, current_findex + diff_findex, 0.6
+		).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUAD)
 
 
 func _set_displayed_scroll_index(findex: float) -> void:
@@ -170,3 +197,22 @@ func _next_swappable_target_index(dir: int = 1) -> int:
 		if j != _current_instruction_index and _program.instructions[j].has_target():
 			return j
 	return _nav_index
+
+func set_nav_index(ni: int) -> void:
+	_nav_index = ni
+	_update_scroll_index(_state != State.INITIALIZING)
+	_update_highlight()
+	_update_description()
+
+func _update_description() -> void:
+	if _program.instruction_count() == 0:
+		return
+	# Update description
+	var instr := _program.instructions[_nav_index]
+	var desc := Instruction.Type.find_key(instr.type) as String
+	if instr.has_target():
+		desc += " - " + Instruction.TargetType.find_key(instr.target_type)
+	_desc_label.text = desc
+	
+	var is_current := (_current_instruction_index == _nav_index)
+	_ro_label.modulate.a = 1.0 if is_current else 0.0

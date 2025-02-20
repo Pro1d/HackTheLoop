@@ -13,15 +13,14 @@ var current_instruction_index := 0
 @onready var _spinning := %Spinning as Node3D
 @onready var _instructions_root := %InstructionsRoot as Node3D
 @onready var _ticking := %TickingAudio3D as AudioStreamPlayer3D
+@onready var _tooltip_sprite := %ShortcutSprite3D as Sprite3D
 
 var _spin_tween : Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	set_tooltip_visibility(false)
 	_update_program()
-	#while true:
-		#await get_tree().create_timer(2.0).timeout
-		#spin_once()
 
 func set_current_instruction_index(index: int, animate: bool) -> void:
 	current_instruction_index = index
@@ -70,3 +69,6 @@ func _update_program() -> void:
 
 static func find_parent_program_wheel(area: Area3D) -> ProgramWheel:
 	return area.get_parent() as ProgramWheel
+
+func set_tooltip_visibility(v: bool) -> void:
+	_tooltip_sprite.visible = v

@@ -17,7 +17,8 @@ enum Type {
 	ROTATE_RIGHT, # | ,-> rotate icon
 	ROTATE_TOWARD, # + obj | rotate icon
 	
-	# not used
+	# no icon yet
+	
 	RESTORE_SHIELD, # + obj | shield+ icon
 	KNOCK_BACK, # | fist icon
 	MOVE_FOWARD, # | arrow up icon
@@ -37,13 +38,19 @@ enum TargetType {
 	PING, # | "you are here" icon
 	RANDOM, # | dice icon
 	
+	# no icon yet
+	
 	ALLY, # nearest or ref | [°++°] robot head icon
 	SELF, # | 
 	FOREVER, # | inf / omega icon
 }
+
 
 @export var type : Type
 @export var target_type : TargetType
 
 func has_target() -> bool:
 	return target_type != TargetType.NONE
+
+func target_is_button() -> bool:
+	return target_type in GroundButton.colors

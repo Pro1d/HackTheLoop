@@ -2,12 +2,14 @@ class_name ProgramRunnerBase
 extends Node
 
 const IGNORE_DELAY := 0.5 # when action could not be performed
-const MIN_DELAY := 0.25
+const MIN_DELAY := 0.5
 
 # does not emit for the 1st instruction (always index 0)
 signal current_instruction_index_changed(instr_index: int)
 
+@export var max_target_range := 8.0
 @export var program : Program
+
 var current_instruction_index := 0
 var current_instruction : Instruction :
 	get(): return program.instructions[current_instruction_index] 
@@ -53,13 +55,41 @@ func _run() -> void:
 func _do_default(_i: Instruction.TargetType = Instruction.TargetType.NONE) -> float:
 	return 1.0
 
-func do_WAIT_BUTTON(i: Instruction.TargetType) -> float:
-	var ground_button := GroundButton.find_registered_button(i)
-	if ground_button != null:
-		await ground_button.pressed
-		return 0.25
+func do_WAIT(i: Instruction.TargetType) -> float:
+	if await wait_target(i, max_target_range):
+		return 0.0
 	else:
 		return IGNORE_DELAY
+
+func wait_target(i: Instruction.TargetType, max_range: float) -> bool:
+	while true:
+		var self_loc := (get_parent() as Node3D).global_position
+		match i:
+			Instruction.TargetType.BUTTON_GREEN, \
+			Instruction.TargetType.BUTTON_PURPLE, \
+			Instruction.TargetType.BUTTON_YELLOW, \
+			Instruction.TargetType.BUTTON_BLUE:
+				var gb := GroundButton.find_registered_button(i)
+				if gb != null:
+					await gb.pressed
+					return true
+				else:
+					return false
+			Instruction.TargetType.PLAYER:
+				var p := Player.find_registered_player()
+				if p != null and p.is_alive() and p.global_position.distance_to(self_loc) < max_range:
+					return true
+				# else: retry in next frame
+			Instruction.TargetType.PING:
+				return false # TODO
+			Instruction.TargetType.RANDOM:
+				await get_tree().create_timer(randf_range(0.5, 2.0), false, true).timeout
+				return true
+			_:
+				return false
+		
+		await get_tree().physics_frame
+	return false
 
 func find_target_location(i: Instruction.TargetType, max_range: float) -> Vector3:
 	var self_loc := (get_parent() as Node3D).global_position

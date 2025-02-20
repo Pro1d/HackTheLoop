@@ -16,9 +16,7 @@ const MAX_SPEED := 3.0
 const ROLL_SPEED := MAX_SPEED * 2.0
 const ACCEL := MAX_SPEED / 0.08
 
-@export var handle_input := true
-
-var current_interactable : Node = null
+var current_interactable : Node3D = null
 var _current_dir := Vector2(1, 0)
 var _state := State.WALKING
 var _rolling_timer := Timer.new()
@@ -26,13 +24,15 @@ var _rolling_timer := Timer.new()
 @onready var _visual := %AnimatedPaperBoy as Node3D
 @onready var _anim_player := %AnimatedPaperBoy/AnimationPlayer as AnimationPlayer
 #@onready var _visual_mat := ((%AnimatedPaperBoy/Skeleton3D/PaperBoy as MeshInstance3D).mesh as ArrayMesh).surface_get_material(0) as StandardMaterial3D
-@onready var center_area := %CenterArea3D as Area3D
+@onready var _interact_area := %InteractArea3D as Area3D
 @onready var _roll_audio := $RollAudio3D as AudioStreamPlayer3D
 @onready var _walk_audio := $WalkAudio3D as AudioStreamPlayer3D
 @onready var _die_audio := $DieAudio3D as AudioStreamPlayer3D
 
 func _ready() -> void:
 	_state = State.LOCKED
+	_current_dir = Vector2(1, 0).rotated(Config.angle_to_dir_index(rotation.y, PI / 4))
+	
 	_rolling_timer.wait_time = 0.4
 	_rolling_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
 	_rolling_timer.one_shot = true
@@ -40,20 +40,45 @@ func _ready() -> void:
 	add_child(_rolling_timer)
 	_anim_player.play(&"paper-boy-default")
 	
+	_interact_area.area_entered.connect(_on_interact_overlap_changed)
+	_interact_area.area_exited.connect(_on_interact_overlap_changed)
+	
 	Player._register(self)
 
 func unlock() -> void:
 	if _state == State.LOCKED:
 		_state = State.WALKING
 
+func _on_interact_overlap_changed(area_3d: Area3D) -> void:
+	# Hide (potentially) previous tooltip
+	var pw := ProgramWheel.find_parent_program_wheel(area_3d)
+	if pw != null:
+		pw.set_tooltip_visibility(false)
+	
+	# find closest area
+	var dmin := INF
+	var pw_min : ProgramWheel
+	for area in _interact_area.get_overlapping_areas():
+		pw = ProgramWheel.find_parent_program_wheel(area)
+		prints(area,pw)
+		if pw != null:
+			var d := area.global_position.distance_to(_interact_area.global_position)
+			if d < dmin:
+				dmin = d
+				pw_min = pw
+			pw.set_tooltip_visibility(false)
+	
+	# show tooltip of current
+	if pw_min != null:
+		pw_min.set_tooltip_visibility(true)
+	
+	current_interactable = pw_min
+	
 func _input(event: InputEvent) -> void:
 	if _state == State.WALKING:
 		if event.is_action("interact") and event.is_pressed():
-			for area in center_area.get_overlapping_areas():
-				var pw := ProgramWheel.find_parent_program_wheel(area)
-				if pw != null:
-					program_wheel_interaction_requested.emit(pw)
-					current_interactable = pw
+			if current_interactable != null:
+				program_wheel_interaction_requested.emit(current_interactable)
 
 func _physics_process(delta: float) -> void:
 	var input_dir : Vector2
@@ -137,7 +162,7 @@ func kill(hit_direction: Vector2 = Vector2.ZERO) -> void:
 	(_visual.get_parent() as Node3D).global_rotate(axis, angle)
 	#_visual.global_scale(Vector3(1.0, 0.1, 1.0))
 	#_visual_mat.normal_scale = 6.0
-	(%CollisionShape3D as CollisionShape3D).disabled = true
+	(%CollisionShape3D as CollisionShape3D).set_disabled.call_deferred(true)
 	_die_audio.play()
 	
 	var tween := create_tween()

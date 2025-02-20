@@ -11,10 +11,9 @@ radius = 0.755807
 size = Vector3(1.6, 1.1, 2)
 
 [node name="ChargeRobot" instance=ExtResource("1_5nj6x")]
-max_speed = 5.0
-accel = 10.0
+max_speed = 3.5
+accel = 8.0
 rotation_speed = 20.0
-stop_on_player = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
@@ -25,7 +24,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55, 0)
 shape = SubResource("BoxShape3D_cq10i")
 
 [node name="ProgramWheel" parent="." index="2"]
-transform = Transform3D(1, 1.32357e-07, -1.14248e-07, 3.55271e-15, 0.65342, 0.756995, 1.74846e-07, -0.756995, 0.65342, 1.06926e-07, 0.630547, 0.843331)
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0.00503098, 0.589796, 0.843331)
 
 [node name="MoveAudio3D" parent="." index="6"]
 max_db = 6.0

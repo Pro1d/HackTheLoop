@@ -19,7 +19,7 @@ var _state := State.INITIALIZING
 func _ready() -> void:
 	_player.program_wheel_interaction_requested.connect(_on_program_wheel_interaction_requested)
 	_player.died.connect(_on_player_died)
-	_end_level_area.area_entered.connect(_on_player_reach_end_level.unbind(1))
+	_end_level_area.body_entered.connect(_on_player_reach_end_level.unbind(1))
 	#_player.process_mode = Node.PROCESS_MODE_DISABLED
 
 func start() -> void:

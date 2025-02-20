@@ -4,18 +4,19 @@
 [ext_resource type="ArrayMesh" uid="uid://cei5jqkvtcv84" path="res://resources/models/all/robot-plateform.res" id="2_phfjj"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nvj4p"]
-radius = 0.375
+radius = 0.37
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_jgxk3"]
 height = 0.1
 
 [node name="PlateformRobot" instance=ExtResource("1_q35c5")]
-max_speed = 1.2
+max_speed = null
+accel = null
 rotation_speed = 1.571
-stop_on_player = true
+stop_on_player = null
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.37, 0)
 shape = SubResource("SphereShape3D_nvj4p")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." index="1"]
@@ -25,3 +26,6 @@ shape = SubResource("CylinderShape3D_jgxk3")
 [node name="Robot-plateform2" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 mesh = ExtResource("2_phfjj")
+
+[node name="ProgramWheel" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.456325, 0.397714)

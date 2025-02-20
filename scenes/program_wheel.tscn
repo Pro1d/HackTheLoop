@@ -1,11 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://ms3lu86p6nn7"]
+[gd_scene load_steps=7 format=3 uid="uid://ms3lu86p6nn7"]
 
 [ext_resource type="Script" path="res://scripts/program_wheel.gd" id="1_7idj1"]
 [ext_resource type="ArrayMesh" uid="uid://dbog0ell4ovhw" path="res://resources/models/all/ProgramWheelBase.res" id="1_qivsg"]
 [ext_resource type="ArrayMesh" uid="uid://2pgopoc56xhw" path="res://resources/models/all/ProgramBox.res" id="2_x68pd"]
 [ext_resource type="AudioStream" uid="uid://cupoyqdtqlev2" path="res://assets/sounds/ticking2.ogg" id="4_sueey"]
+[ext_resource type="Texture2D" uid="uid://3kp6mnvn7wj7" path="res://assets/textures/ui.png" id="5_yev1a"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_en1ny"]
+radius = 0.292474
 
 [node name="ProgramWheel" type="Node3D"]
 script = ExtResource("1_7idj1")
@@ -31,8 +33,30 @@ collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.278081)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.214033)
 shape = SubResource("SphereShape3D_en1ny")
+
+[node name="ShortcutSprite3D" type="Sprite3D" parent="Area3D/CollisionShape3D"]
+unique_name_in_owner = true
+offset = Vector2(-128, 220)
+pixel_size = 0.0005
+billboard = 1
+no_depth_test = true
+fixed_size = true
+texture = ExtResource("5_yev1a")
+region_enabled = true
+region_rect = Rect2(129, 1, 62, 62)
+
+[node name="Label3D" type="Label3D" parent="Area3D/CollisionShape3D/ShortcutSprite3D"]
+pixel_size = 0.001
+offset = Vector2(-40, 110)
+billboard = 1
+no_depth_test = true
+fixed_size = true
+modulate = Color(0, 0.00392157, 0.337255, 1)
+outline_modulate = Color(1, 1, 1, 1)
+text = "View Program"
+horizontal_alignment = 0
 
 [node name="TickingAudio3D" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true

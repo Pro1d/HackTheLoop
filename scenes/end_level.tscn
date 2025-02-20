@@ -21,7 +21,7 @@ resource_local_to_scene = true
 
 [node name="EndLevel" type="Area3D"]
 collision_layer = 0
-collision_mask = 32
+collision_mask = 2
 monitorable = false
 script = ExtResource("1_rkbel")
 

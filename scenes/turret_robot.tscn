@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://xunfjvpwf7ap"]
+
+[ext_resource type="PackedScene" uid="uid://ciowdytk6nij3" path="res://scenes/static_robot.tscn" id="1_i5r5s"]
+[ext_resource type="ArrayMesh" uid="uid://5su126wjd0af" path="res://resources/models/all/robot-turret-canon.res" id="2_1w8bb"]
+[ext_resource type="ArrayMesh" uid="uid://ciccl1bp8i72j" path="res://resources/models/all/robot-turret-base.res" id="3_2eqme"]
+[ext_resource type="AudioStream" uid="uid://cl48xbpv7y80n" path="res://assets/sounds/spit_03.ogg" id="4_n63k7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sqiv0"]
+size = Vector3(0.75, 0.601929, 0.75)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_555sl"]
+random_pitch = 1.05
+random_volume_offset_db = 1.0
+streams_count = 1
+stream_0/stream = ExtResource("4_n63k7")
+
+[node name="TurretRobot" instance=ExtResource("1_i5r5s")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298035, 0)
+shape = SubResource("BoxShape3D_sqiv0")
+
+[node name="ShootMarker" parent="Visual/Rotor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92751, -0.541692)
+
+[node name="Robot-turret-canon" type="MeshInstance3D" parent="Visual/Rotor" index="1"]
+mesh = ExtResource("2_1w8bb")
+skeleton = NodePath("../../..")
+
+[node name="Robot-turret-base" type="MeshInstance3D" parent="Visual" index="1"]
+mesh = ExtResource("3_2eqme")
+skeleton = NodePath("../..")
+
+[node name="ProgramWheel" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.354635, 0.339824)
+
+[node name="ShootAudio3D" type="AudioStreamPlayer3D" parent="." index="4"]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_555sl")
+attenuation_model = 3
+max_distance = 10.0
+max_polyphony = 2
+bus = &"SoundFx"

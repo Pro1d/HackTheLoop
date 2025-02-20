@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Program" load_steps=7 format=3 uid="uid://coehg1nbp0xod"]
+
+[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="1_vj8pq"]
+[ext_resource type="Script" path="res://scripts/resources/program.gd" id="2_7nqf0"]
+
+[sub_resource type="Resource" id="Resource_l36ij"]
+script = ExtResource("1_vj8pq")
+type = 10
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_0b28i"]
+script = ExtResource("1_vj8pq")
+type = 11
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_thcfk"]
+script = ExtResource("1_vj8pq")
+type = 10
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_uth20"]
+script = ExtResource("1_vj8pq")
+type = 11
+target_type = 0
+
+[resource]
+script = ExtResource("2_7nqf0")
+instructions = Array[ExtResource("1_vj8pq")]([SubResource("Resource_l36ij"), SubResource("Resource_0b28i"), SubResource("Resource_thcfk"), SubResource("Resource_uth20")])

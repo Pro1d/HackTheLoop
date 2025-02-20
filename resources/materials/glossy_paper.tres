@@ -1,0 +1,25 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://8h5pj4vki56d"]
+
+[ext_resource type="Texture2D" uid="uid://mf73n07icm6h" path="res://assets/textures/materials/Paper003_1K-JPG_NormalGL.jpg" id="1_bsxf4"]
+[ext_resource type="Texture2D" uid="uid://da2eilvvdjtai" path="res://assets/textures/materials/Paper003_1K-JPG_Roughness.jpg" id="2_q2phv"]
+
+[sub_resource type="Gradient" id="Gradient_jch5c"]
+offsets = PackedFloat32Array(0.0629921, 0.102362, 0.318898, 0.389764, 0.437008, 0.472441, 0.69685, 0.751969, 0.80315, 0.834646, 0.968504, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.30976, 0.759991, 0.859469, 1, 0.866621, 0.964813, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.309712, 0.761105, 0.858808, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.309712, 0.761105, 0.858808, 1, 0.862715, 0.960906, 0.988266, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_uq24f"]
+gradient = SubResource("Gradient_jch5c")
+fill_from = Vector2(0.807692, 1)
+fill_to = Vector2(0, 0.5)
+repeat = 1
+
+[resource]
+resource_local_to_scene = true
+metallic = 0.3
+metallic_texture = ExtResource("1_bsxf4")
+roughness = 0.75
+roughness_texture = ExtResource("2_q2phv")
+normal_enabled = true
+normal_texture = ExtResource("1_bsxf4")
+detail_blend_mode = 3
+detail_albedo = SubResource("GradientTexture2D_uq24f")

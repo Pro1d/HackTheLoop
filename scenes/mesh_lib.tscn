@@ -42,8 +42,8 @@ points = PackedVector3Array(-0.5, -0.8, -0.5, -0.5, -0.750039, -0.5, 0.5, -0.050
 [sub_resource type="BoxShape3D" id="BoxShape3D_5yoxf"]
 size = Vector3(0.05, 0.77, 1.41)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_2qlt2"]
-points = PackedVector3Array(0.501155, 0.72, 0.025, 0.525, 0.718943, -5.58794e-09, 0.501155, 0.72, -0.025, -0.525, 0.0189585, -5.58794e-09, -0.501258, 0.0199452, 0.025, 0.501155, 0, 0.025, 0.525, 0, -5.58794e-09, 0.501155, 0, -0.025, -0.501258, 0.0199452, -0.025, -0.525, 0, -5.58794e-09, -0.501258, 0, 0.025, -0.501258, 0, -0.025)
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_t5ohs"]
+points = PackedVector3Array(0.501155, 0.77, 0.025, 0.525, 0.768945, -5.58794e-09, 0.501155, 0.77, -0.025, -0.525, 0.0189937, -5.58794e-09, -0.501258, 0.0199736, 0.025, 0.501155, 0, 0.025, 0.525, 0, -5.58794e-09, 0.501155, 0, -0.025, -0.501258, 0.0199736, -0.025, -0.525, 0, -5.58794e-09, -0.501258, 0, 0.025, -0.501258, 0, -0.025)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ovn7u"]
 size = Vector3(0.05, 0.77, 1)
@@ -165,7 +165,7 @@ mesh = ExtResource("11_xl5k7")
 [node name="StaticBody3D" type="StaticBody3D" parent="Grid-wall-small-slope"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Grid-wall-small-slope/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_2qlt2")
+shape = SubResource("ConvexPolygonShape3D_t5ohs")
 
 [node name="Grid-wall-small" type="MeshInstance3D" parent="."]
 mesh = ExtResource("12_vvfbb")

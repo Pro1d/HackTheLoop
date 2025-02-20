@@ -26,10 +26,11 @@ enum HighlightType {
 const hframes := 4
 
 @onready var _instruction_atlastex := (%InstructionIcon as TextureRect).texture as AtlasTexture
-@onready var _target_atlastex := (%TargetIcon as TextureRect).texture as AtlasTexture
-@onready var _instruction_panel := self
-@onready var _target_panel := %TargetContainer as Container
-@onready var _current_indicator := %CurrentInstructionIndicator as Control
+@onready var _target_icon := %TargetIcon as TextureRect
+@onready var _target_atlastex := _target_icon.texture as AtlasTexture
+@onready var _instruction_panel := %PanelContainer as PanelContainer
+@onready var _target_panel := %TargetContainer as PanelContainer
+@onready var _current_indicator := %TextureRect as Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -47,6 +48,7 @@ func _update_content() -> void:
 		return
 	InstructionUI._set_frame(instruction.type, _instruction_atlastex)
 	InstructionUI._set_frame(instruction.target_type, _target_atlastex)
+	_target_icon.modulate = Color.WHITE if instruction.target_is_button() else Config.DARK_INK
 	var has_target := instruction.target_type
 	_target_panel.visible = has_target
 

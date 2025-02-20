@@ -42,7 +42,7 @@ func animate_pressed_state() -> void:
 	if _anim_tween != null:
 		_anim_tween.kill()
 	_anim_tween = create_tween()
-	_anim_tween.tween_property(_move_on_pressed, "position:y", -0.05 if _is_pressed else 0.05, 0.3) \
+	_anim_tween.tween_property(_move_on_pressed, "position:y", -0.03 if _is_pressed else 0.0, 0.3) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	if _is_pressed:
 		_press_audio.play()

@@ -36,7 +36,7 @@ func _ready() -> void:
 	obstacle_hit.connect(_on_obstacle_hit)
 
 func _angle_to_dir(a: float) -> int:
-	return posmod(roundi(a / dir_resolution), dir_count)
+	return Config.angle_to_dir_index(a, dir_resolution)
 
 func _physics_process(delta: float) -> void:
 	var h_speed := Vector2(-velocity.z, -velocity.x)
@@ -69,7 +69,7 @@ func _physics_process(delta: float) -> void:
 	
 	if _command == Command.MOVE_AND_COLLIDE:
 		var new_h_speed := Vector2(-velocity.z, -velocity.x)
-		if h_speed.length() > 0.1 * delta and new_h_speed.length() < 0.1 * delta and is_on_wall():
+		if h_speed.length() > 0.01 * delta and new_h_speed.length() < 0.01 * delta and is_on_wall():
 			var col := get_last_slide_collision()
 			var body := col.get_collider()
 			obstacle_hit.emit(body as PhysicsBody3D, h_speed)
@@ -81,9 +81,8 @@ func _physics_process(delta: float) -> void:
 			command_finished.emit()
 
 func _on_obstacle_hit(body: PhysicsBody3D, hit_speed: Vector2) -> void:
-	prints(self, "collided with", body, "at speed", hit_speed.length() / max_speed, _speed_factor)
 	if body is Player and _speed_factor > 1.0 and hit_speed.length() / max_speed > (_speed_factor - 0.1):
-		prints("player killed")
+		prints("player hit by mobile robot")
 		(body as Player).kill(hit_speed)
 
 func rotate_left() -> void:
@@ -110,11 +109,11 @@ func rotate_right() -> void:
 	_rotate_audio.play()
 	await command_finished
 	
-func rotate_to(target_angle: float) -> void:
+func rotate_to(target_pos: Vector3) -> void:
 	if _command != Command.NONE:
 		await command_finished
 	
-	_target_dir = Vector2(1, 0).rotated(target_angle)
+	_target_dir = Config.v3_to_v2(target_pos)
 	
 	_command = Command.ROTATE
 	_rotate_audio.play()

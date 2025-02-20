@@ -24,4 +24,5 @@ func _update() -> void:
 	var has_target := instruction.has_target()
 	_instruction_sprite.position.x = _left_pos_instruction_sprite if has_target else 0.0
 	_target_sprite.visible = has_target
+	_target_sprite.modulate = Color.WHITE if instruction.target_type in GroundButton.colors else Config.DARK_INK
 	_bg_target_mesh.visible = has_target

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://ciowdytk6nij3"]
+
+[ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="1_552rh"]
+[ext_resource type="Script" path="res://scripts/static_robot.gd" id="1_lkj00"]
+[ext_resource type="Script" path="res://scripts/program_runners/program_runner_robot.gd" id="2_xjs1a"]
+
+[node name="StaticRobot" type="StaticBody3D"]
+script = ExtResource("1_lkj00")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="Rotor" type="Node3D" parent="Visual"]
+unique_name_in_owner = true
+
+[node name="ShootMarker" type="Marker3D" parent="Visual/Rotor"]
+unique_name_in_owner = true
+
+[node name="ProgramWheel" parent="." instance=ExtResource("1_552rh")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="ProgramRunner" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_xjs1a")
