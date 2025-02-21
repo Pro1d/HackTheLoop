@@ -14,17 +14,17 @@ enum State {
 var _state := State.INITIALIZED
 
 @onready var _ui_program_editor := %ProgramEditor as ProgramEditor
-@onready var _fade_rect := %FadeRect as ColorRect
+@onready var _fade_rect := %FadeRect as FadeRect
 @onready var _ui_confirm_reset := %ConfirmReset as Control
 
 const _levels : Array[PackedScene] = [
-	preload("res://scenes/levels/level_plateform02.tscn"),
-	preload("res://scenes/levels/level_turrets01.tscn"),
-	preload("res://scenes/levels/level_doors01.tscn"),
 	preload("res://scenes/levels/level_jail.tscn"),
 	preload("res://scenes/levels/level_plateform01.tscn"),
+	preload("res://scenes/levels/level_doors01.tscn"),
+	preload("res://scenes/levels/level_turrets01.tscn"),
 	preload("res://scenes/levels/level_plateform02.tscn"),
-	preload("res://scenes/levels/level_arena.tscn"),
+	preload("res://scenes/levels/score_screen.tscn"),
+	#preload("res://scenes/levels/level_arena.tscn"),
 	#preload("res://scenes/level_base.tscn"),
 ]
 var _current_level_index := 0
@@ -47,15 +47,18 @@ func _input(event: InputEvent) -> void:
 		State.PLAYING_LEVEL:
 			if event.is_action_pressed("reset"):
 				_state = State.CONFIRMING_RESET
+				get_tree().paused = true
 				_ui_confirm_reset.show()
 		State.CONFIRMING_RESET:
 			if event.is_action_pressed("yes"):
 				_ui_confirm_reset.hide()
 				_state = State.PLAYING_LEVEL
+				get_tree().paused = false
 				_current_level_scene._player.kill()
 			elif event.is_action_pressed("no") or event.is_action_pressed("back"):
 				_ui_confirm_reset.hide()
 				_state = State.PLAYING_LEVEL
+				get_tree().paused = false
 
 func _load_level(index: int) -> void:
 	if _current_level_scene != null:
@@ -76,28 +79,27 @@ func _on_level_failed() -> void:
 		switch_level(false)
 
 func switch_level(success: bool) -> void:
-	var t : Tween
-	
-	_fade_rect.show()
+	# Anim end level
 	if _current_level_scene != null:
 		_state = State.ENDING_LEVEL
-		t = create_tween()
+		var t := create_tween()
 		t.tween_callback(
 			(($SuccessAudio if success else $FailAudio) as AudioStreamPlayer).play
 		).set_delay(0.0 if success else 0.8)
-		t.tween_property(_fade_rect, "modulate:a", 1.0, 2.0).from(0.0) \
-			.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
-		
 		await t.finished
+		t.kill()
+		await _fade_rect.fade_out()
 	
-	_load_level(_current_level_index)
+	# Load next level or go to menu
+	if _current_level_index >= _levels.size():
+		SceneManager.go_to_main_menu()
+		return
+	else:
+		_load_level(_current_level_index)
 	
+	# Anim start level
 	_state = State.STARTING_LEVEL
-	t = create_tween()
-	t.tween_property(_fade_rect, "modulate:a", 0.0, 1.0).from(1.0) \
-			.set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
-	await t.finished
-	_fade_rect.hide()
+	await _fade_rect.fade_in()
 	
 	_state = State.PLAYING_LEVEL
 	_current_level_scene.start()

@@ -1,0 +1,90 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqor7pjvfeftt"]
+
+[ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_vl1ys"]
+[ext_resource type="Script" path="res://scripts/levels/score_screen.gd" id="2_1wl6m"]
+[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_aag27"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xkmht"]
+resource_local_to_scene = true
+size = Vector3(1.4, 1.91, 3.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1l34"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_aag27")
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 1.4)
+shader_parameter/direction = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_53jtp"]
+resource_local_to_scene = true
+
+[node name="LevelBase" instance=ExtResource("1_vl1ys")]
+script = ExtResource("2_1wl6m")
+
+[node name="GroundGridMap" parent="." index="1"]
+data = {
+"cells": PackedInt32Array(65541, 65534, 0, 65541, 65535, 0, 65541, 0, 0, 65541, 1, 0, 65541, 2, 0, 65542, 2, 0, 65542, 1, 0, 65542, 0, 0, 65542, 65534, 0, 65542, 65535, 0, 65543, 65534, 0, 65543, 65535, 0, 65543, 0, 0, 65543, 1, 0, 65543, 2, 0, 65544, 65535, 0, 65544, 0, 0, 65544, 1, 0, 65545, 0, 0, 65540, 65534, 0, 65540, 65535, 0, 65540, 0, 0, 65540, 1, 0, 65540, 2, 0, 65539, 65535, 0, 65539, 0, 0, 65539, 1, 0, 65544, 2, 5, 65539, 2, 1441797, 65539, 65534, 655365, 65544, 65534, 1048581, 65534, 0, 655360, 65535, 0, 655360, 0, 0, 655360, 65537, 0, 9, 65538, 65535, 655365, 65538, 0, 0, 65538, 1, 1441797, 65545, 65535, 1048581, 65545, 1, 5, 131082, 0, 9, 131083, 65535, 655365, 131083, 0, 0, 131083, 1, 1441797, 131084, 1, 0, 131084, 0, 0, 131084, 65535, 0, 131085, 65534, 0, 131085, 65535, 0, 131085, 0, 0, 131085, 1, 0, 131085, 2, 0, 131086, 2, 0, 131086, 1, 0, 131086, 0, 0, 131086, 65535, 0, 131086, 65534, 0, 131087, 65534, 0, 131087, 65535, 0, 131087, 0, 0, 131087, 2, 0, 131087, 1, 0, 131088, 65535, 0, 131088, 0, 0, 131088, 1, 0, 131089, 65535, 1048581, 131089, 0, 0, 131089, 1, 5, 196626, 0, 9, 196627, 0, 0, 196628, 1, 0, 196628, 0, 0, 196628, 65535, 0, 196629, 65534, 0, 196629, 65535, 0, 196629, 0, 0, 196629, 1, 0, 196629, 2, 0, 196630, 2, 0, 196630, 1, 0, 196630, 65535, 0, 196630, 65534, 0, 196630, 0, 0, 196631, 65534, 0, 196631, 65535, 0, 196631, 0, 0, 196631, 1, 0, 196631, 2, 0, 196632, 1, 0, 196632, 0, 0, 196632, 65535, 0, 196628, 2, 1441797, 196627, 1, 1441797, 196632, 2, 5, 196633, 1, 5, 196633, 65535, 1048581, 196632, 65534, 1048581, 196628, 65534, 655365, 196627, 65535, 655365, 196633, 0, 655360, 131088, 2, 5, 131084, 2, 1441797, 131084, 65534, 655365, 131088, 65534, 1048581)
+}
+metadata/_editor_floor_ = Vector3(0, 3, 0)
+
+[node name="WallGridMap" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(65532, 1, 655372, 65532, 65535, 655372, 65534, 65535, 655372, 0, 65535, 655372, 0, 1, 655372, 65534, 1, 655372, 2, 1, 655372, 2, 65535, 655372, 65538, 65535, 11, 65538, 1, 11, 65540, 2, 1441802, 65542, 4, 1441802, 65552, 65532, 1441802, 65554, 65534, 1441802, 65542, 65532, 655370, 65540, 65534, 655370, 65552, 4, 655370, 65554, 2, 655370, 65544, 5, 655372, 65546, 5, 655372, 65548, 5, 655372, 65550, 5, 655372, 65544, 65531, 655372, 65546, 65531, 655372, 65548, 65531, 655372, 65550, 65531, 655372, 65556, 1, 655372, 65556, 65535, 655372, 131092, 65535, 11, 131092, 1, 11, 131094, 65534, 10, 131096, 65532, 10, 131104, 4, 10, 131106, 2, 10, 131106, 65534, 1441802, 131104, 65532, 1441802, 131094, 2, 1441802, 131096, 4, 1441802, 131098, 65531, 655372, 131100, 65531, 655372, 131102, 65531, 655372, 131098, 5, 655372, 131100, 5, 655372, 131102, 5, 655372, 131108, 1, 655372, 131108, 65535, 655372, 196644, 65535, 11, 196644, 1, 11, 196646, 2, 1441802, 196648, 4, 1441802, 196646, 65534, 655370, 196648, 65532, 655370, 196656, 65532, 1048586, 196658, 65534, 1048586, 196658, 2, 10, 196656, 4, 10, 196650, 5, 655372, 196652, 5, 655372, 196654, 5, 655372, 196659, 0, 1048588, 196650, 65531, 655372, 196654, 65531, 655372, 262186, 65531, 11, 262190, 65531, 655371)
+}
+metadata/_editor_floor_ = Vector3(0, 4, 0)
+
+[node name="StartLevel" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 0)
+
+[node name="EndLevel" parent="." index="4"]
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 22, 2.25, -4)
+
+[node name="MeshInstance3D" parent="EndLevel" index="0"]
+mesh = SubResource("BoxMesh_xkmht")
+surface_material_override/0 = SubResource("ShaderMaterial_d1l34")
+
+[node name="CollisionShape3D" parent="EndLevel" index="1"]
+shape = SubResource("BoxShape3D_53jtp")
+
+[node name="CameraFollower" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+
+[node name="Player" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
+
+[node name="UI3D" type="Node3D" parent="." index="8"]
+
+[node name="Label3D" type="Label3D" parent="UI3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22, 4, -2.4)
+visible = false
+pixel_size = 0.01
+text = "Exit
+v"
+font_size = 40
+line_spacing = -14.0
+
+[node name="Label3D2" type="Label3D" parent="UI3D" index="1"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 22, 2.297, 0)
+pixel_size = 0.01
+text = "Thanks for playing! <3"
+font_size = 40
+
+[node name="Label3D4" type="Label3D" parent="UI3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.5, 0.797, 0)
+pixel_size = 0.01
+text = "Congratz! You're done!"
+font_size = 40
+
+[node name="Label3D3" type="Label3D" parent="UI3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 14, 1.547, 0)
+pixel_size = 0.01
+text = "More challenges await
+in upcoming updates...
+
+Stay tuned!"
+font_size = 40
+
+[editable path="EndLevel"]
+[editable path="CameraFollower"]

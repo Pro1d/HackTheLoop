@@ -37,12 +37,14 @@ func set_volume(level: Volume) -> void:
 			AudioServer.set_bus_volume_db(_music_bus, _default_volume_db - 9.0)
 
 func start_menu_music() -> void:
-	_player.stream = menu_music
-	_player.play()
+	if _player.stream != menu_music or not _player.playing:
+		_player.stream = menu_music
+		_player.play()
 
 func start_game_music() -> void:
-	_player.stream = game_music
-	_player.play()
+	if _player.stream != game_music or not _player.playing:
+		_player.stream = game_music
+		_player.play()
 
 func stop_music() -> void:
 	_player.stop()

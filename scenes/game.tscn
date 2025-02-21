@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://ctolgapm0q15t"]
+[gd_scene load_steps=13 format=3 uid="uid://ctolgapm0q15t"]
 
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_bxkv1"]
 [ext_resource type="PackedScene" uid="uid://cp1kod7c3oexq" path="res://scenes/ui/program_editor.tscn" id="2_b7ri0"]
 [ext_resource type="AudioStream" uid="uid://ckfcy6o8fn2jx" path="res://assets/sounds/bell.ogg" id="3_r8ccl"]
+[ext_resource type="PackedScene" uid="uid://bf2r8r61x2pl7" path="res://scenes/fade_rect.tscn" id="3_wih5s"]
 [ext_resource type="AudioStream" uid="uid://tlymochknkf" path="res://assets/sounds/UI_003.ogg" id="4_qgu6t"]
 
 [sub_resource type="Shader" id="Shader_emofs"]
@@ -97,15 +98,8 @@ unique_name_in_owner = true
 process_mode = 2
 visible = false
 
-[node name="FadeRect" type="ColorRect" parent="UI"]
+[node name="FadeRect" parent="UI" instance=ExtResource("3_wih5s")]
 unique_name_in_owner = true
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.11, 0.0055, 0.0803917, 1)
 
 [node name="ConfirmReset" type="CenterContainer" parent="UI"]
 unique_name_in_owner = true

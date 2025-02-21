@@ -146,7 +146,6 @@ func _find_nearest_body(radius: float, layer_mask: int) -> PhysicsBody3D:
 	var body_min : PhysicsBody3D
 	for dict in state.intersect_shape(params, 32):
 		var b := dict["collider"] as PhysicsBody3D
-		prints(b)
 		if b != null:
 			var d := b.global_position.distance_to(parent.global_position)
 			if d < dmin:

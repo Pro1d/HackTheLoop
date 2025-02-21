@@ -63,24 +63,24 @@ func _update_closest_interactable() -> void:
 	for area in _interact_area.get_overlapping_areas():
 		var pw := ProgramWheel.find_parent_program_wheel(area)
 		if pw != null:
-			#var dir := area.global_position.direction_to(self.global_position)
-			#var a1 := (pw.global_transform.basis * Vector3.FORWARD).signed_angle_to(dir, Vector3.UP)
-			#if absf(a1) > deg_to_rad(80):
-				#continue
+			pw.set_tooltip_visibility(false)
+			
+			var dir := pw.global_position.direction_to(self.global_position)
+			dir = (dir * Vector3(1, 0, 1)).normalized() # FIXME why is it required?
+			var a1 := (pw.global_transform.basis * Vector3.BACK).signed_angle_to(dir, Vector3.UP)
 			#var a2 := (self.global_transform.basis * Vector3.FORWARD).signed_angle_to(-dir, Vector3.UP)
 			#if absf(a2) > deg_to_rad(80):
 				#continue
 			var a3 := (pw.global_transform.basis * Vector3.FORWARD).signed_angle_to(
 				(self.global_transform.basis * Vector3.FORWARD), Vector3.UP)
-			if absf(a3) < deg_to_rad(95):
+			if absf(a1) < deg_to_rad(80) and absf(a3) < deg_to_rad(95):
 				var d := area.global_position.distance_to(_interact_area.global_position)
 				if d < dmin:
 					dmin = d
 					pw_min = pw
-				pw.set_tooltip_visibility(false)
 	
 	# show tooltip of current
-	if pw_min != null:
+	if pw_min != null and _state == State.WALKING:
 		pw_min.set_tooltip_visibility(true)
 	
 	current_interactable = pw_min
