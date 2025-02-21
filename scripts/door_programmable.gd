@@ -9,6 +9,7 @@ extends Door
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	super()
+	program = program.duplicate_deep()
 	_runner.program = program
 	_program_wheel.program = program
 	_runner.current_instruction_index_changed.connect(_program_wheel.set_current_instruction_index.bind(true))

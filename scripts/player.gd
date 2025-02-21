@@ -13,7 +13,7 @@ enum State {
 }
 
 const MAX_SPEED := 3.0
-const ROLL_SPEED := MAX_SPEED * 2.0
+const ROLL_SPEED := MAX_SPEED * 1.9
 const ACCEL := MAX_SPEED / 0.08
 
 var current_interactable : Node3D = null
@@ -31,7 +31,7 @@ var _rolling_timer := Timer.new()
 
 func _ready() -> void:
 	_state = State.LOCKED
-	_current_dir = Vector2(1, 0).rotated(Config.angle_to_dir_index(rotation.y, PI / 4))
+	_current_dir = Vector2(1, 0).rotated(Config.round_angle(rotation.y, PI / 4))
 	
 	_rolling_timer.wait_time = 0.4
 	_rolling_timer.process_callback = Timer.TIMER_PROCESS_PHYSICS
@@ -54,19 +54,30 @@ func _on_interact_overlap_changed(area_3d: Area3D) -> void:
 	var pw := ProgramWheel.find_parent_program_wheel(area_3d)
 	if pw != null:
 		pw.set_tooltip_visibility(false)
-	
+	_update_closest_interactable()
+
+func _update_closest_interactable() -> void:
 	# find closest area
 	var dmin := INF
 	var pw_min : ProgramWheel
 	for area in _interact_area.get_overlapping_areas():
-		pw = ProgramWheel.find_parent_program_wheel(area)
-		prints(area,pw)
+		var pw := ProgramWheel.find_parent_program_wheel(area)
 		if pw != null:
-			var d := area.global_position.distance_to(_interact_area.global_position)
-			if d < dmin:
-				dmin = d
-				pw_min = pw
-			pw.set_tooltip_visibility(false)
+			#var dir := area.global_position.direction_to(self.global_position)
+			#var a1 := (pw.global_transform.basis * Vector3.FORWARD).signed_angle_to(dir, Vector3.UP)
+			#if absf(a1) > deg_to_rad(80):
+				#continue
+			#var a2 := (self.global_transform.basis * Vector3.FORWARD).signed_angle_to(-dir, Vector3.UP)
+			#if absf(a2) > deg_to_rad(80):
+				#continue
+			var a3 := (pw.global_transform.basis * Vector3.FORWARD).signed_angle_to(
+				(self.global_transform.basis * Vector3.FORWARD), Vector3.UP)
+			if absf(a3) < deg_to_rad(95):
+				var d := area.global_position.distance_to(_interact_area.global_position)
+				if d < dmin:
+					dmin = d
+					pw_min = pw
+				pw.set_tooltip_visibility(false)
 	
 	# show tooltip of current
 	if pw_min != null:
@@ -101,7 +112,8 @@ func _physics_process(delta: float) -> void:
 				if not _anim_player.is_playing():
 					_anim_player.play(&"paper-boy-default")
 			
-			if on_floor and Input.is_action_just_pressed("dodge_roll"):
+			if Input.is_action_just_pressed("dodge_roll"):
+				# if on floor
 				_start_rolling()
 				new_h_speed = _current_dir * ROLL_SPEED
 		State.ROLLING:
@@ -117,9 +129,12 @@ func _physics_process(delta: float) -> void:
 		new_v_speed = 0
 		
 	velocity = Vector3(-new_h_speed.y, new_v_speed, -new_h_speed.x)
-	rotation.y = lerp_angle(rotation.y, _current_dir.angle(), delta ** 0.5)
+	rotation.y = lerp_angle(rotation.y, _current_dir.angle(), delta * (30 if _state == State.ROLLING else 8))
 	
 	move_and_slide()
+	
+	# Always update closest interactable (self has moved, but interactable may have moved too)
+	_update_closest_interactable()
 
 func _start_rolling() -> void:
 	_state = State.ROLLING

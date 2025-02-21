@@ -1,11 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://boytp7sjbiqea"]
+[gd_scene load_steps=7 format=3 uid="uid://boytp7sjbiqea"]
 
 [ext_resource type="Script" path="res://scripts/end_level.gd" id="1_rkbel"]
 [ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_g3y51"]
+[ext_resource type="MeshLibrary" uid="uid://duy13sblsptvh" path="res://resources/ground.tres" id="3_iyqsu"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_u6uhr"]
 resource_local_to_scene = true
-size = Vector3(1.07, 1.58, 1.07)
+size = Vector3(1.4, 1.91, 1.4)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tic5c"]
 resource_local_to_scene = true
@@ -38,3 +39,10 @@ shape = SubResource("BoxShape3D_4csr4")
 
 [node name="Marker3D" type="Marker3D" parent="."]
 gizmo_extents = 0.5
+
+[node name="GridMap" type="GridMap" parent="."]
+mesh_library = ExtResource("3_iyqsu")
+cell_size = Vector3(0.5, 0.5, 0.5)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false

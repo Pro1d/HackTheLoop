@@ -28,6 +28,7 @@ var _speed_factor := 1.0
 @onready var _default_move_volume := _move_audio.volume_db
 
 func _ready() -> void:
+	program = program.duplicate_deep()
 	_runner.program = program
 	_program_wheel.program = program
 	_runner.current_instruction_index_changed.connect(_program_wheel.set_current_instruction_index.bind(true))
@@ -113,7 +114,7 @@ func rotate_to(target_pos: Vector3) -> void:
 	if _command != Command.NONE:
 		await command_finished
 	
-	_target_dir = Config.v3_to_v2(target_pos)
+	_target_dir = Config.v3_to_v2(target_pos).normalized()
 	
 	_command = Command.ROTATE
 	_rotate_audio.play()
@@ -122,8 +123,10 @@ func rotate_to(target_pos: Vector3) -> void:
 func drive_until_hit(speed_factor: float = 1.0) -> void:
 	if _command != Command.NONE:
 		await command_finished
-		
+	
+	_target_dir = Vector2(1, 0).rotated(rotation.y)
 	_speed_factor = speed_factor
+	
 	_command = Command.MOVE_AND_COLLIDE
 	_move_audio.play()
 	_move_audio.volume_db = _default_move_volume + linear_to_db(speed_factor)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=25 format=3 uid="uid://jfpdyshprk0p"]
+[gd_scene load_steps=29 format=3 uid="uid://jfpdyshprk0p"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_05r7c"]
+[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_lk1rv"]
 [ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door.tscn" id="2_xg14f"]
 [ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="3_puvy3"]
 [ext_resource type="Script" path="res://scripts/resources/program.gd" id="4_jsoj4"]
@@ -9,6 +10,22 @@
 [ext_resource type="PackedScene" uid="uid://cvxc8c0nrgkl" path="res://scenes/charge_robot.tscn" id="7_lelpm"]
 [ext_resource type="PackedScene" uid="uid://xunfjvpwf7ap" path="res://scenes/turret_robot.tscn" id="8_aq0p7"]
 [ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="9_ctpx2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eu2go"]
+resource_local_to_scene = true
+size = Vector3(1.4, 1.91, 3.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_edcsv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_lk1rv")
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 1.4)
+shader_parameter/direction = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmkv0"]
+resource_local_to_scene = true
 
 [sub_resource type="Resource" id="Resource_jgrf5"]
 script = ExtResource("3_puvy3")
@@ -84,16 +101,23 @@ instructions = Array[ExtResource("3_puvy3")]([SubResource("Resource_v3p31"), Sub
 
 [node name="LevelArena" instance=ExtResource("1_05r7c")]
 
-[node name="GroundGridMap" parent="." index="2"]
+[node name="GroundGridMap" parent="." index="1"]
 data = {
 "cells": PackedInt32Array(0, 0, 0, 65535, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65531, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65531, 1, 0, 65531, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65534, 65535, 0, 65535, 65535, 0, 0, 65535, 1441792, 1, 65535, 0, 2, 65535, 0, 3, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65535, 65534, 0, 0, 65534, 0, 1, 65534, 0, 65535, 65533, 0, 0, 65533, 0, 1, 65532, 0, 1, 65533, 0, 0, 65532, 0, 65535, 65532, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 1, 3, 0, 0, 3, 0, 65535, 3, 0, 0, 4, 0, 65534, 3, 0, 65535, 4, 0, 1, 4, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 65535, 65531, 0, 0, 65531, 0, 1, 65531, 0, 5, 2, 5, 4, 3, 5, 3, 4, 5, 2, 5, 5, 4, 2, 0, 2, 2, 0, 3, 2, 0, 3, 3, 0, 2, 3, 0, 2, 4, 0, 65534, 2, 0, 65533, 2, 0, 65532, 2, 0, 65533, 3, 0, 65533, 4, 1441797, 65534, 4, 0, 65532, 65534, 0, 65532, 65533, 655365, 65533, 65533, 0, 65533, 65532, 655365, 65534, 65532, 0, 65534, 65533, 0, 65533, 65534, 0, 65534, 65534, 0, 2, 65533, 0, 2, 65534, 0, 3, 65534, 0, 3, 65533, 0, 2, 65532, 0, 4, 65534, 0, 65534, 5, 1441797, 65532, 3, 1441797, 65531, 2, 1441797, 65531, 65534, 655365, 65534, 65531, 655365, 2, 65531, 1048581, 3, 65532, 1048581, 4, 65533, 1048581, 5, 65534, 1048581, 0, 65530, 1048576, 0, 65529, 1048576, 0, 65528, 1048576, 0, 10, 655360, 0, 9, 655360, 65535, 10, 655360, 0, 11, 655360, 1, 10, 655360, 0, 8, 8, 0, 7, 8, 0, 6, 8, 65535, 9, 655365, 1, 9, 1048581, 1, 11, 5, 65535, 11, 1441797, 65529, 65531, 655360, 65529, 65532, 655360, 65529, 65533, 655360, 65529, 65534, 655360, 65529, 65535, 655360, 65529, 0, 655360, 65529, 1, 655360, 65529, 2, 655360, 65529, 3, 655360, 65529, 4, 655360, 65529, 5, 655360, 6, 65531, 1441797, 7, 65531, 655360, 7, 65532, 655360, 7, 65533, 655360, 7, 65534, 655360, 7, 65535, 655360, 7, 0, 655360, 7, 1, 655360, 7, 2, 655360, 7, 3, 655360, 7, 4, 655360, 7, 5, 655360, 7, 6, 655360, 65530, 65531, 5, 65530, 5, 1048581, 6, 6, 655365, 65536, 65532, 1441801, 65536, 5, 1048585, 65536, 65533, 0, 65536, 4, 0)
 }
 metadata/_editor_floor_ = Vector3(0, 1, 0)
 
-[node name="WallGridMap" parent="." index="3"]
+[node name="WallGridMap" parent="." index="2"]
 data = {
 "cells": PackedInt32Array(1, 65524, 1048579, 1, 65522, 1048579, 1, 65520, 1048579, 65535, 65524, 1048579, 65535, 65522, 1048579, 65535, 65520, 1048579, 0, 65519, 3, 65534, 65525, 3, 2, 65525, 3, 2, 11, 3, 65534, 11, 3, 65525, 65534, 1441795, 65525, 0, 1441795, 65525, 2, 1441795, 11, 65534, 1441795, 11, 0, 1441795, 11, 2, 1441795, 4, 10, 655361, 6, 8, 655361, 8, 6, 655361, 10, 4, 655361, 65532, 10, 1048577, 65530, 8, 1048577, 65528, 6, 1048577, 65526, 4, 1048577, 65526, 65532, 1, 65528, 65530, 1, 65530, 65528, 1, 65532, 65526, 1, 4, 65526, 1441793, 6, 65528, 1441793, 8, 65530, 1441793, 10, 65532, 1441793, 65535, 12, 1441795, 1, 12, 1441795, 65535, 14, 1441795, 1, 14, 1441795, 65535, 16, 1441795, 1, 16, 1441795, 65534, 18, 655361, 2, 18, 1048577, 65534, 22, 1048577, 2, 22, 1, 3, 20, 1441795, 65533, 20, 1441795, 0, 23, 655363, 65533, 10, 655367, 65529, 6, 655367, 65526, 2, 655367, 65526, 65534, 655367, 65529, 65530, 655367, 65533, 65526, 655367, 3, 65526, 655367, 7, 65530, 655367, 10, 65534, 655367, 10, 2, 655367, 6, 6, 655367, 2, 10, 655367, 65521, 65534, 1441795, 65521, 0, 1441795, 65521, 2, 1441795, 15, 2, 1441795, 15, 0, 1441795, 15, 65534, 1441795, 15, 65532, 1441795, 15, 65530, 1441795, 15, 65528, 1441795, 15, 65526, 1441795, 15, 4, 1441795, 15, 6, 1441795, 15, 8, 1441795, 15, 10, 1441795, 15, 12, 1441795, 65521, 4, 1441795, 65521, 6, 1441795, 65521, 8, 1441795, 65521, 10, 1441795, 65521, 65532, 1441795, 65521, 65530, 1441795, 65521, 65528, 1441795, 65521, 65526, 1441795, 14, 65525, 655363, 12, 65525, 655363, 65522, 65525, 655363, 65524, 65525, 655363, 13, 65528, 1048580, 13, 65530, 1048580, 13, 65532, 1048580, 13, 65534, 1048580, 13, 0, 1048580, 13, 2, 1048580, 13, 4, 1048580, 13, 6, 1048580, 13, 8, 1048580, 13, 10, 1048580, 65523, 65528, 1048580, 65523, 65530, 1048580, 65523, 65532, 1048580, 65523, 65534, 1048580, 65523, 0, 1048580, 65523, 2, 1048580, 65523, 4, 1048580, 65523, 6, 1048580, 65523, 8, 1048580, 65524, 10, 1048578, 12, 65526, 1048578, 12, 12, 2, 65524, 65526, 2, 12, 13, 3, 65524, 11, 3, 65522, 11, 3, 14, 13, 3, 4, 65528, 1, 2, 65529, 655363, 65534, 65529, 655363, 65532, 65528, 1048577, 65535, 65528, 1441803, 1, 65528, 1441803, 65535, 10, 1048587, 1, 10, 1048587, 0, 65531, 12, 0, 7, 12)
 }
+
+[node name="MeshInstance3D" parent="EndLevel" index="0"]
+mesh = SubResource("BoxMesh_eu2go")
+surface_material_override/0 = SubResource("ShaderMaterial_edcsv")
+
+[node name="CollisionShape3D" parent="EndLevel" index="1"]
+shape = SubResource("BoxShape3D_nmkv0")
 
 [node name="CameraFollower" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -110,13 +134,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.584967, 4)
 [node name="PlateformRobot" parent="." index="9" instance=ExtResource("6_i5hse")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3)
 program = SubResource("Resource_65dj0")
+max_speed = 1.2
+accel = 2.4
+stop_on_player = true
 
 [node name="ChargeRobot" parent="." index="10" instance=ExtResource("7_lelpm")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 7, 0, 5)
 program = SubResource("Resource_qerhy")
-max_speed = null
+max_speed = 1.2
 rotation_speed = 1.5708
-stop_on_player = null
 
 [node name="TurretRobot" parent="." index="12" instance=ExtResource("8_aq0p7")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 0)
@@ -124,4 +150,5 @@ program = SubResource("Resource_1asq4")
 
 [node name="GroundButton" parent="." index="13" instance=ExtResource("9_ctpx2")]
 
+[editable path="EndLevel"]
 [editable path="CameraFollower"]

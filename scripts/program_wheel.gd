@@ -6,7 +6,10 @@ const InstructionVisual3DPackedScene := preload("res://scenes/instruction_visual
 
 @export var program : Program :
 	set(p):
+		if program != null and program.changed.is_connected(_update_program):
+			program.changed.disconnect(_update_program)
 		program = p
+		program.changed.connect(_update_program)
 		_update_program()
 var current_instruction_index := 0
 

@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsif5orwj2kjg"]
+
+[ext_resource type="Script" path="res://scripts/start_level.gd" id="1_w1fk4"]
+[ext_resource type="PackedScene" uid="uid://boytp7sjbiqea" path="res://scenes/end_level.tscn" id="2_6h3wl"]
+[ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door.tscn" id="3_5qb5f"]
+[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="3_tnkl6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_c0pqj"]
+resource_local_to_scene = true
+size = Vector3(1.4, 1.91, 2.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ao4de"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_tnkl6")
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 0.9)
+shader_parameter/direction = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tmtcq"]
+resource_local_to_scene = true
+
+[node name="StartLevel" type="Node3D"]
+script = ExtResource("1_w1fk4")
+
+[node name="EndLevel" parent="." instance=ExtResource("2_6h3wl")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0.5)
+size = Vector3(1, 1.51, 2)
+
+[node name="MeshInstance3D" parent="EndLevel" index="0"]
+mesh = SubResource("BoxMesh_c0pqj")
+surface_material_override/0 = SubResource("ShaderMaterial_ao4de")
+
+[node name="CollisionShape3D" parent="EndLevel" index="1"]
+shape = SubResource("BoxShape3D_tmtcq")
+
+[node name="GridMap" parent="EndLevel" index="3"]
+data = {
+"cells": PackedInt32Array(0, 1, 0, 0, 65535, 0, 0, 65534, 3, 1, 65535, 1441795, 1, 1, 1441795, 65535, 1, 1441795, 65535, 65535, 1441795)
+}
+
+[node name="Door" parent="." instance=ExtResource("3_5qb5f")]
+unique_name_in_owner = true
+
+[editable path="EndLevel"]

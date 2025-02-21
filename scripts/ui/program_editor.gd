@@ -13,6 +13,7 @@ enum State {
 
 var _program : Program = Program.new()
 var _source_program : Program
+var _is_edited := false
 
 var _current_instruction_index := 0
 var _nav_index := 0 : set=set_nav_index
@@ -24,7 +25,8 @@ var _state := State.INITIALIZING
 var _instruction_ui_list : Array[InstructionUI]
 
 @onready var _instr_container := %InstructionsContainer as VLoopContainer
-@onready var _desc_label := %DescriptionLabel as Label
+@onready var _desc_label_instr := %DescriptionLabel as Label
+@onready var _desc_label_target := %DescriptionLabel2 as Label
 @onready var _ro_label := %ROLabel as Label
 @onready var _swap_audio := %SwapAudio as AudioStreamPlayer
 @onready var _select_audio := %SelectAudio as AudioStreamPlayer
@@ -48,13 +50,15 @@ func _reset_program() -> void:
 	_swap_audio.play()
 	for i in range(_program.instruction_count()):
 		_program.instructions[i] = _source_program.instructions[i].duplicate(true)
+	_is_edited = false
 	_update_program()
 	_state = State.NAVIGATING
 
 func set_program(p: Program, current_instruction_index: int) -> void:
 	_state = State.INITIALIZING
-	_source_program = p.duplicate(true)
+	_source_program = p.duplicate_deep()
 	_program = p
+	_is_edited = false
 	_current_instruction_index = current_instruction_index
 	_update_program()
 	_state = State.NAVIGATING
@@ -78,12 +82,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		if event.is_action("reset"):
 			match _state:
 				State.NAVIGATING, State.SWAPPING:
-					_reset_program()
+					if _is_edited:
+						_reset_program()
 		elif event.is_action("move_down") or event.is_action("move_up"):
 			var dir := -1 if event.is_action("move_up") else 1
 			match _state:
 				State.NAVIGATING:
-					_swap_target_only = false
 					set_nav_index(posmod(_nav_index + dir, _program.instruction_count()))
 				State.SWAPPING:
 					set_nav_index(
@@ -109,6 +113,7 @@ func _unhandled_input(event: InputEvent) -> void:
 					# if _nav_index != _current_instruction_index: # not possible with swapping navigation mode
 					if _nav_index != _swap_index:
 						_do_swap()
+						_is_edited = true
 						_swap_index = -1
 						_update_highlight()
 						_update_description()
@@ -200,6 +205,8 @@ func _next_swappable_target_index(dir: int = 1) -> int:
 
 func set_nav_index(ni: int) -> void:
 	_nav_index = ni
+	if _swap_target_only and not _program.instructions[_nav_index].has_target():
+		_swap_target_only = false
 	_update_scroll_index(_state != State.INITIALIZING)
 	_update_highlight()
 	_update_description()
@@ -207,12 +214,17 @@ func set_nav_index(ni: int) -> void:
 func _update_description() -> void:
 	if _program.instruction_count() == 0:
 		return
+	
 	# Update description
 	var instr := _program.instructions[_nav_index]
-	var desc := Instruction.Type.find_key(instr.type) as String
+	
+	var idesc := "\"%s\"" % [Config.intruction_to_string(instr.type)]
+	var tdesc := "-"
 	if instr.has_target():
-		desc += " - " + Instruction.TargetType.find_key(instr.target_type)
-	_desc_label.text = desc
+		tdesc = "\"%s\"" % [Config.target_to_string(instr.target_type)]
+		
+	_desc_label_instr.text = "Action: %s" % [idesc]
+	_desc_label_target.text = "Target: %s" % [tdesc]
 	
 	var is_current := (_current_instruction_index == _nav_index)
 	_ro_label.modulate.a = 1.0 if is_current else 0.0

@@ -19,13 +19,12 @@ enum Type {
 	
 	# no icon yet
 	
-	RESTORE_SHIELD, # + obj | shield+ icon
-	KNOCK_BACK, # | fist icon
-	MOVE_FOWARD, # | arrow up icon
-	MOVE_TO, # + obj | arrow jump incon 
-	SKIP_NEXT_IF, # + obj | ? <_|  question mark + next line icon
-	TURN_ON, # + obj | ON
-	TURN_OFF, # + obj | OFF
+	#RESTORE_SHIELD, # + obj | shield+ icon
+	#KNOCK_BACK, # | fist icon
+	#MOVE_TO, # + obj | arrow jump incon 
+	#SKIP_NEXT_IF, # + obj | ? <_|  question mark + next line icon
+	#TURN_ON, # + obj | ON
+	#TURN_OFF, # + obj | OFF
 }
 
 enum TargetType {
@@ -40,9 +39,9 @@ enum TargetType {
 	ROBOT, # | robot head icon
 	# no icon yet
 	
-	ALLY, # nearest or ref | [°++°] robot head icon
-	SELF, # | 
-	FOREVER, # | inf / omega icon
+	#ALLY, # nearest or ref | [°++°] robot head icon
+	#SELF, # | 
+	#FOREVER, # | inf / omega icon
 }
 
 

@@ -13,6 +13,7 @@ var _tween : Tween
 @onready var _shoot_audio := %ShootAudio3D as AudioStreamPlayer3D
 
 func _ready() -> void:
+	program = program.duplicate_deep()
 	_runner.program = program
 	_program_wheel.program = program
 	_runner.current_instruction_index_changed.connect(_program_wheel.set_current_instruction_index.bind(true))

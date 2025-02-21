@@ -7,7 +7,7 @@ const MIN_DELAY := 0.5
 # does not emit for the 1st instruction (always index 0)
 signal current_instruction_index_changed(instr_index: int)
 
-@export var max_target_range := 8.0
+@export var max_target_range := 6.0
 @export var program : Program
 
 var current_instruction_index := 0
@@ -83,7 +83,7 @@ func wait_target(i: Instruction.TargetType, max_range: float) -> bool:
 			Instruction.TargetType.PING:
 				return false # TODO
 			Instruction.TargetType.RANDOM:
-				await get_tree().create_timer(randf_range(1.0, 3.5), false, true).timeout
+				await get_tree().create_timer(randf_range(1.0, 4.0), false, true).timeout
 				return true
 			Instruction.TargetType.ROBOT:
 				var robot := _find_nearest_body(max_range, Config.LAYER_ROBOT) as MobileRobot
