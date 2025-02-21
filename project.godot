@@ -17,6 +17,7 @@ warnings/check_invalid_track_paths=false
 config/name="Escape The Machines"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+run/max_fps=60
 config/icon="res://icon.svg"
 
 [audio]
@@ -76,7 +77,6 @@ shader_language/warnings/treat_warnings_as_errors=true
 
 window/size/viewport_width=1366
 window/size/viewport_height=768
-window/stretch/mode="canvas_items"
 
 [gui]
 
