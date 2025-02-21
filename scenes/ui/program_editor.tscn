@@ -111,13 +111,14 @@ layout_mode = 2
 layout_mode = 2
 text = "[^][v] Navigate"
 
-[node name="Label3" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="SwapModeLabel" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-text = "[<][>] Select line / target only"
+text = "[<][>] Select line or target only"
 
 [node name="Label4" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2
-text = "[E] Pick / Swap"
+text = "[E] Select / Swap"
 
 [node name="Label5" type="Label" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
 layout_mode = 2

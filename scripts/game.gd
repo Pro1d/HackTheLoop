@@ -8,23 +8,24 @@ enum State {
 	EDITING_PROGRAM,
 	ENDING_LEVEL,
 	#SCORE_SCREEN,
-	CONFIRMING_RESET,
+	CONFIRMING,
 }
 
 var _state := State.INITIALIZED
 
 @onready var _ui_program_editor := %ProgramEditor as ProgramEditor
 @onready var _fade_rect := %FadeRect as FadeRect
-@onready var _ui_confirm_reset := %ConfirmReset as Control
+@onready var _ui_confirm := %ConfirmDialog as ConfirmDialog
 
 const _levels : Array[PackedScene] = [
+	preload("res://scenes/levels/level_turrets03.tscn"),
 	preload("res://scenes/levels/level_jail.tscn"),
 	preload("res://scenes/levels/level_plateform01.tscn"),
 	preload("res://scenes/levels/level_doors01.tscn"),
 	preload("res://scenes/levels/level_turrets01.tscn"),
+	preload("res://scenes/levels/level_turrets02.tscn"),
 	preload("res://scenes/levels/level_plateform02.tscn"),
 	preload("res://scenes/levels/score_screen.tscn"),
-	#preload("res://scenes/levels/level_arena.tscn"),
 	#preload("res://scenes/level_base.tscn"),
 ]
 var _current_level_index := 0
@@ -36,7 +37,6 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	_ui_program_editor.close_requested.connect(_on_program_editor_close_requested)
 	_ui_program_editor.hide()
-	_ui_confirm_reset.hide()
 	
 	_current_level_index = 0
 	switch_level(true)
@@ -46,19 +46,31 @@ func _input(event: InputEvent) -> void:
 	match _state:
 		State.PLAYING_LEVEL:
 			if event.is_action_pressed("reset"):
-				_state = State.CONFIRMING_RESET
+				_state = State.CONFIRMING
 				get_tree().paused = true
-				_ui_confirm_reset.show()
-		State.CONFIRMING_RESET:
-			if event.is_action_pressed("yes"):
-				_ui_confirm_reset.hide()
+				var reset := await _ui_confirm.open("Restart level?")
 				_state = State.PLAYING_LEVEL
 				get_tree().paused = false
-				_current_level_scene._player.kill()
-			elif event.is_action_pressed("no") or event.is_action_pressed("back"):
-				_ui_confirm_reset.hide()
+				if reset:
+					_current_level_scene._player.kill()
+			elif event.is_action_pressed("back"):
+				_state = State.CONFIRMING
+				get_tree().paused = true
+				var quit := await _ui_confirm.open("Quit to menu?")
 				_state = State.PLAYING_LEVEL
 				get_tree().paused = false
+				if quit:
+					_current_level_index = _levels.size()
+					switch_level(false)
+			elif event.is_action_pressed("skip"):
+				_state = State.CONFIRMING
+				get_tree().paused = true
+				var quit := await _ui_confirm.open("Go to next level?") #, "Yes, I give up", "No")
+				_state = State.PLAYING_LEVEL
+				get_tree().paused = false
+				if quit:
+					_current_level_index += 1
+					switch_level(true)
 
 func _load_level(index: int) -> void:
 	if _current_level_scene != null:
@@ -122,4 +134,4 @@ static var _instance : Game
 static func register_instance(g: Game) -> void:
 	_instance = g
 static func get_instance() -> Game:
-	return _instance
+	return _instance if is_instance_valid(_instance) else null

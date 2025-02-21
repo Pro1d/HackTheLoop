@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bq68jrnxv5ish"]
+[gd_scene load_steps=33 format=3 uid="uid://bq68jrnxv5ish"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_7gs0s"]
 [ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_nm6es"]
@@ -26,7 +26,7 @@ resource_local_to_scene = true
 
 [sub_resource type="Resource" id="Resource_bu0uf"]
 script = ExtResource("4_ncppt")
-type = 11
+type = 14
 target_type = 0
 
 [sub_resource type="Resource" id="Resource_jyjlu"]
@@ -36,12 +36,17 @@ target_type = 0
 
 [sub_resource type="Resource" id="Resource_0o1p7"]
 script = ExtResource("4_ncppt")
-type = 11
+type = 14
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_sxgt8"]
+script = ExtResource("4_ncppt")
+type = 6
 target_type = 0
 
 [sub_resource type="Resource" id="Resource_aurkw"]
 script = ExtResource("5_qntlt")
-instructions = Array[ExtResource("4_ncppt")]([SubResource("Resource_bu0uf"), SubResource("Resource_jyjlu"), SubResource("Resource_0o1p7")])
+instructions = Array[ExtResource("4_ncppt")]([SubResource("Resource_bu0uf"), SubResource("Resource_jyjlu"), SubResource("Resource_0o1p7"), SubResource("Resource_sxgt8")])
 
 [sub_resource type="Resource" id="Resource_2v1fe"]
 script = ExtResource("4_ncppt")
@@ -147,9 +152,10 @@ surface_material_override/0 = SubResource("ShaderMaterial_nh0yg")
 shape = SubResource("BoxShape3D_eaqwf")
 
 [node name="TurretRobot2" parent="." index="8" instance=ExtResource("3_iwc0y")]
-transform = Transform3D(-2.18557e-07, 0, -1, 0, 1, 0, 1, 0, -2.18557e-07, 4, 0, 0)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 4, 0, 0)
 program = SubResource("Resource_aurkw")
-rotor_speed = 6.28
+rotor_speed = 6.283
+initial_angle_local_position = 1.571
 
 [node name="TurretRobot4" parent="." index="9" instance=ExtResource("3_iwc0y")]
 transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 8, 0, -9)

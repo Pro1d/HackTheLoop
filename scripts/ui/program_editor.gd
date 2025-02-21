@@ -69,13 +69,17 @@ func _update_program() -> void:
 	for ui in _instruction_ui_list:
 		ui.queue_free()
 	_instruction_ui_list.clear()
+	#var instructions_with_target := {}
 	for i in range(_program.instruction_count()):
 		var ui := InstructionUIPackedScene.instantiate() as InstructionUI
+		#if _program.instructions[i].has_target():
+			#instructions_with_target[_program.instructions[i].type] = null
 		ui.instruction = _program.instructions[i]
 		ui.is_current = (_current_instruction_index == i)
 		_instruction_ui_list.append(ui)
 		_instr_container.add_child(ui)
 	set_nav_index(_current_instruction_index)
+	#(%SwapModeLabel as Control).visible = (instructions_with_target.size() > 1)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_pressed():

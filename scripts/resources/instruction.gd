@@ -5,7 +5,7 @@ enum Type {
 	RELOAD_AMMO, # | reload icon
 	OPEN, # | open door / unlocked padlock icon
 	CLOSE, # | open door / unlocked padlock icon
-	WAIT_BUTTON, # | hourglass icon
+	xxx_deprecated_waith_button_xxx, # | hourglass icon
 	CHARGE, # + obj | arrow dash icon
 	SCAN, # + obj | antenna or radar icon
 	SHOOT, # + obj | aim ¤ icon
@@ -16,6 +16,7 @@ enum Type {
 	ROTATE_LEFT, # | <-, rotate icon
 	ROTATE_RIGHT, # | ,-> rotate icon
 	ROTATE_TOWARD, # + obj | rotate icon
+	TURN_AROUND, # U-turn icon
 	
 	# no icon yet
 	

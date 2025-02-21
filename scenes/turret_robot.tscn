@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://cl48xbpv7y80n" path="res://assets/sounds/spit_03.ogg" id="4_n63k7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqiv0"]
-size = Vector3(0.75, 0.601929, 0.75)
+size = Vector3(0.685547, 1.0578, 0.720703)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_555sl"]
 random_pitch = 1.05
@@ -17,11 +17,11 @@ stream_0/stream = ExtResource("4_n63k7")
 [node name="TurretRobot" instance=ExtResource("1_i5r5s")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.298035, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525971, 0)
 shape = SubResource("BoxShape3D_sqiv0")
 
 [node name="ShootMarker" parent="Visual/Rotor" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.92751, -0.541692)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.945102, -0.5551)
 
 [node name="Robot-turret-canon" type="MeshInstance3D" parent="Visual/Rotor" index="1"]
 mesh = ExtResource("2_1w8bb")

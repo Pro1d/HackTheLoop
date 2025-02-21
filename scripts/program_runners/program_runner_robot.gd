@@ -12,7 +12,7 @@ func do_CHARGE(i: Instruction.TargetType) -> float:
 		await mr.drive_until_hit(5.0)
 		return 0.0
 
-func do_MOVE_UNTIL_COL() -> float:
+func do_MOVE_UNTIL_COL(_i: Instruction.TargetType = Instruction.TargetType.NONE) -> float:
 	var mr := get_parent() as MobileRobot
 	if  mr == null:
 		return ProgramRunnerBase.IGNORE_DELAY
@@ -20,7 +20,7 @@ func do_MOVE_UNTIL_COL() -> float:
 		await mr.drive_until_hit()
 		return 0.0
 
-func do_ROTATE_LEFT() -> float:
+func do_ROTATE_LEFT(_i: Instruction.TargetType = Instruction.TargetType.NONE) -> float:
 	var r := get_parent()
 	if r.has_method("rotate_left"):
 		await r.call("rotate_left")
@@ -28,7 +28,7 @@ func do_ROTATE_LEFT() -> float:
 	else:
 		return ProgramRunnerBase.IGNORE_DELAY
 	
-func do_ROTATE_RIGHT() -> float:
+func do_ROTATE_RIGHT(_i: Instruction.TargetType = Instruction.TargetType.NONE) -> float:
 	var r := get_parent()
 	if r.has_method("rotate_right"):
 		await r.call("rotate_right")
@@ -45,7 +45,15 @@ func do_ROTATE_TOWARD(i: Instruction.TargetType) -> float:
 		await r.call("rotate_to", loc)
 		return 0.0
 
-func do_SHOOT() -> float:
+func do_TURN_AROUND(_i: Instruction.TargetType = Instruction.TargetType.NONE) -> float:
+	var r := get_parent()
+	if r.has_method("turn_around"):
+		await r.call("turn_around")
+		return 0.0
+	else:
+		return ProgramRunnerBase.IGNORE_DELAY
+
+func do_SHOOT(_i: Instruction.TargetType = Instruction.TargetType.NONE) -> float:
 	var r := get_parent()
 	if not r.has_method("shoot_ahead"):
 		return ProgramRunnerBase.IGNORE_DELAY

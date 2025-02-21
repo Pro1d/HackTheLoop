@@ -68,8 +68,11 @@ static func _register_button(gb: GroundButton) -> void:
 	registered_buttons[gb.button_type] = gb
 
 static func find_registered_button(type: Instruction.TargetType) -> GroundButton:
-	var gb := registered_buttons.get(type) as GroundButton
-	if gb != null and is_instance_valid(gb) and gb.is_inside_tree() and gb.button_type == type:
+	var obj : Variant = registered_buttons.get(type)
+	if not is_instance_valid(obj):
+		return null
+	var gb := obj as GroundButton
+	if gb != null and gb.is_inside_tree() and gb.button_type == type:
 		return gb
 	else:
 		return null

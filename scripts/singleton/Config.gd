@@ -13,17 +13,18 @@ static var _intruction_to_string := {
 	Instruction.Type.RELOAD_AMMO: "Reload ammo", # | reload icon
 	Instruction.Type.OPEN: "Open door", # | open door / unlocked padlock icon
 	Instruction.Type.CLOSE: "Close door", # | open door / unlocked padlock icon
-	Instruction.Type.WAIT_BUTTON: "Wait for button", # | hourglass icon
+	Instruction.Type.xxx_deprecated_waith_button_xxx: "???", # | hourglass icon
 	Instruction.Type.CHARGE: "Charge attack", # + obj | arrow dash icon
 	Instruction.Type.SCAN: "Detect", # + obj | antenna or radar icon
 	Instruction.Type.SHOOT: "Shoot", # + obj | aim ¤ icon
 	Instruction.Type.EMIT: "Send", # | wifi icon
 	Instruction.Type.SHOOT_AT: "Shoot at", # + obj | aim ¤ icon
-	Instruction.Type.WAIT: "Wait for", # | hourglass icon
+	Instruction.Type.WAIT: "Wait", # | hourglass icon
 	Instruction.Type.MOVE_UNTIL_COL: "Move forward", # + obj | arrow dash icon
 	Instruction.Type.ROTATE_LEFT: "Rotate left", # | <-, rotate icon
 	Instruction.Type.ROTATE_RIGHT: "Rotate right", # | ,-> rotate icon
 	Instruction.Type.ROTATE_TOWARD: "Rotate toward", # + obj | rotate icon
+	Instruction.Type.TURN_AROUND: "Turn around", # + obj | rotate icon
 }
 static var _target_to_string := {
 	Instruction.TargetType.NONE: "",

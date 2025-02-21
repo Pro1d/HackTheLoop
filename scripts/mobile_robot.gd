@@ -15,6 +15,7 @@ const dir_resolution := TAU / dir_count
 @export var accel := 1.2 / 0.5
 @export var rotation_speed := (PI / 2) / 1.0
 @export var stop_on_player := true
+@export var axis_aligned_move := true
 
 var _command := Command.NONE
 var _target_dir := Vector2(1, 0)
@@ -47,6 +48,7 @@ func _physics_process(delta: float) -> void:
 			var angle_diff := angle_difference(rotation.y, _target_dir.angle())
 			if abs(angle_diff) < deg_to_rad(1):
 				_command = Command.NONE
+				rotation.y += angle_diff
 				command_finished.emit()
 			else:
 				var angle_low_speed := deg_to_rad(15)
@@ -86,12 +88,18 @@ func _on_obstacle_hit(body: PhysicsBody3D, hit_speed: Vector2) -> void:
 		prints("player hit by mobile robot")
 		(body as Player).kill(hit_speed)
 
+func _get_target_angle(angle_step: int) -> float:
+	if axis_aligned_move:
+		var current_dir := _angle_to_dir(rotation.y)
+		return posmod(current_dir + angle_step, dir_count) * dir_resolution
+	else:
+		return rotation.y + angle_step * dir_resolution
+
 func rotate_left() -> void:
 	if _command != Command.NONE:
 		await command_finished
 	
-	var current_dir := _angle_to_dir(rotation.y)
-	var target_angle := ((current_dir + 1) % dir_count) * dir_resolution
+	var target_angle := _get_target_angle(1)
 	_target_dir = Vector2(1, 0).rotated(target_angle)
 	
 	_command = Command.ROTATE
@@ -102,14 +110,24 @@ func rotate_right() -> void:
 	if _command != Command.NONE:
 		await command_finished
 	
-	var current_dir := _angle_to_dir(rotation.y)
-	var target_angle := ((current_dir - 1 + dir_count) % dir_count) * dir_resolution
+	var target_angle := _get_target_angle(-1)
 	_target_dir = Vector2(1, 0).rotated(target_angle)
 	
 	_command = Command.ROTATE
 	_rotate_audio.play()
 	await command_finished
+
+func turn_around() -> void:
+	if _command != Command.NONE:
+		await command_finished
 	
+	var target_angle := _get_target_angle(2)
+	_target_dir = Vector2(1, 0).rotated(target_angle)
+	
+	_command = Command.ROTATE
+	_rotate_audio.play()
+	await command_finished
+
 func rotate_to(target_pos: Vector3) -> void:
 	if _command != Command.NONE:
 		await command_finished

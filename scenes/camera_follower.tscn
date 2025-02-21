@@ -8,8 +8,9 @@ script/source = "extends Node3D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	RenderingServer.frame_pre_draw.connect(func() -> void:
-		_cam_focus_point.global_position = global_position
-		_cam_focus_point.global_position.y = maxf(global_position.y, 0)
+		if is_inside_tree():
+			_cam_focus_point.global_position = global_position
+			_cam_focus_point.global_position.y = maxf(global_position.y, 0)
 	)
 "
 

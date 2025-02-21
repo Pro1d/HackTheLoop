@@ -37,10 +37,7 @@ func _run() -> void:
 		
 		_timer.start(MIN_DELAY)
 		
-		if current_instruction.has_target():
-			delay = await call(func_name, current_instruction.target_type)
-		else:
-			delay = await call(func_name)
+		delay = await call(func_name, current_instruction.target_type)
 		
 		delay += _timer.time_left
 		
@@ -90,6 +87,9 @@ func wait_target(i: Instruction.TargetType, max_range: float) -> bool:
 				if robot != null:
 					return true
 				# else: retry in next frame
+			Instruction.TargetType.NONE:
+				await get_tree().create_timer(0.5, false, true).timeout
+				return true
 			_:
 				return false
 		
@@ -146,7 +146,7 @@ func _find_nearest_body(radius: float, layer_mask: int) -> PhysicsBody3D:
 	var body_min : PhysicsBody3D
 	for dict in state.intersect_shape(params, 32):
 		var b := dict["collider"] as PhysicsBody3D
-		if b != null:
+		if b != null and b != parent:
 			var d := b.global_position.distance_to(parent.global_position)
 			if d < dmin:
 				dmin = d

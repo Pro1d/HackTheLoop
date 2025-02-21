@@ -3,6 +3,7 @@ extends StaticBody3D
 
 @export var program : Program
 @export var rotor_speed := TAU / 3.0
+@export var initial_angle_local_position := 0.0
 
 var _tween : Tween
 
@@ -13,10 +14,14 @@ var _tween : Tween
 @onready var _shoot_audio := %ShootAudio3D as AudioStreamPlayer3D
 
 func _ready() -> void:
+	_rotor_root.rotation.y = initial_angle_local_position
+	
 	program = program.duplicate_deep()
 	_runner.program = program
 	_program_wheel.program = program
 	_runner.current_instruction_index_changed.connect(_program_wheel.set_current_instruction_index.bind(true))
+	
+	prints(self, _rotor_root.global_rotation.y)
 
 func _current_angle() -> float:
 	return _rotor_root.global_rotation.y
@@ -43,8 +48,11 @@ func rotate_left() -> void:
 func rotate_right() -> void:
 	await _rotate_animation(_current_angle() - PI / 2)
 
+func turn_around() -> void:
+	await _rotate_animation(_current_angle() + PI)
+
 func shoot_ahead() -> void:
-	var projectile := Projectile.make(_shot_marker.global_transform, 10.0)
+	var projectile := Projectile.make(_shot_marker.global_transform, 12.0)
 	get_tree().root.add_child(projectile)
 	
 	_shoot_audio.play()

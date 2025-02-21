@@ -14,5 +14,8 @@ func duplicate_deep() -> Program:
 		var i := Instruction.new()
 		i.type = instr.type
 		i.target_type = instr.target_type
+		if instr.type == Instruction.Type.xxx_deprecated_waith_button_xxx:
+			printerr("WAIT_BUTTON must not be used")
+			assert(false)
 		p.instructions.append(i)
 	return p

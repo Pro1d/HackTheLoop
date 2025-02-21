@@ -1,0 +1,215 @@
+[gd_scene load_steps=36 format=3 uid="uid://dbh25vsdvj7cu"]
+
+[ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_cehbh"]
+[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_5dtpe"]
+[ext_resource type="PackedScene" uid="uid://bk3puyvoi8pam" path="res://scenes/plateform_robot.tscn" id="3_y3vij"]
+[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_hw2me"]
+[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_4gao3"]
+[ext_resource type="PackedScene" uid="uid://xunfjvpwf7ap" path="res://scenes/turret_robot.tscn" id="6_lis48"]
+[ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="7_s4npt"]
+[ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="8_fubm7"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_eu2go"]
+resource_local_to_scene = true
+size = Vector3(1.4, 1.91, 3.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_edcsv"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_5dtpe")
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 1.4)
+shader_parameter/direction = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmkv0"]
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_jgrf5"]
+script = ExtResource("4_hw2me")
+type = 10
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_tgt7c"]
+script = ExtResource("4_hw2me")
+type = 14
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_65dj0"]
+script = ExtResource("5_4gao3")
+instructions = Array[ExtResource("4_hw2me")]([SubResource("Resource_jgrf5"), SubResource("Resource_tgt7c")])
+
+[sub_resource type="Resource" id="Resource_v3p31"]
+script = ExtResource("4_hw2me")
+type = 9
+target_type = 2
+
+[sub_resource type="Resource" id="Resource_qqndl"]
+script = ExtResource("4_hw2me")
+type = 6
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_yb5us"]
+script = ExtResource("4_hw2me")
+type = 6
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_tqvqd"]
+script = ExtResource("4_hw2me")
+type = 9
+target_type = 2
+
+[sub_resource type="Resource" id="Resource_1asq4"]
+script = ExtResource("5_4gao3")
+instructions = Array[ExtResource("4_hw2me")]([SubResource("Resource_v3p31"), SubResource("Resource_qqndl"), SubResource("Resource_yb5us"), SubResource("Resource_tqvqd")])
+
+[sub_resource type="Resource" id="Resource_js7ek"]
+script = ExtResource("4_hw2me")
+type = 9
+target_type = 4
+
+[sub_resource type="Resource" id="Resource_s5h2d"]
+script = ExtResource("4_hw2me")
+type = 6
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_j0v1e"]
+script = ExtResource("4_hw2me")
+type = 6
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_hpa6v"]
+script = ExtResource("5_4gao3")
+instructions = Array[ExtResource("4_hw2me")]([SubResource("Resource_js7ek"), SubResource("Resource_s5h2d"), SubResource("Resource_j0v1e")])
+
+[sub_resource type="Resource" id="Resource_c0xpq"]
+script = ExtResource("4_hw2me")
+type = 9
+target_type = 1
+
+[sub_resource type="Resource" id="Resource_sg5lq"]
+script = ExtResource("4_hw2me")
+type = 6
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_pk3t8"]
+script = ExtResource("4_hw2me")
+type = 6
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_ei3ct"]
+script = ExtResource("5_4gao3")
+instructions = Array[ExtResource("4_hw2me")]([SubResource("Resource_c0xpq"), SubResource("Resource_sg5lq"), SubResource("Resource_pk3t8")])
+
+[sub_resource type="Resource" id="Resource_lxf8l"]
+script = ExtResource("4_hw2me")
+type = 9
+target_type = 3
+
+[sub_resource type="Resource" id="Resource_4njr8"]
+script = ExtResource("4_hw2me")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_nhn1k"]
+script = ExtResource("5_4gao3")
+instructions = Array[ExtResource("4_hw2me")]([SubResource("Resource_lxf8l"), SubResource("Resource_4njr8")])
+
+[sub_resource type="Resource" id="Resource_p3mge"]
+script = ExtResource("4_hw2me")
+type = 9
+target_type = 1
+
+[sub_resource type="Resource" id="Resource_a0g1q"]
+script = ExtResource("4_hw2me")
+type = 2
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_7ydlq"]
+script = ExtResource("4_hw2me")
+type = 9
+target_type = 1
+
+[sub_resource type="Resource" id="Resource_l1njr"]
+script = ExtResource("4_hw2me")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_518rw"]
+script = ExtResource("5_4gao3")
+instructions = Array[ExtResource("4_hw2me")]([SubResource("Resource_p3mge"), SubResource("Resource_a0g1q"), SubResource("Resource_7ydlq"), SubResource("Resource_l1njr")])
+
+[node name="LevelArena" instance=ExtResource("1_cehbh")]
+
+[node name="GroundGridMap" parent="." index="1"]
+data = {
+"cells": PackedInt32Array(0, 0, 0, 65535, 0, 0, 65534, 0, 0, 65533, 0, 0, 65532, 0, 0, 65531, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 65532, 1, 0, 65533, 1, 0, 65534, 1, 0, 65535, 1, 0, 0, 1, 0, 1, 1, 0, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 0, 65531, 1, 0, 65531, 65535, 0, 65532, 65535, 0, 65533, 65535, 0, 65535, 65535, 0, 0, 65535, 0, 1, 65535, 0, 2, 65535, 0, 4, 65535, 0, 5, 65535, 0, 65535, 65534, 0, 0, 65534, 0, 1, 65534, 0, 65535, 65533, 0, 0, 65533, 0, 1, 65532, 0, 1, 65533, 0, 0, 65532, 0, 65535, 65532, 0, 65535, 2, 0, 0, 2, 0, 1, 2, 0, 1, 3, 0, 0, 3, 0, 65535, 3, 0, 0, 4, 0, 65534, 3, 0, 65535, 4, 0, 1, 4, 0, 65535, 5, 0, 0, 5, 0, 1, 5, 0, 65535, 65531, 0, 0, 65531, 0, 1, 65531, 0, 5, 2, 5, 4, 3, 5, 3, 4, 5, 2, 5, 5, 4, 2, 0, 2, 2, 0, 3, 2, 0, 3, 3, 0, 2, 3, 0, 2, 4, 0, 65534, 2, 0, 65533, 2, 0, 65532, 2, 0, 65533, 3, 0, 65533, 4, 1441797, 65534, 4, 0, 65532, 65534, 0, 65532, 65533, 655365, 65533, 65533, 0, 65533, 65532, 655365, 65534, 65532, 0, 65534, 65533, 0, 65533, 65534, 0, 65534, 65534, 0, 2, 65533, 0, 2, 65534, 0, 3, 65534, 0, 3, 65533, 0, 2, 65532, 0, 4, 65534, 0, 65534, 5, 1441797, 65532, 3, 1441797, 65531, 2, 1441797, 65531, 65534, 655365, 65534, 65531, 655365, 2, 65531, 1048581, 3, 65532, 1048581, 4, 65533, 1048581, 5, 65534, 1048581, 65536, 65532, 1441801, 65536, 65533, 0, 65536, 4, 1048585, 3, 65535, 0, 65536, 3, 0, 65534, 65535, 0, 65530, 0, 0, 65529, 0, 0, 65528, 0, 0, 65527, 0, 0, 65526, 0, 0, 65526, 65535, 0, 65526, 1, 0, 65526, 2, 0, 65526, 65534, 0, 65525, 0, 0, 65525, 65535, 0, 65525, 1, 0, 65525, 2, 0, 65526, 65533, 0, 65525, 65533, 0, 65528, 65533, 0, 65527, 65533, 8, 65527, 3, 8, 65528, 3, 8, 65529, 3, 0, 65526, 3, 0, 65525, 3, 0)
+}
+
+[node name="WallGridMap" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(65534, 65525, 3, 2, 65525, 3, 65534, 11, 3, 65525, 65534, 1441795, 65525, 2, 1441795, 11, 65534, 1441795, 11, 2, 1441795, 4, 10, 655361, 6, 8, 655361, 8, 6, 655361, 10, 4, 655361, 65532, 10, 1048577, 65530, 8, 1048577, 65528, 6, 1048577, 65526, 4, 1048577, 65526, 65532, 1, 65528, 65530, 1, 65530, 65528, 1, 65532, 65526, 1, 4, 65526, 1441793, 6, 65528, 1441793, 8, 65530, 1441793, 10, 65532, 1441793, 4, 65528, 1, 2, 65529, 12, 65534, 65529, 12, 65532, 65528, 1048577, 65535, 65528, 1441803, 1, 65528, 1441803, 0, 65531, 12, 2, 11, 3, 1, 65530, 1048588, 65535, 8, 1048587, 1, 8, 1048587, 65535, 6, 1441804, 1, 6, 1441804, 0, 5, 655372, 131070, 65529, 655371, 65538, 65529, 11, 0, 65525, 3, 65535, 65530, 1441804, 65530, 0, 1441798, 0, 11, 3, 65520, 1, 4, 65522, 1, 4, 65524, 1, 4, 65524, 65535, 4, 65522, 65535, 4, 65520, 65535, 4, 65513, 2, 1441795, 65513, 4, 1441795, 65513, 65534, 1441795, 65513, 65532, 1441795, 65514, 65532, 655360, 65522, 5, 4, 65518, 1, 655364, 65517, 2, 1048580, 65517, 65534, 1048580, 65518, 65535, 4, 65517, 4, 1048580, 65517, 65532, 1048580, 65520, 65531, 4, 65514, 7, 4, 65516, 7, 4, 65517, 6, 1441796, 65521, 6, 1441796, 65522, 7, 655364, 65523, 6, 1048580, 65521, 65530, 1048580, 65519, 65530, 1048580, 65520, 65529, 4, 65517, 65530, 1441796, 65514, 65529, 655364, 65516, 65529, 655364, 65513, 65530, 1048579, 65513, 6, 1048579)
+}
+
+[node name="StartLevel" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -12, 0, 0)
+
+[node name="EndLevel" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 7, 0, 0)
+
+[node name="MeshInstance3D" parent="EndLevel" index="0"]
+mesh = SubResource("BoxMesh_eu2go")
+surface_material_override/0 = SubResource("ShaderMaterial_edcsv")
+
+[node name="CollisionShape3D" parent="EndLevel" index="1"]
+shape = SubResource("BoxShape3D_nmkv0")
+
+[node name="CameraFollower" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 0)
+
+[node name="Player" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -11, 0, 0)
+
+[node name="PlateformRobot" parent="." index="7" instance=ExtResource("3_y3vij")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 1)
+program = SubResource("Resource_65dj0")
+
+[node name="TurretRobot" parent="." index="9" instance=ExtResource("6_lis48")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 0, 0)
+program = SubResource("Resource_1asq4")
+
+[node name="TurretRobot10" parent="." index="10" instance=ExtResource("6_lis48")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7, 0, 3)
+program = SubResource("Resource_hpa6v")
+initial_angle_local_position = 1.571
+
+[node name="TurretRobot11" parent="." index="11" instance=ExtResource("6_lis48")]
+transform = Transform3D(3.0598e-07, 0, -1, 0, 1, 0, 1, 0, 3.0598e-07, -8, 0, -3)
+program = SubResource("Resource_ei3ct")
+initial_angle_local_position = -1.571
+
+[node name="GroundButton" parent="." index="12" instance=ExtResource("7_s4npt")]
+button_type = 2
+
+[node name="GroundButton2" parent="." index="13" instance=ExtResource("7_s4npt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5)
+button_type = 3
+
+[node name="DoorProgrammable" parent="." index="14" instance=ExtResource("8_fubm7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 0)
+program = SubResource("Resource_nhn1k")
+
+[node name="GroundButton3" parent="." index="15" instance=ExtResource("7_s4npt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7, 0, 0)
+button_type = 4
+
+[node name="GroundButton4" parent="." index="16" instance=ExtResource("7_s4npt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0, 0)
+
+[node name="DoorProgrammable2" parent="." index="17" instance=ExtResource("8_fubm7")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0, 0)
+program = SubResource("Resource_518rw")
+initially_opened = true
+
+[editable path="EndLevel"]
+[editable path="CameraFollower"]
