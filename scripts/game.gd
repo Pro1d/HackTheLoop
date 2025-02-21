@@ -18,6 +18,7 @@ var _state := State.INITIALIZED
 @onready var _ui_confirm_reset := %ConfirmReset as Control
 
 const _levels : Array[PackedScene] = [
+	preload("res://scenes/levels/level_plateform02.tscn"),
 	preload("res://scenes/levels/level_turrets01.tscn"),
 	preload("res://scenes/levels/level_doors01.tscn"),
 	preload("res://scenes/levels/level_jail.tscn"),

@@ -8,10 +8,10 @@
 [ext_resource type="AudioStream" uid="uid://woothjlgynhv" path="res://assets/sounds/zipper-out.ogg" id="10_0f0mh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_exyx2"]
-size = Vector3(0.2, 1.5, 0.05)
+size = Vector3(0.05, 1.5, 0.05)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_826a0"]
-size = Vector3(0.6, 1.5, 0.05)
+size = Vector3(0.9, 1.5, 0.05)
 
 [node name="Door" type="Node3D"]
 script = ExtResource("1_amrb6")
@@ -22,11 +22,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.5)
 [node name="StaticBody3D" type="StaticBody3D" parent="Offset"]
 
 [node name="FrameCollisionShape3D" type="CollisionShape3D" parent="Offset/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.475, 0.75, 0)
 shape = SubResource("BoxShape3D_exyx2")
 
 [node name="FrameCollisionShape3D2" type="CollisionShape3D" parent="Offset/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0.75, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475, 0.75, 0)
 shape = SubResource("BoxShape3D_exyx2")
 
 [node name="DoorCollisionShape3D" type="CollisionShape3D" parent="Offset/StaticBody3D"]
