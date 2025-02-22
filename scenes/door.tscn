@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://yclgl22kcddo"]
+[gd_scene load_steps=10 format=3 uid="uid://yclgl22kcddo"]
 
 [ext_resource type="Script" path="res://scripts/door.gd" id="1_amrb6"]
 [ext_resource type="ArrayMesh" uid="uid://hmnv1vuocfan" path="res://resources/models/all/door_frame.res" id="6_wih57"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_exyx2"]
 size = Vector3(0.05, 1.5, 0.05)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cqtw7"]
+size = Vector3(0.9, 0.134277, 0.05)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_826a0"]
 size = Vector3(0.9, 1.5, 0.05)
@@ -28,6 +31,10 @@ shape = SubResource("BoxShape3D_exyx2")
 [node name="FrameCollisionShape3D2" type="CollisionShape3D" parent="Offset/StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.475, 0.75, 0)
 shape = SubResource("BoxShape3D_exyx2")
+
+[node name="FrameCollisionShape3D3" type="CollisionShape3D" parent="Offset/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.43286, 0)
+shape = SubResource("BoxShape3D_cqtw7")
 
 [node name="DoorCollisionShape3D" type="CollisionShape3D" parent="Offset/StaticBody3D"]
 unique_name_in_owner = true

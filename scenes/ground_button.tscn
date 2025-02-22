@@ -7,8 +7,8 @@
 [ext_resource type="AudioStream" uid="uid://c1jc6q4ps62jc" path="res://assets/sounds/low-ticking-short.ogg" id="4_regvd"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_mbito"]
-height = 0.1
-radius = 0.3
+height = 0.2
+radius = 0.25
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_fpnef"]
 top_radius = 0.33
@@ -29,7 +29,7 @@ monitorable = false
 script = ExtResource("1_l8sjn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
 shape = SubResource("CylinderShape3D_mbito")
 
 [node name="MoveOnPressed" type="Node3D" parent="."]

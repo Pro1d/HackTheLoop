@@ -65,7 +65,8 @@ v"
 font_size = 40
 line_spacing = -14.0
 
-[node name="Label3D4" type="Label3D" parent="UI3D" index="1"]
+[node name="GameStatsLabel3D" type="Label3D" parent="UI3D" index="1"]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 5.5, 0.797, 0)
 pixel_size = 0.01
 shaded = true

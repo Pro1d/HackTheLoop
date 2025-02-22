@@ -48,7 +48,7 @@ script = ExtResource("3_khmpa")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_4ej4c"]
+[sub_resource type="Resource" id="Resource_bl3wa"]
 resource_local_to_scene = true
 script = ExtResource("4_ldvy4")
 instructions = Array[ExtResource("3_khmpa")]([SubResource("Resource_s1d6p"), SubResource("Resource_7aof5"), SubResource("Resource_kdlbp"), SubResource("Resource_hpb31"), SubResource("Resource_wfdjj")])
@@ -86,7 +86,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -9, 0,
 
 [node name="DoorProgrammable" parent="." index="8" instance=ExtResource("2_3gdrb")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1, 0, 0)
-program = SubResource("Resource_4ej4c")
+program = SubResource("Resource_bl3wa")
 
 [node name="GroundButton" parent="." index="9" instance=ExtResource("5_vptiq")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -8, 0, -2)

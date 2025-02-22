@@ -1,0 +1,230 @@
+[gd_scene load_steps=37 format=3 uid="uid://dq21lj3w85210"]
+
+[ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_4xasw"]
+[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_6mxvd"]
+[ext_resource type="PackedScene" uid="uid://bk3puyvoi8pam" path="res://scenes/plateform_robot.tscn" id="3_hrypu"]
+[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_wrpkx"]
+[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_isy4d"]
+[ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="6_hrisb"]
+[ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="7_wp4lj"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_ygew8"]
+resource_local_to_scene = true
+size = Vector3(1.4, 1.91, 3.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jmpng"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_6mxvd")
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 1.4)
+shader_parameter/direction = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8evre"]
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_bvikv"]
+script = ExtResource("4_wrpkx")
+type = 10
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_ektpl"]
+script = ExtResource("4_wrpkx")
+type = 11
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_q1bpq"]
+script = ExtResource("5_isy4d")
+instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_bvikv"), SubResource("Resource_ektpl")])
+
+[sub_resource type="Resource" id="Resource_pdm14"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 8
+
+[sub_resource type="Resource" id="Resource_3pwdj"]
+script = ExtResource("4_wrpkx")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_nkktq"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_hb7dw"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_g5bkf"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_58jlq"]
+script = ExtResource("4_wrpkx")
+type = 2
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_4e52d"]
+script = ExtResource("5_isy4d")
+instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_pdm14"), SubResource("Resource_3pwdj"), SubResource("Resource_nkktq"), SubResource("Resource_hb7dw"), SubResource("Resource_g5bkf"), SubResource("Resource_58jlq")])
+
+[sub_resource type="Resource" id="Resource_42xr1"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 4
+
+[sub_resource type="Resource" id="Resource_0olt6"]
+script = ExtResource("4_wrpkx")
+type = 2
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_ulsq0"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 4
+
+[sub_resource type="Resource" id="Resource_twgrq"]
+script = ExtResource("4_wrpkx")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_78vx0"]
+script = ExtResource("5_isy4d")
+instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_42xr1"), SubResource("Resource_0olt6"), SubResource("Resource_ulsq0"), SubResource("Resource_twgrq")])
+
+[sub_resource type="Resource" id="Resource_hi860"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 4
+
+[sub_resource type="Resource" id="Resource_sr50k"]
+script = ExtResource("4_wrpkx")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_2k8an"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 4
+
+[sub_resource type="Resource" id="Resource_sg1mm"]
+script = ExtResource("4_wrpkx")
+type = 2
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_st6mn"]
+script = ExtResource("5_isy4d")
+instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_hi860"), SubResource("Resource_sr50k"), SubResource("Resource_2k8an"), SubResource("Resource_sg1mm")])
+
+[sub_resource type="Resource" id="Resource_ce5ca"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 3
+
+[sub_resource type="Resource" id="Resource_mr3nx"]
+script = ExtResource("4_wrpkx")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_0bic4"]
+script = ExtResource("5_isy4d")
+instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_ce5ca"), SubResource("Resource_mr3nx")])
+
+[sub_resource type="Resource" id="Resource_a11c1"]
+script = ExtResource("4_wrpkx")
+type = 9
+target_type = 2
+
+[sub_resource type="Resource" id="Resource_yp88m"]
+script = ExtResource("4_wrpkx")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_b42wx"]
+script = ExtResource("5_isy4d")
+instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_a11c1"), SubResource("Resource_yp88m")])
+
+[node name="LevelBase" instance=ExtResource("1_4xasw")]
+
+[node name="GroundGridMap" parent="." index="1"]
+data = {
+"cells": PackedInt32Array(0, 0, 655360, 1, 0, 655360, 2, 0, 0, 3, 0, 0, 5, 0, 8, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 10, 0, 8, 10, 65535, 8, 9, 65535, 0, 8, 65535, 0, 7, 65535, 0, 6, 65535, 0, 5, 65535, 8, 4, 65535, 1048584, 3, 65535, 1048584, 2, 65535, 1048584, 2, 1, 0, 3, 1, 0, 4, 1, 0, 5, 1, 8, 6, 1, 0, 7, 1, 0, 8, 1, 0, 9, 1, 0, 10, 1, 8, 10, 65534, 1048584, 9, 65534, 1048584, 8, 65534, 1048584, 7, 65534, 1048584, 6, 65534, 1048584, 5, 65534, 1048584, 4, 65534, 0, 3, 65534, 0, 2, 65534, 0, 2, 2, 0, 3, 2, 0, 4, 2, 0, 5, 2, 1048584, 6, 2, 1048584, 7, 2, 1048584, 8, 2, 1048584, 9, 2, 1048584, 10, 2, 1048584, 11, 65534, 1048584, 11, 1, 0, 11, 2, 1048584, 11, 0, 0, 11, 65535, 0, 12, 65534, 1048584, 12, 65535, 8, 12, 0, 8, 12, 1, 8, 12, 2, 1048584, 4, 0, 0, 65549, 0, 1048576, 65549, 65535, 1048576, 65547, 65535, 1048576, 65547, 0, 1048576, 65547, 1, 1048576, 65549, 1, 1048576, 65547, 65533, 9, 65548, 65533, 655360, 65549, 65533, 655360, 131083, 65535, 1048576, 131083, 0, 1048576, 131083, 1, 1048576, 131085, 65535, 1048576, 131085, 0, 1048576, 131085, 1, 1048576, 13, 1, 0, 13, 2, 1048584, 9, 3, 655360, 10, 3, 655360, 11, 3, 655360, 12, 3, 655360, 13, 3, 655360, 14, 3, 0, 10, 65533, 655360, 11, 65533, 655360, 12, 65533, 655360, 13, 65533, 655360, 13, 65534, 1048584, 13, 65535, 655360, 13, 0, 655360, 14, 2, 1048584, 14, 1, 8, 14, 0, 8, 14, 65535, 8, 14, 65534, 1048584, 14, 65533, 0, 15, 65533, 655360, 16, 65533, 655360, 15, 65534, 1048584, 15, 65535, 655360, 15, 0, 655360, 15, 1, 655360, 15, 2, 1048584, 15, 3, 655360, 16, 3, 655360, 16, 2, 1048584, 16, 1, 1048584, 16, 0, 1048584, 16, 65535, 1048584, 16, 65534, 1048584, 8, 3, 655360, 7, 3, 655360, 6, 3, 655360, 5, 3, 655360, 4, 3, 655360, 3, 3, 655360, 9, 65533, 655360, 8, 65533, 655360, 7, 65533, 655360, 6, 65533, 655360, 5, 65533, 655360, 5, 65532, 655360, 4, 65532, 655360, 3, 65532, 655360, 3, 65533, 655360, 4, 65533, 655360, 2, 65533, 655360, 1, 65533, 655360, 2, 3, 655360, 1, 3, 655360, 0, 2, 655360, 1, 2, 655360, 1, 1, 655360, 1, 65535, 1048584, 0, 65534, 655360, 0, 65533, 655360, 0, 65535, 1048584, 0, 1, 655360, 1, 65534, 655360, 1, 65532, 655360, 2, 65532, 655360, 6, 65532, 655360, 7, 65532, 655360, 1, 4, 655360, 2, 4, 655360, 3, 4, 655360, 4, 4, 655360, 5, 4, 655360, 6, 4, 655360, 7, 4, 655360, 8, 65532, 655360, 8, 4, 5, 0, 3, 655360, 65551, 1, 0, 65551, 0, 0, 65551, 65535, 0, 131087, 1, 0, 131087, 0, 0, 131087, 65535, 0, 65551, 65533, 0, 65552, 65533, 0, 65547, 3, 9, 65548, 3, 0, 65549, 3, 0, 65551, 3, 0, 65552, 3, 0, 65553, 3, 0, 65553, 2, 0, 65553, 1, 0, 65553, 65533, 0, 65553, 65534, 0, 65553, 65535, 0, 65541, 3, 0, 65541, 65533, 0, 65540, 3, 0, 65540, 2, 0, 65540, 65534, 0, 65540, 65533, 0, 65542, 3, 655360, 65542, 65533, 655360, 17, 0, 655360, 18, 0, 655360, 19, 0, 655360, 18, 65535, 655360, 19, 65535, 655360, 18, 1, 655360, 19, 1, 655360, 0, 4, 1441797, 0, 65532, 655365, 9, 65532, 1048581, 65539, 65534, 9, 65539, 65533, 9, 65539, 2, 9, 65539, 3, 9, 65550, 3, 0, 131081, 1, 5, 131081, 65535, 655365, 131081, 0, 655360, 65542, 65535, 655360, 65542, 0, 655360, 65542, 1, 655360, 65543, 1, 655369, 65543, 0, 655369, 65543, 65535, 655369, 65535, 65535, 1048584, 65543, 3, 655360, 65544, 3, 655369, 65543, 65533, 655360, 65544, 65533, 0, 65545, 65533, 655369)
+}
+metadata/_editor_floor_ = Vector3(0, 1, 0)
+
+[node name="WallGridMap" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(17, 2, 1441795, 19, 0, 1441795, 19, 65534, 1441795, 17, 0, 1441795, 18, 2, 655361, 18, 65534, 1, 17, 6, 1441795, 19, 65530, 1441795, 26, 2, 1441795, 26, 0, 1441795, 26, 65534, 1441795, 22, 65534, 1441795, 22, 0, 1441795, 22, 2, 1441795, 30, 2, 1048579, 30, 0, 1048579, 30, 65534, 1048579, 33, 4, 1441804, 24, 65531, 12, 26, 65531, 12, 30, 65531, 12, 32, 65531, 12, 33, 65532, 1441804, 33, 65534, 1441804, 33, 2, 1441804, 32, 5, 655372, 30, 5, 655372, 26, 5, 655372, 24, 5, 655372, 18, 7, 3, 20, 7, 3, 22, 7, 3, 24, 7, 3, 26, 7, 3, 28, 7, 3, 30, 7, 3, 32, 7, 3, 34, 7, 3, 35, 6, 1441795, 35, 4, 1441795, 35, 2, 1048588, 35, 65534, 1048588, 35, 65532, 1441795, 35, 65530, 1441795, 34, 65535, 655372, 34, 1, 655372, 34, 65529, 655363, 32, 65529, 655363, 30, 65529, 655363, 29, 65530, 1048588, 27, 65530, 1048588, 26, 65529, 655363, 28, 65529, 655363, 24, 65529, 655363, 22, 65529, 655363, 20, 65529, 655363, 10, 5, 12, 10, 65531, 12, 9, 65532, 1441804, 9, 4, 1441804, 8, 65529, 12, 8, 7, 12, 10, 65529, 655372, 10, 7, 12, 12, 65529, 655372, 12, 65531, 655372, 12, 5, 655372, 12, 7, 655372, 26, 3, 655363, 36, 65533, 655363, 38, 65533, 655363, 39, 65534, 1048579, 39, 2, 1048579, 38, 3, 3, 36, 3, 3, 65571, 2, 1441803, 65571, 65534, 1048587, 14, 9, 3, 12, 9, 3, 10, 9, 3, 8, 9, 3, 6, 9, 3, 4, 9, 3, 65535, 2, 1441795, 65535, 6, 1441795, 2, 9, 655363, 0, 8, 1048577, 0, 65528, 1, 65535, 65530, 1441795, 65535, 65532, 1441795, 2, 65527, 655363, 4, 65527, 655363, 6, 65527, 655363, 8, 65527, 655363, 10, 65527, 655363, 12, 65527, 655363, 14, 65527, 655363, 16, 65527, 655363, 18, 65528, 1048577, 16, 8, 1, 8, 65533, 12, 8, 3, 12, 6, 7, 11, 6, 3, 11, 6, 65533, 11, 6, 65529, 11, 22, 5, 11, 22, 65531, 11, 28, 5, 12, 12, 65533, 655372, 11, 65534, 1048588, 11, 0, 1441804, 11, 2, 1441804, 12, 3, 655372, 14, 65533, 655372, 14, 3, 655372, 65535, 0, 1048579, 65534, 65533, 3, 65533, 65534, 1441795, 65534, 65535, 655363, 16, 5, 655371, 14, 5, 655372, 14, 7, 655372, 16, 7, 655371, 16, 3, 655371, 14, 65531, 655372, 14, 65529, 655372, 16, 65533, 655371, 16, 65531, 655372, 16, 65529, 655372, 18, 65531, 655371, 18, 65529, 655371)
+}
+
+[node name="StartLevel" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -1, 0, 2)
+
+[node name="EndLevel" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21, 0, 0)
+
+[node name="MeshInstance3D" parent="EndLevel" index="0"]
+mesh = SubResource("BoxMesh_ygew8")
+surface_material_override/0 = SubResource("ShaderMaterial_jmpng")
+
+[node name="CollisionShape3D" parent="EndLevel" index="1"]
+shape = SubResource("BoxShape3D_8evre")
+
+[node name="CameraFollower" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+
+[node name="Player" parent="." index="6"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 2)
+
+[node name="PlateformRobot2" parent="." index="8" instance=ExtResource("3_hrypu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -1, 0, -1)
+program = SubResource("Resource_q1bpq")
+
+[node name="PlateformRobot3" parent="." index="9" instance=ExtResource("3_hrypu")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -2)
+program = SubResource("Resource_q1bpq")
+
+[node name="DoorProgrammable" parent="." index="10" instance=ExtResource("6_hrisb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 8, 0, 2)
+program = SubResource("Resource_4e52d")
+
+[node name="DoorProgrammable3" parent="." index="11" instance=ExtResource("6_hrisb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 14, 0, 2)
+program = SubResource("Resource_78vx0")
+initially_opened = true
+
+[node name="DoorProgrammable4" parent="." index="12" instance=ExtResource("6_hrisb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 12, 0, 2)
+program = SubResource("Resource_st6mn")
+initially_opened = true
+
+[node name="DoorProgrammable2" parent="." index="13" instance=ExtResource("6_hrisb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 10, 0, -2)
+program = SubResource("Resource_4e52d")
+
+[node name="DoorProgrammable6" parent="." index="14" instance=ExtResource("6_hrisb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1)
+program = SubResource("Resource_0bic4")
+
+[node name="DoorProgrammable5" parent="." index="15" instance=ExtResource("6_hrisb")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 19, 0, 0)
+program = SubResource("Resource_b42wx")
+
+[node name="GroundButton" parent="." index="16" instance=ExtResource("7_wp4lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.75, 2)
+button_type = 4
+
+[node name="GroundButton3" parent="." index="17" instance=ExtResource("7_wp4lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.75, -2)
+button_type = 3
+
+[node name="GroundButton2" parent="." index="18" instance=ExtResource("7_wp4lj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 0.75, -1)
+button_type = 2
+
+[editable path="EndLevel"]
+[editable path="CameraFollower"]

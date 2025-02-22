@@ -72,6 +72,7 @@ func _physics_process(delta: float) -> void:
 	
 	if _command == Command.MOVE_AND_COLLIDE:
 		var new_h_speed := Vector2(-velocity.z, -velocity.x)
+		#prints(h_speed.length(), new_h_speed.length(), is_on_wall())
 		if h_speed.length() > 0.01 * delta and new_h_speed.length() < 0.01 * delta and is_on_wall():
 			var col := get_last_slide_collision()
 			var body := col.get_collider()
@@ -84,7 +85,7 @@ func _physics_process(delta: float) -> void:
 			command_finished.emit()
 
 func _on_obstacle_hit(body: PhysicsBody3D, hit_speed: Vector2) -> void:
-	if body is Player and _speed_factor > 1.0 and hit_speed.length() / max_speed > (_speed_factor - 0.1):
+	if body is Player and _speed_factor > 1.0 and hit_speed.length() / max_speed > 1.05:
 		prints("player hit by mobile robot")
 		(body as Player).kill(hit_speed)
 

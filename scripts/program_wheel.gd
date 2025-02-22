@@ -33,7 +33,7 @@ func _update_spin_position(animate: bool) -> void:
 	if program == null: return
 	var current_angle := _spinning.rotation.x
 	var icount := program.instruction_count() if program != null else 1
-	var target_angle := TAU / icount * current_instruction_index
+	var target_angle := -TAU / icount * current_instruction_index
 	
 	if _spin_tween != null:
 		_spin_tween.kill()
@@ -44,8 +44,8 @@ func _update_spin_position(animate: bool) -> void:
 	
 	_spin_tween = create_tween()
 	target_angle = current_angle + angle_difference(current_angle, target_angle)
-	if current_angle - target_angle > -1e-4:
-		target_angle += TAU
+	if current_angle - target_angle < 1e-4:
+		target_angle -= TAU
 	_spin_tween.tween_property(_spinning, "rotation:x", target_angle, 0.5) \
 		.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SPRING)
 	_spin_tween.parallel().tween_callback(_ticking.play).set_delay(0.3)
@@ -63,7 +63,7 @@ func _update_program() -> void:
 		else:
 			iv = _instructions_root.get_child(i)
 		iv.instruction = program.instructions[i]
-		iv.rotation.x = -TAU / icount * i
+		iv.rotation.x = TAU / icount * i
 	
 	for i in range(icount, _instructions_root.get_child_count()):
 		_instructions_root.get_child(i).queue_free()

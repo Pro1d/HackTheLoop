@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://xunfjvpwf7ap"]
+[gd_scene load_steps=8 format=3 uid="uid://xunfjvpwf7ap"]
 
 [ext_resource type="PackedScene" uid="uid://ciowdytk6nij3" path="res://scenes/static_robot.tscn" id="1_i5r5s"]
 [ext_resource type="ArrayMesh" uid="uid://5su126wjd0af" path="res://resources/models/all/robot-turret-canon.res" id="2_1w8bb"]
@@ -6,7 +6,11 @@
 [ext_resource type="AudioStream" uid="uid://cl48xbpv7y80n" path="res://assets/sounds/spit_03.ogg" id="4_n63k7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sqiv0"]
-size = Vector3(0.685547, 1.0578, 0.720703)
+size = Vector3(0.685547, 0.606049, 0.720703)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_dh6h2"]
+height = 0.532457
+radius = 0.301535
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_555sl"]
 random_pitch = 1.05
@@ -17,8 +21,12 @@ stream_0/stream = ExtResource("4_n63k7")
 [node name="TurretRobot" instance=ExtResource("1_i5r5s")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.525971, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.300095, 0)
 shape = SubResource("BoxShape3D_sqiv0")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.882149, 0)
+shape = SubResource("CylinderShape3D_dh6h2")
 
 [node name="ShootMarker" parent="Visual/Rotor" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.945102, -0.5551)
@@ -31,10 +39,10 @@ skeleton = NodePath("../../..")
 mesh = ExtResource("3_2eqme")
 skeleton = NodePath("../..")
 
-[node name="ProgramWheel" parent="." index="2"]
+[node name="ProgramWheel" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0.354635, 0.339824)
 
-[node name="ShootAudio3D" type="AudioStreamPlayer3D" parent="." index="4"]
+[node name="ShootAudio3D" type="AudioStreamPlayer3D" parent="." index="5"]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamRandomizer_555sl")
 attenuation_model = 3

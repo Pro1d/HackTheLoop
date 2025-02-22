@@ -8,7 +8,7 @@ enum State {
 	EDITING_PROGRAM,
 	ENDING_LEVEL,
 	#SCORE_SCREEN,
-	CONFIRMING,
+	CONFIRMING, # game is paused
 }
 
 var _state := State.INITIALIZED
@@ -18,18 +18,24 @@ var _state := State.INITIALIZED
 @onready var _ui_confirm := %ConfirmDialog as ConfirmDialog
 
 const _levels : Array[PackedScene] = [
-	preload("res://scenes/levels/level_turrets03.tscn"),
 	preload("res://scenes/levels/level_jail.tscn"),
 	preload("res://scenes/levels/level_plateform01.tscn"),
 	preload("res://scenes/levels/level_doors01.tscn"),
 	preload("res://scenes/levels/level_turrets01.tscn"),
-	preload("res://scenes/levels/level_turrets02.tscn"),
+	preload("res://scenes/levels/level_charge01.tscn"),
+	preload("res://scenes/levels/level_turrets03.tscn"),
 	preload("res://scenes/levels/level_plateform02.tscn"),
+	preload("res://scenes/levels/level_doors02.tscn"),
+	preload("res://scenes/levels/level_turrets02.tscn"),
+	preload("res://scenes/levels/level_arena.tscn"),
 	preload("res://scenes/levels/score_screen.tscn"),
-	#preload("res://scenes/level_base.tscn"),
 ]
 var _current_level_index := 0
 var _current_level_scene : LevelBase
+
+var skip_count := 0
+var death_count := 0
+var elapsed_time := 0.0
 
 func _enter_tree() -> void:
 	register_instance(self)
@@ -48,7 +54,7 @@ func _input(event: InputEvent) -> void:
 			if event.is_action_pressed("reset"):
 				_state = State.CONFIRMING
 				get_tree().paused = true
-				var reset := await _ui_confirm.open("Restart level?")
+				var reset := await _ui_confirm.open("Restart This Level?")
 				_state = State.PLAYING_LEVEL
 				get_tree().paused = false
 				if reset:
@@ -56,7 +62,7 @@ func _input(event: InputEvent) -> void:
 			elif event.is_action_pressed("back"):
 				_state = State.CONFIRMING
 				get_tree().paused = true
-				var quit := await _ui_confirm.open("Quit to menu?")
+				var quit := await _ui_confirm.open("Quit To Menu?")
 				_state = State.PLAYING_LEVEL
 				get_tree().paused = false
 				if quit:
@@ -65,12 +71,18 @@ func _input(event: InputEvent) -> void:
 			elif event.is_action_pressed("skip"):
 				_state = State.CONFIRMING
 				get_tree().paused = true
-				var quit := await _ui_confirm.open("Go to next level?") #, "Yes, I give up", "No")
+				var quit := await _ui_confirm.open("Skip This Level?") #, "Yes (achievement disabled)", "No")
 				_state = State.PLAYING_LEVEL
 				get_tree().paused = false
 				if quit:
 					_current_level_index += 1
+					skip_count += 1
 					switch_level(true)
+
+func _physics_process(delta: float) -> void:
+	match _state:
+		State.PLAYING_LEVEL, State.EDITING_PROGRAM:
+			elapsed_time += delta
 
 func _load_level(index: int) -> void:
 	if _current_level_scene != null:
@@ -88,6 +100,7 @@ func _on_level_completed() -> void:
 
 func _on_level_failed() -> void:
 	if _state == State.PLAYING_LEVEL:
+		death_count += 1
 		switch_level(false)
 
 func switch_level(success: bool) -> void:
