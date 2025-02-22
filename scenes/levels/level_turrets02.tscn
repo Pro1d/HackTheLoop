@@ -117,17 +117,27 @@ program = SubResource("Resource_bkfdj")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 3)
 program = SubResource("Resource_bkfdj")
 
-[node name="TurretRobot10" parent="." index="14" instance=ExtResource("8_12l5d")]
+[node name="Label3D4" type="Label3D" parent="." index="14"]
+unique_name_in_owner = true
+transform = Transform3D(1, -3.55271e-15, 0, -1.55294e-22, -4.37114e-08, 1, -3.55271e-15, -1, -4.37114e-08, -14, 0.02, -2)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "No mercy!"
+font_size = 40
+outline_size = 0
+
+[node name="TurretRobot10" parent="." index="15" instance=ExtResource("8_12l5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18, 0, 3)
 program = SubResource("Resource_bkfdj")
 
-[node name="GroundButton" parent="." index="15" instance=ExtResource("9_75ogd")]
+[node name="GroundButton" parent="." index="16" instance=ExtResource("9_75ogd")]
 
-[node name="DoorProgrammable" parent="." index="16" instance=ExtResource("10_xmod1")]
+[node name="DoorProgrammable" parent="." index="17" instance=ExtResource("10_xmod1")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2, 0, 0)
 program = SubResource("Resource_8qwkh")
 
-[node name="GroundButton2" parent="." index="17" instance=ExtResource("9_75ogd")]
+[node name="GroundButton2" parent="." index="18" instance=ExtResource("9_75ogd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 
 [editable path="EndLevel"]

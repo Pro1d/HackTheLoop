@@ -1,0 +1,94 @@
+[gd_scene load_steps=16 format=3 uid="uid://doqyrh0shrcub"]
+
+[ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_gr22m"]
+[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_7jp76"]
+[ext_resource type="Script" path="res://scripts/levels/level_doors_00.gd" id="2_pmppw"]
+[ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="3_74kq5"]
+[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_yghjv"]
+[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_ct3ps"]
+[ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="6_1fr18"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_rbtu1"]
+resource_local_to_scene = true
+size = Vector3(1.4, 1.91, 3.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t8glx"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_7jp76")
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 1.4)
+shader_parameter/direction = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p7s8s"]
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_tjoxe"]
+script = ExtResource("4_yghjv")
+type = 9
+target_type = 2
+
+[sub_resource type="Resource" id="Resource_4qj3f"]
+script = ExtResource("4_yghjv")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_0yfw4"]
+script = ExtResource("4_yghjv")
+type = 2
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_8ig8d"]
+script = ExtResource("4_yghjv")
+type = 9
+target_type = 2
+
+[sub_resource type="Resource" id="Resource_f33wt"]
+script = ExtResource("5_ct3ps")
+instructions = Array[ExtResource("4_yghjv")]([SubResource("Resource_tjoxe"), SubResource("Resource_4qj3f"), SubResource("Resource_0yfw4"), SubResource("Resource_8ig8d")])
+
+[node name="LevelBase" instance=ExtResource("1_gr22m")]
+script = ExtResource("2_pmppw")
+
+[node name="GroundGridMap" parent="." index="1"]
+data = {
+"cells": PackedInt32Array(0, 0, 0, 1, 0, 0, 1, 65535, 0, 1, 1, 0, 2, 1, 0, 2, 0, 0, 2, 65535, 0, 2, 65534, 0, 3, 65534, 0, 3, 65535, 0, 3, 0, 0, 3, 1, 0, 3, 2, 0, 2, 2, 0, 4, 65535, 0, 4, 0, 0, 4, 1, 0, 4, 65534, 0, 4, 2, 0, 5, 1, 0, 5, 0, 0, 5, 65535, 0, 6, 0, 0, 6, 65535, 0, 6, 1, 0, 0, 65535, 0, 0, 1, 0, 5, 65534, 0, 1, 65534, 0, 1, 2, 1048576, 5, 2, 1048576, 6, 65534, 1048581, 0, 65534, 655365, 0, 2, 1441797, 6, 2, 5)
+}
+
+[node name="WallGridMap" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(2, 65531, 3, 4, 65531, 3, 6, 65531, 3, 8, 65531, 3, 10, 65531, 3, 13, 65534, 1441795, 13, 2, 1441795, 10, 5, 655363, 8, 5, 655363, 6, 5, 655363, 4, 5, 655363, 2, 5, 655363, 65535, 2, 1048579, 65535, 65534, 1048579, 0, 65532, 1, 12, 65532, 1441793, 12, 4, 655361, 0, 4, 1048577)
+}
+
+[node name="EndLevel" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, 0)
+
+[node name="MeshInstance3D" parent="EndLevel" index="0"]
+mesh = SubResource("BoxMesh_rbtu1")
+surface_material_override/0 = SubResource("ShaderMaterial_t8glx")
+
+[node name="CollisionShape3D" parent="EndLevel" index="1"]
+shape = SubResource("BoxShape3D_p7s8s")
+
+[node name="DoorProgrammable" parent="." index="8" instance=ExtResource("3_74kq5")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6, 0, 0)
+program = SubResource("Resource_f33wt")
+
+[node name="GroundButton" parent="." index="9" instance=ExtResource("6_1fr18")]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+button_type = 2
+
+[node name="Label3D" type="Label3D" parent="." index="10"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 0.023, 0)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "I must hack the door"
+font_size = 40
+outline_size = 0
+
+[editable path="EndLevel"]
+[editable path="CameraFollower"]

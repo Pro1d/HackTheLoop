@@ -19,4 +19,4 @@ func _ready() -> void:
 
 func _start_game() -> void:
 	_fade_rect.fade_out()
-	SceneManager.go_to_game()
+	SceneManager.go_to_game.call_deferred()

@@ -76,7 +76,7 @@ script = ExtResource("3_ovd4m")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_j2exu"]
+[sub_resource type="Resource" id="Resource_jb8hm"]
 resource_local_to_scene = true
 script = ExtResource("4_fa1r3")
 instructions = Array[ExtResource("3_ovd4m")]([SubResource("Resource_mdm82"), SubResource("Resource_sksrt"), SubResource("Resource_wnnvu"), SubResource("Resource_0v0na")])
@@ -101,7 +101,7 @@ script = ExtResource("3_ovd4m")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_bwyjr"]
+[sub_resource type="Resource" id="Resource_ms223"]
 resource_local_to_scene = true
 script = ExtResource("4_fa1r3")
 instructions = Array[ExtResource("3_ovd4m")]([SubResource("Resource_jci4l"), SubResource("Resource_6rfyl"), SubResource("Resource_betbo"), SubResource("Resource_7sbhj")])
@@ -110,7 +110,7 @@ instructions = Array[ExtResource("3_ovd4m")]([SubResource("Resource_jci4l"), Sub
 
 [node name="GroundGridMap" parent="." index="1"]
 data = {
-"cells": PackedInt32Array(1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 5, 65535, 0, 4, 65534, 0, 5, 65534, 0, 4, 65535, 0, 4, 1, 0, 3, 1, 0, 1, 1, 0, 2, 1, 0, 5, 1, 0, 6, 1, 0, 6, 65535, 0, 2, 65534, 0, 3, 65534, 0, 3, 65535, 0, 2, 65535, 0, 1, 65534, 0, 1, 65535, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 6, 65533, 0, 6, 65534, 0, 7, 65533, 0, 7, 65534, 0, 7, 65535, 0, 7, 0, 0, 7, 1, 0, 6, 2, 0, 5, 2, 0, 4, 2, 0, 3, 2, 0, 2, 2, 0, 1, 2, 0, 2, 3, 1441792, 3, 3, 1441792, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 2, 0, 8, 0, 0, 8, 65535, 0, 3, 65532, 0, 4, 65532, 0, 8, 65534, 0, 8, 65533, 0, 9, 65533, 0, 9, 65534, 0, 9, 65535, 0, 1, 65532, 0, 2, 65532, 0, 6, 65532, 0, 7, 65532, 0, 8, 65532, 0, 9, 65532, 0, 5, 65532, 0, 8, 2, 0, 8, 3, 0, 7, 3, 0, 1, 3, 0, 65542, 2, 655360, 65542, 3, 655360, 65542, 1, 655365, 65541, 3, 655360, 8, 1, 0, 65537, 3, 0, 65537, 4, 0, 65539, 4, 0, 65541, 4, 1441792, 65542, 4, 655369, 65539, 3, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 7, 4, 0, 8, 4, 0, 5, 4, 0, 6, 4, 0, 65537, 65533, 0, 65539, 65532, 0, 65544, 65532, 0, 1, 65531, 655360, 2, 65531, 655360, 3, 65531, 655360, 4, 65531, 655360, 6, 65531, 655360, 7, 65531, 655360, 8, 65531, 655360, 9, 65531, 655360, 5, 65531, 655360, 0, 65531, 655360, 0, 65532, 655360, 0, 65533, 655360, 0, 65534, 655360, 0, 65535, 655360, 0, 0, 655360, 0, 2, 655360, 0, 3, 655360, 0, 4, 655360, 9, 0, 655360, 9, 1, 655360, 9, 2, 655360, 9, 3, 655360, 9, 4, 655360, 0, 1, 655360)
+"cells": PackedInt32Array(1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 5, 65535, 0, 4, 65534, 0, 5, 65534, 0, 4, 65535, 0, 4, 1, 0, 3, 1, 0, 1, 1, 0, 2, 1, 0, 5, 1, 0, 6, 1, 0, 6, 65535, 0, 2, 65534, 0, 3, 65534, 0, 3, 65535, 0, 2, 65535, 0, 1, 65534, 0, 1, 65535, 0, 1, 65533, 0, 2, 65533, 0, 3, 65533, 0, 4, 65533, 0, 5, 65533, 0, 6, 65533, 0, 6, 65534, 0, 7, 65533, 0, 7, 65534, 0, 7, 65535, 0, 7, 0, 8, 7, 1, 0, 6, 2, 0, 5, 2, 0, 4, 2, 0, 3, 2, 0, 2, 2, 0, 1, 2, 0, 2, 3, 1441792, 3, 3, 1441792, 4, 3, 0, 5, 3, 0, 6, 3, 0, 7, 2, 0, 8, 0, 8, 8, 65535, 0, 3, 65532, 0, 4, 65532, 0, 8, 65534, 0, 8, 65533, 0, 9, 65533, 0, 9, 65534, 0, 9, 65535, 0, 1, 65532, 0, 2, 65532, 0, 6, 65532, 0, 7, 65532, 0, 8, 65532, 0, 9, 65532, 0, 5, 65532, 0, 8, 2, 0, 8, 3, 0, 7, 3, 0, 1, 3, 0, 65542, 2, 655360, 65542, 3, 655360, 65542, 1, 655365, 65541, 3, 655360, 8, 1, 0, 65537, 3, 0, 65537, 4, 0, 65539, 4, 0, 65541, 4, 1441792, 65542, 4, 655369, 65539, 3, 0, 1, 4, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 7, 4, 8, 8, 4, 8, 5, 4, 0, 6, 4, 0, 65537, 65533, 0, 65539, 65532, 0, 65544, 65532, 0, 1, 65531, 655360, 2, 65531, 655360, 3, 65531, 655360, 4, 65531, 655360, 6, 65531, 655360, 7, 65531, 655360, 8, 65531, 655360, 9, 65531, 655360, 5, 65531, 655360, 0, 65531, 655360, 0, 65532, 655360, 0, 65533, 655360, 0, 65534, 655360, 0, 65535, 655360, 0, 0, 655360, 0, 2, 655360, 0, 3, 655360, 0, 4, 655360, 9, 0, 8, 9, 1, 8, 9, 2, 8, 9, 3, 8, 9, 4, 8, 0, 1, 655360)
 }
 
 [node name="WallGridMap" parent="." index="2"]
@@ -147,12 +147,12 @@ program = SubResource("Resource_p1lnx")
 
 [node name="DoorProgrammable2" parent="." index="10" instance=ExtResource("2_houkp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -3)
-program = SubResource("Resource_j2exu")
+program = SubResource("Resource_jb8hm")
 initially_opened = true
 
 [node name="DoorProgrammable3" parent="." index="11" instance=ExtResource("2_houkp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, -2)
-program = SubResource("Resource_bwyjr")
+program = SubResource("Resource_ms223")
 initially_opened = true
 
 [node name="GroundButton" parent="." index="12" instance=ExtResource("4_klqx4")]
@@ -164,8 +164,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 3)
 button_type = 4
 
 [node name="GroundButton3" parent="." index="14" instance=ExtResource("4_klqx4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
 button_type = 3
+
+[node name="Label3D2" type="Label3D" parent="." index="15"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 0.02, 1)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "Many doors
+and many programs."
+font_size = 40
+outline_size = 0
 
 [editable path="EndLevel"]
 [editable path="CameraFollower"]

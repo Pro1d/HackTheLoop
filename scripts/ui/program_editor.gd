@@ -99,12 +99,12 @@ func _unhandled_input(event: InputEvent) -> void:
 						if not _swap_target_only
 						else _next_swappable_target_index(dir)
 					)
-		elif event.is_action("move_left") or event.is_action("move_right"):
-			match _state:
-				State.NAVIGATING:
-					if _program.instructions[_nav_index].has_target():
-						_swap_target_only = event.is_action("move_right")
-						_update_highlight()
+		#elif event.is_action("move_left") or event.is_action("move_right"):
+			#match _state:
+				#State.NAVIGATING:
+					#if _program.instructions[_nav_index].has_target():
+						#_swap_target_only = event.is_action("move_right")
+						#_update_highlight()
 		elif event.is_action("interact"):
 			match _state:
 				State.NAVIGATING:
@@ -127,11 +127,10 @@ func _unhandled_input(event: InputEvent) -> void:
 						_update_highlight()
 						_select_audio.play()
 					_state = State.NAVIGATING
-		elif event.is_action("reset"):
-			pass # TODO
 		elif event.is_action("back"):
 			match _state:
 				State.NAVIGATING:
+					_state = State.INITIALIZING
 					close_requested.emit()
 				State.SWAPPING:
 					_swap_index = -1

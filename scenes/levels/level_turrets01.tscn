@@ -180,5 +180,25 @@ program = SubResource("Resource_27qsg")
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 5)
 program = SubResource("Resource_n4k1k")
 
+[node name="Label3D2" type="Label3D" parent="." index="15"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 0.02, 0.698822)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "Hack or run?"
+font_size = 40
+outline_size = 0
+
+[node name="Label3D3" type="Label3D" parent="." index="16"]
+unique_name_in_owner = true
+transform = Transform3D(1.91069e-15, 1.06581e-14, -1, -4.37114e-08, 1, 1.06581e-14, 1, 4.37114e-08, 1.91069e-15, 8.46378, 1.12126, -6.59639)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "Why shooting at a door?"
+font_size = 40
+outline_size = 0
+
 [editable path="EndLevel"]
 [editable path="CameraFollower"]

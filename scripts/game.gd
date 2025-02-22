@@ -19,14 +19,15 @@ var _state := State.INITIALIZED
 
 const _levels : Array[PackedScene] = [
 	preload("res://scenes/levels/level_jail.tscn"),
+	preload("res://scenes/levels/level_doors00.tscn"),
 	preload("res://scenes/levels/level_plateform01.tscn"),
 	preload("res://scenes/levels/level_doors01.tscn"),
 	preload("res://scenes/levels/level_turrets01.tscn"),
 	preload("res://scenes/levels/level_charge01.tscn"),
 	preload("res://scenes/levels/level_turrets03.tscn"),
-	preload("res://scenes/levels/level_doors03.tscn"),
 	preload("res://scenes/levels/level_plateform02.tscn"),
 	preload("res://scenes/levels/level_doors02.tscn"),
+	preload("res://scenes/levels/level_doors03.tscn"),
 	preload("res://scenes/levels/level_turrets02.tscn"),
 	preload("res://scenes/levels/level_arena.tscn"),
 	preload("res://scenes/levels/score_screen.tscn"),

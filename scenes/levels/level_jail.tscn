@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://capocn4ji8ep4"]
+[gd_scene load_steps=38 format=3 uid="uid://capocn4ji8ep4"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_bjw38"]
 [ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door.tscn" id="2_3vtl5"]
@@ -46,15 +46,10 @@ script = ExtResource("4_edmqm")
 type = 2
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_6o655"]
-script = ExtResource("4_edmqm")
-type = 9
-target_type = 7
-
-[sub_resource type="Resource" id="Resource_cp38b"]
+[sub_resource type="Resource" id="Resource_w7p01"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
-instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_lr75s"), SubResource("Resource_1urla"), SubResource("Resource_t7kjw"), SubResource("Resource_ylphe"), SubResource("Resource_6o655")])
+instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_lr75s"), SubResource("Resource_1urla"), SubResource("Resource_t7kjw"), SubResource("Resource_ylphe")])
 
 [sub_resource type="Resource" id="Resource_s0tcv"]
 script = ExtResource("4_edmqm")
@@ -76,7 +71,7 @@ script = ExtResource("4_edmqm")
 type = 2
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_6mqig"]
+[sub_resource type="Resource" id="Resource_0yeuo"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_s0tcv"), SubResource("Resource_2jef7"), SubResource("Resource_lntyn"), SubResource("Resource_ims0g")])
@@ -101,7 +96,7 @@ script = ExtResource("4_edmqm")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_l5buh"]
+[sub_resource type="Resource" id="Resource_k53vp"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_l36ij"), SubResource("Resource_0b28i"), SubResource("Resource_thcfk"), SubResource("Resource_uth20")])
@@ -131,7 +126,7 @@ script = ExtResource("4_edmqm")
 type = 12
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_vhm6e"]
+[sub_resource type="Resource" id="Resource_tsou6"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_hijr2"), SubResource("Resource_63yc7"), SubResource("Resource_3l0nb"), SubResource("Resource_hccub"), SubResource("Resource_ktbdh")])
@@ -151,7 +146,7 @@ script = ExtResource("4_edmqm")
 type = 4
 target_type = 7
 
-[sub_resource type="Resource" id="Resource_quvxx"]
+[sub_resource type="Resource" id="Resource_dp5st"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_14qkc"), SubResource("Resource_gk5h8"), SubResource("Resource_2jfy3")])
@@ -222,11 +217,11 @@ initially_opened = true
 
 [node name="DoorProgrammable" parent="." index="16" instance=ExtResource("3_dk1sx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 4)
-program = SubResource("Resource_cp38b")
+program = SubResource("Resource_w7p01")
 
 [node name="DoorProgrammable3" parent="." index="17" instance=ExtResource("3_dk1sx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0, 4)
-program = SubResource("Resource_6mqig")
+program = SubResource("Resource_0yeuo")
 
 [node name="GroundButton" parent="." index="18" instance=ExtResource("6_iwic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 7)
@@ -237,19 +232,72 @@ button_type = 4
 
 [node name="PlateformRobot" parent="." index="20" instance=ExtResource("7_5yygu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, 6)
-program = SubResource("Resource_l5buh")
+program = SubResource("Resource_k53vp")
 
 [node name="PlateformRobot2" parent="." index="21" instance=ExtResource("7_5yygu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 1)
-program = SubResource("Resource_vhm6e")
+program = SubResource("Resource_tsou6")
 
 [node name="ChargeRobot" parent="." index="22" instance=ExtResource("10_ymq54")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, 0)
-program = SubResource("Resource_quvxx")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1)
+program = SubResource("Resource_dp5st")
 
 [node name="GroundButton2" parent="." index="23" instance=ExtResource("6_iwic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -1)
 button_type = 3
+
+[node name="Label3D" type="Label3D" parent="." index="24"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -5, 0.023, 7)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "Hack this?"
+font_size = 40
+outline_size = 0
+
+[node name="Label3D3" type="Label3D" parent="." index="25"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -2, 0.023, 0)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "I need to escape
+from this place..."
+font_size = 40
+outline_size = 0
+
+[node name="Label3D5" type="Label3D" parent="." index="26"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 11, 0.023, 0)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "Quite hostile!
+Hopefully, locked in."
+font_size = 40
+outline_size = 0
+
+[node name="Label3D4" type="Label3D" parent="." index="27"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16.45, 1, 5)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "< Exit"
+font_size = 40
+outline_size = 0
+
+[node name="Label3D2" type="Label3D" parent="." index="28"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 3.55412, 0.023, 3)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+outline_modulate = Color(0.683077, 0.683078, 0.683077, 1)
+text = "Check the program -> "
+font_size = 40
+outline_size = 20
 
 [editable path="EndLevel"]
 [editable path="CameraFollower"]

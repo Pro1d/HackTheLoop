@@ -48,7 +48,7 @@ script = ExtResource("3_nhbph")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_bwujj"]
+[sub_resource type="Resource" id="Resource_2jk0x"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_s1d6p"), SubResource("Resource_7aof5"), SubResource("Resource_kdlbp"), SubResource("Resource_hpb31"), SubResource("Resource_wfdjj")])
@@ -68,7 +68,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_q7ry0"]
+[sub_resource type="Resource" id="Resource_pt8jo"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_nh02n")])
@@ -78,7 +78,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_jf02g"]
+[sub_resource type="Resource" id="Resource_w66p1"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_3tyit")])
@@ -98,12 +98,12 @@ script = ExtResource("3_nhbph")
 type = 10
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_vg5l4"]
+[sub_resource type="Resource" id="Resource_3e0fe"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_kd6kc"), SubResource("Resource_03til"), SubResource("Resource_w53hb")])
 
-[sub_resource type="Resource" id="Resource_m5ygm"]
+[sub_resource type="Resource" id="Resource_netad"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc")])
@@ -118,7 +118,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_sr1d8"]
+[sub_resource type="Resource" id="Resource_aamq3"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_1nl1b"), SubResource("Resource_shxhc"), SubResource("Resource_7lgkg")])
@@ -132,7 +132,7 @@ data = {
 
 [node name="WallGridMap" parent="." index="2"]
 data = {
-"cells": PackedInt32Array(8, 65533, 655372, 8, 65531, 655372, 9, 65532, 1048588, 65535, 2, 1441795, 65535, 65534, 1441795, 4, 65529, 655363, 4, 7, 655363, 0, 4, 1441793, 2, 6, 1441793, 0, 65532, 655361, 2, 65530, 655361, 14, 3, 655372, 14, 5, 12, 15, 4, 1048580, 16, 3, 655371, 16, 5, 655371, 18, 6, 2, 19, 2, 1048580, 19, 4, 1048580, 12, 3, 12, 12, 5, 12, 11, 4, 1441804, 65548, 4, 1441792, 4, 65533, 11, 4, 65531, 11, 6, 65531, 12, 6, 65533, 12, 5, 6, 1441796, 5, 4, 1441796, 5, 2, 1441796, 5, 0, 1441796, 5, 65534, 1441796, 5, 65532, 1441796, 5, 65530, 1441796, 16, 7, 4, 17, 0, 1441796, 17, 65534, 1441796, 17, 65532, 1441796, 16, 2, 655362, 28, 5, 12, 26, 5, 12, 24, 5, 12, 23, 4, 1441804, 32, 65533, 12, 32, 65531, 12, 30, 65531, 655372, 29, 65532, 1048588, 30, 65533, 12, 34, 65533, 655371, 34, 65531, 655371, 29, 4, 1048588, 37, 65528, 1048588, 38, 65529, 12, 39, 65528, 1441804, 47, 65528, 1441804, 45, 65526, 1441804, 41, 65526, 1441804, 39, 0, 1441804, 41, 2, 1441804, 45, 2, 1441804, 47, 0, 1441804, 40, 65527, 655372, 40, 1, 655372, 38, 65535, 655372, 46, 1, 655372, 48, 65535, 655372, 48, 65529, 655372, 46, 65527, 655372, 35, 65526, 1048588, 35, 65528, 1048587, 38, 3, 3, 40, 3, 3, 46, 3, 3, 38, 65525, 3, 40, 65525, 3, 46, 65525, 3, 48, 65525, 3, 49, 65526, 1441795, 49, 65528, 1441795, 49, 2, 1441795, 49, 0, 1441795, 48, 7, 12, 50, 7, 655372, 15, 6, 1048580, 10, 7, 655371, 65544, 7, 655371, 65542, 7, 655372, 6, 7, 655372, 8, 7, 655372, 6, 65529, 655372, 8, 65529, 655372, 65544, 65529, 655371, 65542, 65529, 655372, 10, 65529, 655371, 23, 65530, 1441804, 17, 65530, 1048580, 42, 65525, 3, 44, 65525, 3, 49, 65530, 1441795, 49, 65532, 1441795, 49, 65534, 1441795, 52, 7, 655372, 54, 7, 655372, 42, 3, 3, 44, 3, 3, 65583, 4, 1048587, 47, 4, 1048588, 47, 6, 1048588, 36, 65525, 3, 22, 65529, 3, 50, 5, 655372, 52, 5, 655372, 54, 5, 655372, 49, 4, 1048588, 65585, 4, 1048587, 65590, 5, 11, 65590, 7, 11, 37, 0, 1441804, 34, 65528, 10, 33, 65530, 1048588, 29, 2, 1441804, 23, 2, 1441804, -65511, 65530, 1441804, -65511, 65532, 1441804, -65511, 65534, 1441804, -65511, 0, 1441804, -65511, 2, 1441804, -65509, 2, 1441804, -65509, 0, 1441804, -65509, 65534, 1441804, -65509, 65532, 1441804, -65509, 65530, 1441804, -65510, 65529, 655372, 27, 2, 1048588, 27, 4, 1441804, 28, 1, 655372, 24, 65529, 12, 23, 65528, 1441795, 23, 65526, 1441795, 24, 65525, 655363, 26, 65525, 655363, 28, 65525, 655363, 29, 65526, 1048579, 29, 65528, 1048579, 18, 65529, 11, 20, 65529, 12, 65556, 65529, 11, 26, 65529, 655371, 28, 65527, 655372, 26, 65527, 655372, 65565, 65530, 1048587, 29, 65530, 1441804, 29, 0, 1441804, 29, 65534, 1441804, 65571, 65526, 1048587, 33, 65534, 1048588, 34, 0, 1048586, 35, 0, 1441803, 35, 2, 1441804, 36, 3, 655363, 65571, 2, 1441803, 20, 0, 2, 22, 65532, 655370, 20, 65535, 11, 20, 65533, 11, 22, 65535, 655372, 23, 0, 1048588)
+"cells": PackedInt32Array(8, 65533, 655372, 8, 65531, 655372, 9, 65532, 1048588, 65535, 2, 1441795, 65535, 65534, 1441795, 4, 65529, 655363, 4, 7, 655363, 0, 4, 1441793, 2, 6, 1441793, 0, 65532, 655361, 2, 65530, 655361, 14, 3, 655372, 14, 5, 12, 15, 4, 1048580, 16, 3, 655371, 16, 5, 655371, 18, 6, 2, 19, 2, 1048580, 19, 4, 1048580, 12, 3, 12, 12, 5, 12, 11, 4, 1441804, 65548, 4, 1441792, 4, 65533, 11, 4, 65531, 11, 6, 65531, 12, 6, 65533, 12, 5, 6, 1441796, 5, 4, 1441796, 5, 2, 1441796, 5, 0, 1441796, 5, 65534, 1441796, 5, 65532, 1441796, 5, 65530, 1441796, 16, 7, 4, 17, 0, 1441796, 17, 65534, 1441796, 17, 65532, 1441796, 16, 2, 655362, 28, 5, 12, 26, 5, 12, 24, 5, 12, 23, 4, 1441804, 32, 65533, 12, 32, 65531, 12, 30, 65531, 655372, 29, 65532, 1048588, 30, 65533, 12, 34, 65533, 655371, 34, 65531, 655371, 29, 4, 1048588, 37, 65528, 1048588, 38, 65529, 12, 39, 65528, 1441804, 47, 65528, 1441804, 45, 65526, 1441804, 41, 65526, 1441804, 39, 0, 1441804, 41, 2, 1441804, 45, 2, 1441804, 47, 0, 1441804, 40, 65527, 655372, 40, 1, 655372, 38, 65535, 655372, 46, 1, 655372, 48, 65535, 655372, 48, 65529, 655372, 46, 65527, 655372, 35, 65526, 1048588, 35, 65528, 1048587, 38, 3, 3, 40, 3, 3, 46, 3, 3, 38, 65525, 3, 40, 65525, 3, 46, 65525, 3, 48, 65525, 3, 49, 65526, 1441795, 49, 65528, 1441795, 49, 2, 1441795, 49, 0, 1441795, 48, 7, 12, 50, 7, 655372, 15, 6, 1048580, 10, 7, 655371, 65544, 7, 655371, 65542, 7, 655372, 6, 7, 655372, 8, 7, 655372, 6, 65529, 655372, 8, 65529, 655372, 65544, 65529, 655371, 65542, 65529, 655372, 10, 65529, 655371, 23, 65530, 1441804, 17, 65530, 1048580, 42, 65525, 3, 44, 65525, 3, 49, 65530, 1441795, 49, 65532, 1441795, 49, 65534, 1441795, 52, 7, 655372, 54, 7, 655372, 42, 3, 3, 44, 3, 3, 65583, 4, 1048587, 47, 4, 1048588, 47, 6, 1048588, 36, 65525, 3, 22, 65529, 3, 50, 5, 655372, 52, 5, 655372, 54, 5, 655372, 49, 4, 1048588, 65585, 4, 1048587, 65590, 5, 11, 65590, 7, 11, 37, 0, 1441804, 34, 65528, 10, 33, 65530, 1048588, 29, 2, 1441804, 23, 2, 1441804, -65511, 65530, 1441804, -65511, 65532, 1441804, -65511, 65534, 1441804, -65511, 0, 1441804, -65511, 2, 1441804, -65509, 2, 1441804, -65509, 0, 1441804, -65509, 65534, 1441804, -65509, 65532, 1441804, -65509, 65530, 1441804, -65510, 65529, 655372, 27, 2, 1048588, 27, 4, 1441804, 28, 1, 655372, 24, 65529, 12, 23, 65528, 1441795, 23, 65526, 1441795, 24, 65525, 655363, 26, 65525, 655363, 28, 65525, 655363, 29, 65526, 1048579, 29, 65528, 1048579, 18, 65529, 11, 20, 65529, 12, 65556, 65529, 11, 26, 65529, 655371, 28, 65527, 655372, 26, 65527, 655372, 65565, 65530, 1048587, 29, 65530, 1441804, 29, 0, 1441804, 29, 65534, 1441804, 65571, 65526, 1048587, 33, 65534, 1048588, 34, 0, 1048586, 35, 0, 1441803, 35, 2, 1441804, 36, 3, 655363, 65571, 2, 1441803, 20, 0, 2, 22, 65532, 655370, 20, 65535, 11, 20, 65533, 11, 22, 65535, 655372, 23, 0, 1048588, 27, 65534, 1441803, 27, 0, 1441804)
 }
 
 [node name="EndLevel" parent="." index="4"]
@@ -147,27 +147,58 @@ shape = SubResource("BoxShape3D_m3p8v")
 
 [node name="DoorProgrammable" parent="." index="8" instance=ExtResource("2_0tjsq")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1, 0, 0)
-program = SubResource("Resource_bwujj")
+program = SubResource("Resource_2jk0x")
 
 [node name="PlateformRobot" parent="." index="9" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-program = SubResource("Resource_q7ry0")
+program = SubResource("Resource_pt8jo")
 
 [node name="PlateformRobot6" parent="." index="10" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -2)
-program = SubResource("Resource_jf02g")
+program = SubResource("Resource_w66p1")
 
 [node name="PlateformRobot2" parent="." index="11" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 12, 0, -3)
-program = SubResource("Resource_vg5l4")
+program = SubResource("Resource_3e0fe")
 
 [node name="PlateformRobot4" parent="." index="12" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 14, 0, 0)
-program = SubResource("Resource_m5ygm")
+program = SubResource("Resource_netad")
 
 [node name="PlateformRobot5" parent="." index="13" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 23, 0, -4)
-program = SubResource("Resource_sr1d8")
+program = SubResource("Resource_aamq3")
+
+[node name="Label3D2" type="Label3D" parent="." index="14"]
+unique_name_in_owner = true
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 13, -0.73, -2.48362)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+outline_modulate = Color(0.699653, 0.699654, 0.699653, 1)
+text = "What a gap!"
+font_size = 40
+outline_size = 20
+
+[node name="Label3D3" type="Label3D" parent="." index="15"]
+unique_name_in_owner = true
+transform = Transform3D(-8.74228e-08, -1.39422e-14, -1, 4.37114e-08, 1, -1.77636e-14, 1, -4.37114e-08, -8.74228e-08, 8.455, -0.374, -1)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "It's all about balance."
+font_size = 40
+outline_size = 0
+
+[node name="Label3D4" type="Label3D" parent="." index="16"]
+unique_name_in_owner = true
+transform = Transform3D(-8.74228e-08, -1.39422e-14, -1, 4.37114e-08, 1, -1.77636e-14, 1, -4.37114e-08, -8.74228e-08, 24.45, 1, -2)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "Taxi, please!"
+font_size = 40
+outline_size = 0
 
 [editable path="EndLevel"]
 [editable path="CameraFollower"]

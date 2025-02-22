@@ -211,5 +211,15 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6, 0,
 program = SubResource("Resource_518rw")
 initially_opened = true
 
+[node name="Label3D2" type="Label3D" parent="." index="18"]
+unique_name_in_owner = true
+transform = Transform3D(1, 1.74845e-07, 7.64274e-15, -1.74845e-07, 1, 1.06581e-14, -7.64274e-15, -1.06581e-14, 1, -7.5, -0.270581, 0.556177)
+pixel_size = 0.01
+shaded = true
+modulate = Color(0, 0.00566674, 0.34, 1)
+text = "Who's smarter?"
+font_size = 40
+outline_size = 0
+
 [editable path="EndLevel"]
 [editable path="CameraFollower"]
