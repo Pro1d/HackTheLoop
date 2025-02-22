@@ -1,0 +1,103 @@
+[gd_scene load_steps=7 format=3 uid="uid://xodkiwykdkpj"]
+
+[ext_resource type="MeshLibrary" uid="uid://duy13sblsptvh" path="res://resources/ground.tres" id="1_xt3dt"]
+[ext_resource type="PackedScene" uid="uid://cg7kmba6e8crg" path="res://resources/models/all/AnimatedPaperBoy.res" id="3_cs48i"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ouko"]
+ground_bottom_color = Color(0.276516, 7.79718e-06, 0.213897, 1)
+ground_horizon_color = Color(0.960577, 0.664363, 0.845254, 1)
+ground_curve = 0.101965
+
+[sub_resource type="Sky" id="Sky_utydq"]
+sky_material = SubResource("ProceduralSkyMaterial_5ouko")
+
+[sub_resource type="Environment" id="Environment_d2vet"]
+background_mode = 2
+sky = SubResource("Sky_utydq")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.15
+tonemap_mode = 3
+glow_enabled = true
+glow_hdr_threshold = 0.89
+glow_hdr_scale = 0.44
+fog_mode = 1
+fog_light_color = Color(0.182079, 0.0089719, 0.131794, 1)
+fog_density = 1.0
+fog_depth_begin = 3.5
+fog_depth_end = 10.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_dwx84"]
+size = Vector2(20, 20)
+
+[node name="CoverRender" type="Node3D"]
+
+[node name="GridMap2" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275418, 0, 0.305)
+mesh_library = ExtResource("1_xt3dt")
+cell_size = Vector3(0.5, 0.75, 0.5)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(3, 0, 1441796, 3, 65534, 1441796, 3, 2, 1441796, 2, 65533, 655364, 0, 65533, 655364, 65533, 65534, 1048580, 65533, 0, 1048580, 65533, 2, 1048580, 2, 3, 4, 0, 3, 4, 65534, 3, 4, 65534, 65533, 655364)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)
+
+[node name="GridMap" type="GridMap" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275418, 0, 0.305)
+mesh_library = ExtResource("1_xt3dt")
+cell_size = Vector3(1, 1, 1)
+cell_center_x = false
+cell_center_y = false
+cell_center_z = false
+data = {
+"cells": PackedInt32Array(1, 0, 0, 65535, 0, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 0, 65535, 65535, 0, 1, 65535, 0, 0, 65535, 0, 0, 0, 0)
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_d2vet")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -1.66811e-08, 8.58166e-08, 0, 0.981627, 0.190809, -8.74228e-08, 0.190809, -0.981627, -0.235, 1.674, -5.349)
+fov = 20.5
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(0.675711, 0.690537, -0.258017, 0.419566, -0.0724717, 0.904827, 0.606118, -0.719657, -0.338696, -0.778, 4.559, -2.14)
+light_energy = 16.0
+shadow_enabled = true
+shadow_normal_bias = 0.305
+spot_range = 21.382
+spot_attenuation = 2.61
+spot_angle = 17.6
+spot_angle_attenuation = 0.840898
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("PlaneMesh_dwx84")
+
+[node name="AnimatedPaperBoy" parent="." instance=ExtResource("3_cs48i")]
+transform = Transform3D(0.550481, 0, -0.834848, 0, 1, 0, 0.834848, 0, 0.550481, 0.355, 0.01, -0.86)
+
+[node name="Skeleton3D" parent="AnimatedPaperBoy" index="0"]
+bones/0/position = Vector3(0, 0.38774, 0)
+bones/0/rotation = Quaternion(0, 0.707107, 0, 0.707107)
+bones/5/rotation = Quaternion(-0.559465, -2.94704e-10, 4.36612e-10, 0.828854)
+bones/7/rotation = Quaternion(2.29446e-08, 0.828854, 0.559465, -3.71926e-08)
+bones/8/position = Vector3(0, 0.385488, 1.30965e-08)
+bones/8/rotation = Quaternion(0.96925, 0, 0, -0.246078)
+bones/9/position = Vector3(3.55272e-15, 0.385488, -1.30965e-08)
+bones/9/rotation = Quaternion(0.96925, 2.93348e-08, 1.15544e-07, 0.246078)
+
+[node name="Label3D" type="Label3D" parent="."]
+transform = Transform3D(-0.795, 0, 6.95011e-08, 0, 0.795, 0, -6.95011e-08, 0, -0.795, -0.69, 0.685, 0)
+pixel_size = 0.0005
+fixed_size = true
+texture_filter = 5
+outline_modulate = Color(0.11, 0.0055, 0.0803917, 1)
+text = "Hack
+the Loop"
+font_size = 200
+outline_size = 50
+
+[editable path="AnimatedPaperBoy"]

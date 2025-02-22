@@ -48,7 +48,7 @@ script = ExtResource("3_nhbph")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_atyt7"]
+[sub_resource type="Resource" id="Resource_bwujj"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_s1d6p"), SubResource("Resource_7aof5"), SubResource("Resource_kdlbp"), SubResource("Resource_hpb31"), SubResource("Resource_wfdjj")])
@@ -68,7 +68,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_rrcfw"]
+[sub_resource type="Resource" id="Resource_q7ry0"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_nh02n")])
@@ -78,32 +78,32 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_7m5o3"]
+[sub_resource type="Resource" id="Resource_jf02g"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_3tyit")])
 
-[sub_resource type="Resource" id="Resource_xo1nb"]
+[sub_resource type="Resource" id="Resource_kd6kc"]
+script = ExtResource("3_nhbph")
+type = 11
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_03til"]
+script = ExtResource("3_nhbph")
+type = 11
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_w53hb"]
 script = ExtResource("3_nhbph")
 type = 10
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_3f4nu"]
-script = ExtResource("3_nhbph")
-type = 11
-target_type = 0
-
-[sub_resource type="Resource" id="Resource_esyeo"]
-script = ExtResource("3_nhbph")
-type = 11
-target_type = 0
-
-[sub_resource type="Resource" id="Resource_f55ne"]
+[sub_resource type="Resource" id="Resource_vg5l4"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
-instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_xo1nb"), SubResource("Resource_3f4nu"), SubResource("Resource_esyeo")])
+instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_kd6kc"), SubResource("Resource_03til"), SubResource("Resource_w53hb")])
 
-[sub_resource type="Resource" id="Resource_w1tbh"]
+[sub_resource type="Resource" id="Resource_m5ygm"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc")])
@@ -118,7 +118,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_hp64o"]
+[sub_resource type="Resource" id="Resource_sr1d8"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_1nl1b"), SubResource("Resource_shxhc"), SubResource("Resource_7lgkg")])
@@ -147,27 +147,27 @@ shape = SubResource("BoxShape3D_m3p8v")
 
 [node name="DoorProgrammable" parent="." index="8" instance=ExtResource("2_0tjsq")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -1, 0, 0)
-program = SubResource("Resource_atyt7")
+program = SubResource("Resource_bwujj")
 
 [node name="PlateformRobot" parent="." index="9" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-program = SubResource("Resource_rrcfw")
+program = SubResource("Resource_q7ry0")
 
 [node name="PlateformRobot6" parent="." index="10" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -2)
-program = SubResource("Resource_7m5o3")
+program = SubResource("Resource_jf02g")
 
 [node name="PlateformRobot2" parent="." index="11" instance=ExtResource("6_sjd78")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 12, 0, -3)
-program = SubResource("Resource_f55ne")
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 12, 0, -3)
+program = SubResource("Resource_vg5l4")
 
 [node name="PlateformRobot4" parent="." index="12" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 14, 0, 0)
-program = SubResource("Resource_w1tbh")
+program = SubResource("Resource_m5ygm")
 
 [node name="PlateformRobot5" parent="." index="13" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 23, 0, -4)
-program = SubResource("Resource_hp64o")
+program = SubResource("Resource_sr1d8")
 
 [editable path="EndLevel"]
 [editable path="CameraFollower"]
