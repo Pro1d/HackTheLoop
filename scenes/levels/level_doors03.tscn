@@ -1,0 +1,180 @@
+[gd_scene load_steps=25 format=3 uid="uid://jj8qgqfo72b8"]
+
+[ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_31ntb"]
+[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_fgh45"]
+[ext_resource type="PackedScene" uid="uid://bk3puyvoi8pam" path="res://scenes/plateform_robot.tscn" id="3_5kr6y"]
+[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_xsdid"]
+[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_0db88"]
+[ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="6_d6n4u"]
+[ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="7_r0i4n"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_so8a5"]
+resource_local_to_scene = true
+size = Vector3(1.4, 1.91, 3.4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5sbmc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_fgh45")
+shader_parameter/max_depth = 1.0
+shader_parameter/offset = Vector3(0, 0, 1.4)
+shader_parameter/direction = Vector3(0, 0, 1)
+shader_parameter/albedo = Color(0.11, 0.0055, 0.0803917, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e4vo8"]
+resource_local_to_scene = true
+
+[sub_resource type="Resource" id="Resource_ldnjp"]
+script = ExtResource("4_xsdid")
+type = 10
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_jo26h"]
+script = ExtResource("4_xsdid")
+type = 11
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_vd8mg"]
+script = ExtResource("5_0db88")
+instructions = Array[ExtResource("4_xsdid")]([SubResource("Resource_ldnjp"), SubResource("Resource_jo26h")])
+
+[sub_resource type="Resource" id="Resource_i8gla"]
+script = ExtResource("4_xsdid")
+type = 9
+target_type = 2
+
+[sub_resource type="Resource" id="Resource_tjr4x"]
+script = ExtResource("4_xsdid")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_rp7vm"]
+script = ExtResource("4_xsdid")
+type = 9
+target_type = 2
+
+[sub_resource type="Resource" id="Resource_ryhhx"]
+script = ExtResource("4_xsdid")
+type = 2
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_cq1wy"]
+script = ExtResource("5_0db88")
+instructions = Array[ExtResource("4_xsdid")]([SubResource("Resource_i8gla"), SubResource("Resource_tjr4x"), SubResource("Resource_rp7vm"), SubResource("Resource_ryhhx")])
+
+[sub_resource type="Resource" id="Resource_b775p"]
+script = ExtResource("4_xsdid")
+type = 9
+target_type = 8
+
+[sub_resource type="Resource" id="Resource_2jbcn"]
+script = ExtResource("4_xsdid")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_f4chx"]
+script = ExtResource("5_0db88")
+instructions = Array[ExtResource("4_xsdid")]([SubResource("Resource_b775p"), SubResource("Resource_2jbcn")])
+
+[sub_resource type="Resource" id="Resource_bi3ct"]
+script = ExtResource("4_xsdid")
+type = 9
+target_type = 3
+
+[sub_resource type="Resource" id="Resource_pobbo"]
+script = ExtResource("4_xsdid")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_0tjop"]
+script = ExtResource("5_0db88")
+instructions = Array[ExtResource("4_xsdid")]([SubResource("Resource_bi3ct"), SubResource("Resource_pobbo")])
+
+[node name="LevelBase" instance=ExtResource("1_31ntb")]
+
+[node name="GroundGridMap" parent="." index="1"]
+data = {
+"cells": PackedInt32Array(4, 0, 0, 5, 0, 1441792, 6, 0, 1441792, 8, 0, 0, 9, 0, 0, 10, 0, 0, 10, 1, 0, 11, 1, 8, 9, 1, 0, 8, 1, 0, 4, 1, 0, 4, 2, 0, 5, 2, 1441792, 6, 2, 1441792, 7, 2, 8, 8, 2, 1441800, 9, 2, 0, 10, 2, 0, 11, 2, 8, 3, 65534, 0, 4, 65534, 0, 4, 65535, 0, 5, 65534, 1441792, 5, 65535, 1441792, 6, 65534, 1441792, 6, 65535, 1441792, 7, 65534, 1441800, 8, 65534, 0, 8, 65535, 0, 9, 65534, 0, 9, 65535, 0, 10, 65534, 0, 11, 65534, 0, 10, 65535, 0, 11, 65535, 8, 5, 65533, 0, 5, 65532, 0, 5, 65531, 1441800, 6, 65531, 1441800, 7, 65531, 1441800, 6, 65532, 0, 6, 65533, 0, 7, 65533, 1441800, 7, 65532, 1441800, 5, 3, 0, 5, 4, 0, 5, 5, 0, 6, 5, 0, 7, 5, 8, 7, 4, 8, 7, 3, 8, 12, 1, 0, 13, 1, 0, 13, 0, 0, 13, 65535, 8, 12, 65535, 8, 11, 65533, 0, 11, 65532, 0, 11, 65531, 0, 12, 65531, 0, 13, 65531, 0, 13, 65532, 0, 13, 65533, 0, 13, 65534, 0, 8, 65531, 1441800, 9, 65531, 0, 10, 65531, 0, 7, 65530, 1441800, 7, 65529, 0, 6, 65529, 0, 5, 65529, 0, 5, 65530, 0, 8, 65529, 0, 9, 65529, 0, 10, 65529, 0, 11, 65529, 0, 11, 65530, 0, 12, 65529, 0, 13, 65529, 0, 13, 65530, 0, 8, 5, 0, 9, 5, 0, 10, 5, 0, 11, 5, 8, 11, 4, 8, 11, 3, 8, 13, 2, 0, 13, 3, 8, 13, 4, 0, 13, 5, 0, 12, 5, 0, 8, 65533, 0, 8, 65532, 0, 9, 65532, 0, 10, 65532, 0, 10, 65533, 0, 9, 65533, 0, 3, 65533, 0, 4, 65533, 0, 4, 65532, 0, 4, 65531, 1441800, 4, 65530, 8, 4, 65529, 8, 3, 65529, 0, 3, 65530, 0, 3, 65531, 0, 3, 65532, 0, 3, 65528, 0, 4, 65528, 8, 4, 65527, 8, 5, 65528, 0, 3, 65527, 0, 5, 65527, 1441792, 6, 65527, 1441792, 6, 65528, 0, 7, 65528, 0, 8, 65528, 0, 8, 65527, 0, 7, 65527, 0, 9, 65527, 0, 9, 65528, 0, 10, 65528, 0, 10, 65527, 0, 11, 65527, 0, 12, 65527, 0, 11, 65528, 0, 12, 65528, 0, 13, 65528, 0, 13, 65527, 0, 14, 65528, 0, 14, 65527, 0, 14, 65529, 0, 14, 65530, 8, 14, 65531, 8, 15, 65531, 8, 15, 65530, 8, 15, 65529, 0, 15, 65528, 0, 15, 65527, 0, 14, 65532, 0, 15, 65532, 8, 15, 65533, 8, 14, 65533, 0, 14, 65534, 0, 14, 65535, 8, 15, 65535, 8, 15, 65534, 8, 14, 0, 0, 15, 0, 8, 14, 1, 0, 15, 1, 8, 15, 2, 8, 14, 2, 0, 14, 3, 8, 15, 3, 8, 14, 4, 0, 15, 4, 8, 14, 5, 0, 15, 5, 8, 12, 2, 0, 12, 3, 8, 12, 4, 0, 9, 4, 0, 8, 4, 0, 8, 3, 1441800, 9, 3, 0, 10, 3, 0, 10, 4, 0, 6, 3, 1441792, 6, 4, 1441792, 12, 65534, 0, 12, 65533, 0, 12, 65532, 0, 12, 0, 0, 6, 65530, 0, 8, 65530, 1441800, 9, 65530, 0, 10, 65530, 0, 12, 65530, 0, 4, 3, 0, 4, 4, 0, 4, 5, 0, 5, 6, 0, 5, 7, 0, 6, 7, 0, 6, 6, 0, 7, 6, 8, 7, 7, 8, 8, 6, 0, 8, 7, 8, 9, 7, 8, 9, 6, 0, 10, 7, 8, 10, 6, 0, 11, 6, 8, 11, 7, 8, 12, 6, 0, 12, 7, 8, 13, 7, 8, 13, 6, 0, 14, 6, 0, 14, 7, 8, 15, 6, 8, 15, 7, 8, 5, 9, 0, 5, 8, 0, 6, 8, 0, 6, 9, 0, 7, 8, 0, 7, 9, 0, 8, 9, 0, 8, 8, 0, 9, 9, 0, 9, 8, 0, 10, 8, 0, 10, 9, 0, 11, 8, 0, 11, 9, 0, 12, 8, 0, 12, 9, 0, 13, 8, 0, 13, 9, 0, 14, 8, 0, 14, 9, 0, 15, 8, 0, 15, 9, 0, 16, 5, 0, 17, 5, 0, 18, 5, 0, 16, 7, 8, 17, 7, 8, 19, 5, 8, 19, 6, 8, 19, 7, 8, 18, 7, 8, 17, 6, 0, 16, 1, 0, 17, 1, 0, 17, 2, 0, 17, 3, 8, 17, 4, 0, 19, 4, 8, 19, 3, 8, 19, 2, 8, 19, 1, 8, 18, 1, 0, 17, 0, 0, 17, 65535, 8, 16, 65535, 8, 18, 65535, 8, 19, 65535, 8, 19, 0, 8, 17, 65533, 0, 17, 65534, 0, 19, 65534, 0, 19, 65533, 0, 16, 8, 0, 16, 9, 0, 17, 9, 0, 17, 8, 0, 18, 8, 0, 18, 9, 0, 19, 9, 0, 19, 8, 0, 20, 8, 0, 20, 9, 0, 20, 7, 0, 20, 6, 0, 21, 7, 0, 21, 8, 0, 21, 9, 5, 21, 6, 0, 21, 5, 0, 18, 6, 0, 16, 6, 0, 16, 4, 0, 16, 3, 8, 16, 2, 0, 18, 2, 0, 18, 3, 8, 18, 4, 0, 20, 5, 0, 20, 4, 0, 20, 3, 0, 20, 2, 0, 21, 2, 0, 21, 3, 0, 21, 4, 0, 20, 1, 0, 21, 1, 0, 21, 0, 0, 20, 0, 0, 21, 65535, 0, 20, 65535, 0, 21, 65534, 0, 20, 65534, 0, 20, 65533, 0, 21, 65533, 1048581, 18, 65534, 0, 16, 65532, 1048581, 16, 65533, 0, 16, 65534, 0, 16, 0, 0, 18, 0, 0, 7, 65535, 1441800, 7, 0, 1441800, 7, 1, 8, 6, 1, 1441792, 5, 1, 1441792, 18, 65533, 0, 11, 0, 8, 2, 65529, 0, 131080, 65527, 1441797, 131081, 65528, 5, 131082, 65527, 5, 131081, 65527, 0, 4, 6, 0, 3, 6, 0, 4, 7, 0, 4, 8, 0, 4, 9, 0, 3, 8, 0, 3, 7, 0, 3, 5, 0, 3, 4, 0, 3, 3, 0, 3, 2, 0, 3, 1, 0, 3, 0, 0, 3, 65535, 0, 3, 9, 1441797, 4, 65526, 1441800, 4, 65525, 1441800, 4, 65524, 1441800)
+}
+
+[node name="WallGridMap" parent="." index="2"]
+data = {
+"cells": PackedInt32Array(13, 14, 1441803, 14, 15, 12, 16, 15, 655371, 39, 14, 1441804, 39, 12, 1441803, 38, 65533, 655372, 21, 6, 1048588, 38, 15, 11, 39, 6, 1441804, 34, 5, 11, 36, 5, 12, 31, 4, 1441804, 29, 0, 1441804, 28, 65533, 655372, 24, 7, 12, 31, 2, 1441803, 26, 65533, 11, 36, 65533, 11, 39, 65534, 1048587, 21, 0, 1048587, 21, 65534, 1441804, 21, 4, 1441803, 26, 7, 655371, 32, 7, 12, 34, 7, 655371, 29, 2, 1048587, 32, 65533, 655371, 29, 65532, 1441803, 22, 15, 655372, 20, 15, 11, 24, 15, 655371, 32, 15, 655371, 30, 15, 655372, 28, 15, 11, 39, 8, 1048587, 14, 19, 655363, 16, 19, 655363, 18, 19, 655363, 20, 19, 655363, 22, 19, 655363, 24, 19, 655363, 26, 19, 655363, 28, 19, 655363, 30, 19, 655363, 32, 19, 655363, 34, 19, 655363, 36, 19, 655363, 38, 19, 655363, 40, 19, 655363, 43, 16, 1048579, 43, 14, 1048579, 43, 12, 1048579, 43, 10, 1048579, 43, 8, 1048579, 43, 6, 1048579, 43, 2, 1048579, 43, 4, 1048579, 43, 65534, 1048579, 43, 65532, 1048579, 32, 65521, 3, 12, 19, 3, 65560, 7, 655371, 65572, 5, 11, 65567, 4, 1441803, 65564, 65533, 11, 65565, 0, 1048587, 43, 0, 1441795, 5, 65524, 1048579, 5, 65526, 1048579, 5, 65528, 1048579, 5, 65530, 1048579, 5, 65532, 1048579, 30, 65523, 12, 28, 65523, 12, 27, 65524, 1441804, 27, 65526, 1441804, 28, 65527, 655372, 31, 65528, 1048587, 29, 65528, 1048587, 31, 65526, 1441795, 31, 65524, 1441795, 22, 65533, 655371, 6, 65527, 655372, 8, 65527, 655372, 10, 65527, 655372, 12, 65527, 655372, 16, 65527, 655372, 17, 65526, 1048588, 17, 65524, 1048588, 31, 65520, 1048579, 28, 65517, 3, 26, 65517, 3, 24, 65517, 3, 22, 65517, 3, 20, 65517, 3, 18, 65517, 3, 16, 65517, 3, 17, 65520, 1441795, 14, 65517, 655363, 12, 65517, 655363, 10, 65517, 655363, 5, 65520, 1048579, 15, 65528, 1048587, 13, 65528, 1048587, 18, 65520, 1, 20, 65518, 1, 16, 65523, 655372, 14, 65523, 655372, 13, 65524, 1048588, 12, 65525, 11, 42, 65530, 1441793, 32, 65528, 1441793, 34, 65529, 655363, 36, 65529, 655363, 38, 65529, 655363, 40, 65529, 655363, 42, 18, 1, 30, 65518, 1048577, 6, 65518, 1, 16, 65518, 1441793, 5, 65534, 1441795, 5, 0, 1441795, 5, 2, 1441795, 5, 4, 1441795, 5, 6, 1441795, 5, 8, 1441795, 5, 10, 1441795, 5, 12, 1441795, 5, 14, 1441795, 5, 16, 1441795, 8, 19, 655363, 10, 19, 655363, 6, 18, 1048577, 17, 6, 1441804, 16, 3, 655372, 13, 4, 1048588, 16, 7, 12, 17, 4, 1441804, 13, 6, 1441804, 13, 2, 1441803, 15, 2, 1441803, 12, 7, 12, 65548, 7, 11, 65544, 65517, 655372, 7, 65516, 1048579, 7, 65514, 1048579, 7, 65512, 1048579, 9, 65512, 1048579, 9, 65514, 1048579, 9, 65516, 1048579, 8, 65511, 3, 7, 65526, 1441803, 65542, 65527, 655371)
+}
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." index="3"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 4, 0.755, -11)
+mesh = SubResource("BoxMesh_so8a5")
+skeleton = NodePath("../EndLevel")
+surface_material_override/0 = SubResource("ShaderMaterial_5sbmc")
+
+[node name="StartLevel" parent="." index="4"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 0, -7)
+
+[node name="EndLevel" parent="." index="5"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 17, 0, -7)
+
+[node name="MeshInstance3D" parent="EndLevel" index="0"]
+mesh = SubResource("BoxMesh_so8a5")
+surface_material_override/0 = SubResource("ShaderMaterial_5sbmc")
+
+[node name="CollisionShape3D" parent="EndLevel" index="1"]
+shape = SubResource("BoxShape3D_e4vo8")
+
+[node name="CameraFollower" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -7)
+
+[node name="Player" parent="." index="7"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -7)
+
+[node name="PlateformRobot" parent="." index="9" instance=ExtResource("3_5kr6y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4, 0, -12)
+program = SubResource("Resource_vd8mg")
+
+[node name="DoorProgrammable" parent="." index="10" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -1)
+program = SubResource("Resource_cq1wy")
+
+[node name="DoorProgrammable5" parent="." index="11" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 15, 0, -1)
+program = SubResource("Resource_cq1wy")
+
+[node name="DoorProgrammable8" parent="." index="12" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, -7)
+program = SubResource("Resource_f4chx")
+
+[node name="DoorProgrammable9" parent="." index="13" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 8, 0, -7)
+program = SubResource("Resource_f4chx")
+
+[node name="DoorProgrammable10" parent="." index="14" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7, 0, -4)
+program = SubResource("Resource_0tjop")
+
+[node name="DoorProgrammable7" parent="." index="15" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 7, 0, 4)
+program = SubResource("Resource_cq1wy")
+
+[node name="DoorProgrammable2" parent="." index="16" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 11, 0, 3)
+program = SubResource("Resource_cq1wy")
+
+[node name="DoorProgrammable3" parent="." index="17" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 3)
+program = SubResource("Resource_cq1wy")
+
+[node name="DoorProgrammable4" parent="." index="18" instance=ExtResource("6_d6n4u")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 15, 0, 3)
+program = SubResource("Resource_cq1wy")
+
+[node name="GroundButton" parent="." index="19" instance=ExtResource("7_r0i4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 0, 1)
+button_type = 2
+
+[node name="GroundButton2" parent="." index="20" instance=ExtResource("7_r0i4n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+button_type = 3
+
+[editable path="EndLevel"]
+[editable path="CameraFollower"]
