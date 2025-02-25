@@ -55,7 +55,7 @@ target_type = 2
 
 [sub_resource type="Resource" id="Resource_vf2uh"]
 script = ExtResource("5_cy1o2")
-type = 0
+type = 1
 target_type = 0
 
 [sub_resource type="Resource" id="Resource_8qwkh"]

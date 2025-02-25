@@ -101,9 +101,9 @@ script = ExtResource("4_wrpkx")
 type = 9
 target_type = 4
 
-[sub_resource type="Resource" id="Resource_sr50k"]
+[sub_resource type="Resource" id="Resource_sg1mm"]
 script = ExtResource("4_wrpkx")
-type = 1
+type = 2
 target_type = 0
 
 [sub_resource type="Resource" id="Resource_2k8an"]
@@ -111,14 +111,14 @@ script = ExtResource("4_wrpkx")
 type = 9
 target_type = 4
 
-[sub_resource type="Resource" id="Resource_sg1mm"]
+[sub_resource type="Resource" id="Resource_sr50k"]
 script = ExtResource("4_wrpkx")
-type = 2
+type = 1
 target_type = 0
 
 [sub_resource type="Resource" id="Resource_st6mn"]
 script = ExtResource("5_isy4d")
-instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_hi860"), SubResource("Resource_sr50k"), SubResource("Resource_2k8an"), SubResource("Resource_sg1mm")])
+instructions = Array[ExtResource("4_wrpkx")]([SubResource("Resource_hi860"), SubResource("Resource_sg1mm"), SubResource("Resource_2k8an"), SubResource("Resource_sr50k")])
 
 [sub_resource type="Resource" id="Resource_ce5ca"]
 script = ExtResource("4_wrpkx")
