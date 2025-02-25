@@ -160,7 +160,7 @@ func kill(hit_direction: Vector2 = Vector2.ZERO) -> void:
 	match _state:
 		State.ROLLING:
 			_end_rolling()
-		State.DEAD:
+		State.DEAD, State.LOCKED:
 			return
 	
 	_state = State.DEAD

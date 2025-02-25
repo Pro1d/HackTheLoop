@@ -60,7 +60,8 @@ func _input(event: InputEvent) -> void:
 				_state = State.PLAYING_LEVEL
 				get_tree().paused = false
 				if reset:
-					_current_level_scene._player.kill()
+					death_count += 1
+					switch_level(false)
 			elif event.is_action_pressed("back"):
 				_state = State.CONFIRMING
 				get_tree().paused = true
@@ -89,6 +90,7 @@ func _physics_process(delta: float) -> void:
 func _load_level(index: int) -> void:
 	if _current_level_scene != null:
 		_current_level_scene.queue_free()
+		await _current_level_scene.tree_exited
 		_current_level_scene = null
 	_current_level_scene = _levels[index].instantiate()
 	_current_level_scene.level_completed.connect(_on_level_completed)
