@@ -180,6 +180,7 @@ mesh = ExtResource("11_xl5k7")
 shape = SubResource("ConvexPolygonShape3D_t5ohs")
 
 [node name="Grid-wall-small" type="MeshInstance3D" parent="."]
+visible = false
 mesh = ExtResource("12_vvfbb")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Grid-wall-small"]

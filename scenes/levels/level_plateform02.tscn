@@ -37,7 +37,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_22e2e"]
+[sub_resource type="Resource" id="Resource_4ku3a"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_nh02n")])
@@ -47,7 +47,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_yfeje"]
+[sub_resource type="Resource" id="Resource_gefel"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_3tyit")])
@@ -67,7 +67,7 @@ script = ExtResource("3_nhbph")
 type = 10
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_ipgc4"]
+[sub_resource type="Resource" id="Resource_wpbsv"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_kd6kc"), SubResource("Resource_03til"), SubResource("Resource_w53hb")])
@@ -82,7 +82,7 @@ script = ExtResource("3_nhbph")
 type = 14
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_dbrff"]
+[sub_resource type="Resource" id="Resource_lt5nn"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_e1da2"), SubResource("Resource_ag50s")])
@@ -97,7 +97,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_gxuwo"]
+[sub_resource type="Resource" id="Resource_836mh"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_1nl1b"), SubResource("Resource_shxhc"), SubResource("Resource_7lgkg")])
@@ -126,23 +126,23 @@ shape = SubResource("BoxShape3D_m3p8v")
 
 [node name="PlateformRobot" parent="." index="8" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-program = SubResource("Resource_22e2e")
+program = SubResource("Resource_4ku3a")
 
 [node name="PlateformRobot6" parent="." index="9" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -2)
-program = SubResource("Resource_yfeje")
+program = SubResource("Resource_gefel")
 
 [node name="PlateformRobot2" parent="." index="10" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 12, 0, -3)
-program = SubResource("Resource_ipgc4")
+program = SubResource("Resource_wpbsv")
 
 [node name="PlateformRobot4" parent="." index="11" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 0, 0, 0.999914, 0.0130896, 0, -0.0130896, 0.999914, 14, 0, 0)
-program = SubResource("Resource_dbrff")
+program = SubResource("Resource_lt5nn")
 
 [node name="PlateformRobot5" parent="." index="12" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 23, 0, -4)
-program = SubResource("Resource_gxuwo")
+program = SubResource("Resource_836mh")
 
 [node name="Label3D2" type="Label3D" parent="." index="13"]
 unique_name_in_owner = true
@@ -150,10 +150,10 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.3
 pixel_size = 0.01
 shaded = true
 modulate = Color(0, 0.00566674, 0.34, 1)
-outline_modulate = Color(0.699653, 0.699654, 0.699653, 1)
+outline_modulate = Color(1, 1, 1, 1)
 text = "What a gap!"
 font_size = 40
-outline_size = 20
+outline_size = 5
 
 [node name="Label3D3" type="Label3D" parent="." index="14"]
 unique_name_in_owner = true

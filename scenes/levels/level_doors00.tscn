@@ -82,11 +82,11 @@ button_type = 2
 
 [node name="Label3D" type="Label3D" parent="." index="10"]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4, 0.023, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 4.3, 0.023, 0)
 pixel_size = 0.01
 shaded = true
 modulate = Color(0, 0.00566674, 0.34, 1)
-text = "I must hack the door"
+text = "I must hack the door."
 font_size = 40
 outline_size = 0
 

@@ -55,7 +55,7 @@ func shoot_ahead() -> void:
 	var projectile := Projectile.make(_shot_marker.global_transform, 12.0)
 	# get_tree().root.add_child not required because projectiles are top level
 	# add to self in order to free the projectile with self
-	add_child(projectile)
+	Game.get_instance().level_scene_root().add_child(projectile)
 	
 	_shoot_audio.play()
 	

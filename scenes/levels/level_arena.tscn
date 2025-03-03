@@ -142,11 +142,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
 program = SubResource("Resource_bdud7")
 
 [node name="ChargeRobot6" parent="." index="15" instance=ExtResource("7_lelpm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, -5)
 program = SubResource("Resource_bdud7")
 
 [node name="ChargeRobot7" parent="." index="16" instance=ExtResource("7_lelpm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 4)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 5)
 program = SubResource("Resource_bdud7")
 
 [node name="ChargeRobot3" parent="." index="17" instance=ExtResource("7_lelpm")]

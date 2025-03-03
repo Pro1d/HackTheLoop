@@ -147,6 +147,9 @@ func _on_program_editor_close_requested() -> void:
 		_ui_program_editor.hide()
 		_ui_program_editor._program.emit_changed()
 
+func level_scene_root() -> Node3D:
+	return _current_level_scene
+		
 static var _instance : Game
 static func register_instance(g: Game) -> void:
 	_instance = g

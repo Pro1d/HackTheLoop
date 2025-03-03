@@ -76,7 +76,7 @@ script = ExtResource("3_ovd4m")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_5q74g"]
+[sub_resource type="Resource" id="Resource_xlvef"]
 resource_local_to_scene = true
 script = ExtResource("4_fa1r3")
 instructions = Array[ExtResource("3_ovd4m")]([SubResource("Resource_mdm82"), SubResource("Resource_sksrt"), SubResource("Resource_wnnvu"), SubResource("Resource_0v0na")])
@@ -101,7 +101,7 @@ script = ExtResource("3_ovd4m")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_k8jgc"]
+[sub_resource type="Resource" id="Resource_pncw5"]
 resource_local_to_scene = true
 script = ExtResource("4_fa1r3")
 instructions = Array[ExtResource("3_ovd4m")]([SubResource("Resource_jci4l"), SubResource("Resource_6rfyl"), SubResource("Resource_betbo"), SubResource("Resource_7sbhj")])
@@ -147,12 +147,12 @@ program = SubResource("Resource_p1lnx")
 
 [node name="DoorProgrammable2" parent="." index="10" instance=ExtResource("2_houkp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -3)
-program = SubResource("Resource_5q74g")
+program = SubResource("Resource_xlvef")
 initially_opened = true
 
 [node name="DoorProgrammable3" parent="." index="11" instance=ExtResource("2_houkp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, -2)
-program = SubResource("Resource_k8jgc")
+program = SubResource("Resource_pncw5")
 initially_opened = true
 
 [node name="GroundButton" parent="." index="12" instance=ExtResource("4_klqx4")]
@@ -173,8 +173,8 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 2, 0.0
 pixel_size = 0.01
 shaded = true
 modulate = Color(0, 0.00566674, 0.34, 1)
-text = "Many doors
-and many programs."
+text = "Many doors,
+many programs."
 font_size = 40
 outline_size = 0
 
