@@ -1,24 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://xodkiwykdkpj"]
+[gd_scene load_steps=16 format=3 uid="uid://xodkiwykdkpj"]
 
+[ext_resource type="Script" path="res://scripts/tools/cover_render.gd" id="1_gmuv7"]
 [ext_resource type="MeshLibrary" uid="uid://duy13sblsptvh" path="res://resources/ground.tres" id="1_xt3dt"]
+[ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="3_8owfn"]
 [ext_resource type="PackedScene" uid="uid://cg7kmba6e8crg" path="res://resources/models/all/AnimatedPaperBoy.res" id="3_cs48i"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_5ouko"]
-ground_bottom_color = Color(0.276516, 7.79718e-06, 0.213897, 1)
-ground_horizon_color = Color(0.960577, 0.664363, 0.845254, 1)
-ground_curve = 0.101965
-
-[sub_resource type="Sky" id="Sky_utydq"]
-sky_material = SubResource("ProceduralSkyMaterial_5ouko")
+[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_wvyc8"]
+[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_p7cr6"]
 
 [sub_resource type="Environment" id="Environment_d2vet"]
-background_mode = 2
-sky = SubResource("Sky_utydq")
+background_mode = 1
+background_color = Color(0.13632, 0.0864, 0.18, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
-ambient_light_energy = 0.15
+ambient_light_energy = 0.45
 tonemap_mode = 3
-glow_enabled = true
 glow_hdr_threshold = 0.89
 glow_hdr_scale = 0.44
 fog_mode = 1
@@ -30,29 +25,64 @@ fog_depth_end = 10.5
 [sub_resource type="PlaneMesh" id="PlaneMesh_dwx84"]
 size = Vector2(20, 20)
 
+[sub_resource type="Resource" id="Resource_lyp6h"]
+script = ExtResource("4_wvyc8")
+type = 9
+target_type = 5
+
+[sub_resource type="Resource" id="Resource_eoo7c"]
+script = ExtResource("4_wvyc8")
+type = 0
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_w8s78"]
+script = ExtResource("4_wvyc8")
+type = 0
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_lufcd"]
+script = ExtResource("4_wvyc8")
+type = 0
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_4s4xs"]
+script = ExtResource("4_wvyc8")
+type = 0
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_i1vyl"]
+script = ExtResource("4_wvyc8")
+type = 1
+target_type = 0
+
+[sub_resource type="Resource" id="Resource_i5o0e"]
+script = ExtResource("5_p7cr6")
+instructions = Array[ExtResource("4_wvyc8")]([SubResource("Resource_lyp6h"), SubResource("Resource_eoo7c"), SubResource("Resource_w8s78"), SubResource("Resource_lufcd"), SubResource("Resource_4s4xs"), SubResource("Resource_i1vyl")])
+
 [node name="CoverRender" type="Node3D"]
+script = ExtResource("1_gmuv7")
 
 [node name="GridMap2" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275418, 0, 0.305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 mesh_library = ExtResource("1_xt3dt")
 cell_size = Vector3(0.5, 0.75, 0.5)
 cell_center_x = false
 cell_center_y = false
 cell_center_z = false
 data = {
-"cells": PackedInt32Array(3, 0, 1441796, 3, 65534, 1441796, 3, 2, 1441796, 2, 65533, 655364, 0, 65533, 655364, 65533, 65534, 1048580, 65533, 0, 1048580, 65533, 2, 1048580, 2, 3, 4, 0, 3, 4, 65534, 3, 4, 65534, 65533, 655364)
+"cells": PackedInt32Array(0, 1, 655364, 65534, 1, 655364, 65533, 0, 1048580, 1, 0, 1048580, 0, 65535, 4, 65534, 65535, 4, 65532, 2, 1048584, 65534, 2, 1048584, 0, 2, 1048584, 2, 2, 1048584, 2, 0, 1048584, 2, 65534, 1048584, 0, 65534, 1048584, 65534, 65534, 1048584, 65532, 65534, 1048584, 65532, 0, 1048584)
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
 [node name="GridMap" type="GridMap" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.275418, 0, 0.305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0)
 mesh_library = ExtResource("1_xt3dt")
 cell_size = Vector3(1, 1, 1)
 cell_center_x = false
 cell_center_y = false
 cell_center_z = false
 data = {
-"cells": PackedInt32Array(1, 0, 0, 65535, 0, 0, 1, 1, 0, 0, 1, 0, 65535, 1, 0, 65535, 65535, 0, 1, 65535, 0, 0, 65535, 0, 0, 0, 0)
+"cells": PackedInt32Array(65535, 0, 1048576, 0, 0, 1048576, 65535, 65535, 1048576, 65534, 65535, 1048576, 65534, 0, 1048576, 0, 65535, 1048576, 1, 65535, 1048576, 1, 0, 1048576, 0, 1, 1048576, 65535, 1, 1048576, 65534, 1, 1048576, 1, 1, 1048576)
 }
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -60,10 +90,18 @@ environment = SubResource("Environment_d2vet")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-1, -1.66811e-08, 8.58166e-08, 0, 0.981627, 0.190809, -8.74228e-08, 0.190809, -0.981627, -0.235, 1.674, -5.349)
+visible = false
 fov = 20.5
 
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.86, 0)
+current = true
+fov = 33.7
+size = 1.735
+
 [node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(0.675711, 0.690537, -0.258017, 0.419566, -0.0724717, 0.904827, 0.606118, -0.719657, -0.338696, -0.778, 4.559, -2.14)
+transform = Transform3D(0.675711, 0.690537, -0.258017, 0.419566, -0.0724715, 0.904827, 0.606118, -0.719657, -0.338696, -0.778, 4.559, -2.14)
+visible = false
 light_energy = 16.0
 shadow_enabled = true
 shadow_normal_bias = 0.305
@@ -72,12 +110,24 @@ spot_attenuation = 2.61
 spot_angle = 17.6
 spot_angle_attenuation = 0.840898
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.876307, 0.231349, -0.422568, 0, 0.877146, 0.480224, 0.481754, 0.420823, -0.768649, 0, 0, 0)
+light_energy = 0.27
+light_angular_distance = 16.0
+shadow_enabled = true
+shadow_bias = 1.499
+shadow_normal_bias = 2.113
+shadow_opacity = 0.89
+directional_shadow_mode = 0
+directional_shadow_max_distance = 5.0
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 visible = false
 mesh = SubResource("PlaneMesh_dwx84")
 
 [node name="AnimatedPaperBoy" parent="." instance=ExtResource("3_cs48i")]
-transform = Transform3D(0.550481, 0, -0.834848, 0, 1, 0, 0.834848, 0, 0.550481, 0.355, 0.01, -0.86)
+transform = Transform3D(0.593419, 0, 0.804894, 0, 1, 0, -0.804894, 0, 0.593419, 0.63, 0, -0.325)
+visible = false
 
 [node name="Skeleton3D" parent="AnimatedPaperBoy" index="0"]
 bones/0/position = Vector3(0, 0.38774, 0)
@@ -90,14 +140,39 @@ bones/9/position = Vector3(3.55272e-15, 0.385488, -1.30965e-08)
 bones/9/rotation = Quaternion(0.96925, 2.93348e-08, 1.15544e-07, 0.246078)
 
 [node name="Label3D" type="Label3D" parent="."]
-transform = Transform3D(-0.795, 0, 6.95011e-08, 0, 0.795, 0, -6.95011e-08, 0, -0.795, -0.69, 0.685, 0)
+transform = Transform3D(2.915, 0, 0, 0, -1.27419e-07, 2.915, 0, -2.915, -1.27419e-07, -0.41, 0.02, 0)
 pixel_size = 0.0005
-fixed_size = true
 texture_filter = 5
-outline_modulate = Color(0.11, 0.0055, 0.0803917, 1)
+modulate = Color(0, 0.00392157, 0.337255, 1)
+outline_modulate = Color(0, 0.00392157, 0.337255, 1)
 text = "Hack
-the Loop"
+the Loop!"
 font_size = 200
-outline_size = 50
+outline_size = 10
+line_spacing = -60.73
+
+[node name="Label3D3" type="Label3D" parent="."]
+transform = Transform3D(-2.32496, -1.75835, -7.686e-08, 0, -1.27419e-07, 2.915, -1.75835, 2.32496, 1.01627e-07, 0.249, 0.02, -0.202)
+pixel_size = 0.0005
+texture_filter = 5
+modulate = Color(0, 0.00392157, 0.337255, 1)
+outline_modulate = Color(0, 0.00392157, 0.337255, 1)
+text = "<"
+font_size = 200
+outline_size = 10
+
+[node name="Label3D2" type="Label3D" parent="."]
+transform = Transform3D(0.798591, -2.80348, 1.22544e-07, 0, -1.27419e-07, -2.915, 2.80348, 0.798591, -3.49075e-08, 0.084, 0.02, -0.27)
+pixel_size = 0.0005
+texture_filter = 5
+modulate = Color(0, 0.00392157, 0.337255, 1)
+outline_modulate = Color(0, 0.00392157, 0.337255, 1)
+text = "("
+font_size = 200
+outline_size = 10
+
+[node name="ProgramWheel" parent="." instance=ExtResource("3_8owfn")]
+transform = Transform3D(0.999999, -4.25056e-05, -0.00121742, 0.00121742, 0.0697459, 0.997564, 4.25056e-05, -0.997565, 0.0697459, 0.605, 0.02, 0)
+program = SubResource("Resource_i5o0e")
 
 [editable path="AnimatedPaperBoy"]
