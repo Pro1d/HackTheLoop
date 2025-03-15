@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_bjw38"]
 [ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door.tscn" id="2_3vtl5"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_21lab"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_21lab"]
 [ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="3_dk1sx"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_edmqm"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_3hnni"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="4_edmqm"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="5_3hnni"]
 [ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="6_iwic6"]
 [ext_resource type="PackedScene" uid="uid://bk3puyvoi8pam" path="res://scenes/plateform_robot.tscn" id="7_5yygu"]
 [ext_resource type="PackedScene" uid="uid://cvxc8c0nrgkl" path="res://scenes/charge_robot.tscn" id="10_ymq54"]
@@ -46,7 +46,7 @@ script = ExtResource("4_edmqm")
 type = 2
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_r3n5g"]
+[sub_resource type="Resource" id="Resource_n5jc6"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_lr75s"), SubResource("Resource_1urla"), SubResource("Resource_t7kjw"), SubResource("Resource_ylphe")])
@@ -71,7 +71,7 @@ script = ExtResource("4_edmqm")
 type = 2
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_31arc"]
+[sub_resource type="Resource" id="Resource_n3hyx"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_s0tcv"), SubResource("Resource_2jef7"), SubResource("Resource_lntyn"), SubResource("Resource_ims0g")])
@@ -96,7 +96,7 @@ script = ExtResource("4_edmqm")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_ic3qw"]
+[sub_resource type="Resource" id="Resource_ballo"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_l36ij"), SubResource("Resource_0b28i"), SubResource("Resource_thcfk"), SubResource("Resource_uth20")])
@@ -126,7 +126,7 @@ script = ExtResource("4_edmqm")
 type = 12
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_ejvaj"]
+[sub_resource type="Resource" id="Resource_22gpn"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_hijr2"), SubResource("Resource_63yc7"), SubResource("Resource_3l0nb"), SubResource("Resource_hccub"), SubResource("Resource_ktbdh")])
@@ -146,7 +146,7 @@ script = ExtResource("4_edmqm")
 type = 4
 target_type = 7
 
-[sub_resource type="Resource" id="Resource_wkoss"]
+[sub_resource type="Resource" id="Resource_kcvwj"]
 resource_local_to_scene = true
 script = ExtResource("5_3hnni")
 instructions = Array[ExtResource("4_edmqm")]([SubResource("Resource_14qkc"), SubResource("Resource_gk5h8"), SubResource("Resource_2jfy3")])
@@ -217,11 +217,11 @@ initially_opened = true
 
 [node name="DoorProgrammable" parent="." index="16" instance=ExtResource("3_dk1sx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, 4)
-program = SubResource("Resource_r3n5g")
+program = SubResource("Resource_n5jc6")
 
 [node name="DoorProgrammable3" parent="." index="17" instance=ExtResource("3_dk1sx")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 16, 0, 4)
-program = SubResource("Resource_31arc")
+program = SubResource("Resource_n3hyx")
 
 [node name="GroundButton" parent="." index="18" instance=ExtResource("6_iwic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 7)
@@ -232,15 +232,15 @@ button_type = 4
 
 [node name="PlateformRobot" parent="." index="20" instance=ExtResource("7_5yygu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -6, 0, 6)
-program = SubResource("Resource_ic3qw")
+program = SubResource("Resource_ballo")
 
 [node name="PlateformRobot2" parent="." index="21" instance=ExtResource("7_5yygu")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 4, 0, 1)
-program = SubResource("Resource_ejvaj")
+program = SubResource("Resource_22gpn")
 
 [node name="ChargeRobot" parent="." index="22" instance=ExtResource("10_ymq54")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0, -1)
-program = SubResource("Resource_wkoss")
+program = SubResource("Resource_kcvwj")
 
 [node name="GroundButton2" parent="." index="23" instance=ExtResource("6_iwic6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11, 0, -1)

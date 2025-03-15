@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://yclgl22kcddo"]
 
-[ext_resource type="Script" path="res://scripts/door.gd" id="1_amrb6"]
+[ext_resource type="Script" uid="uid://wq7l6o5rtby8" path="res://scripts/door.gd" id="1_amrb6"]
 [ext_resource type="ArrayMesh" uid="uid://hmnv1vuocfan" path="res://resources/models/all/door_frame.res" id="6_wih57"]
 [ext_resource type="PackedScene" uid="uid://c56dtreab5jbu" path="res://resources/models/all/AnimatedWireDoor.res" id="7_aubli"]
-[ext_resource type="Script" path="res://scripts/animated_wire_door.gd" id="8_shdi4"]
+[ext_resource type="Script" uid="uid://w2xqsrhgh45g" path="res://scripts/animated_wire_door.gd" id="8_shdi4"]
 [ext_resource type="AudioStream" uid="uid://bspn5kya8b3as" path="res://assets/sounds/zipper-in.ogg" id="9_rkpy7"]
 [ext_resource type="AudioStream" uid="uid://woothjlgynhv" path="res://assets/sounds/zipper-out.ogg" id="10_0f0mh"]
 

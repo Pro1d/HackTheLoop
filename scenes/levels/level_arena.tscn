@@ -1,10 +1,10 @@
 [gd_scene load_steps=18 format=3 uid="uid://y821lwxl2hx6"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_05r7c"]
-[ext_resource type="Script" path="res://scripts/levels/level_arena.gd" id="2_3cmt3"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_lk1rv"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="3_puvy3"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="4_jsoj4"]
+[ext_resource type="Script" uid="uid://cy0dy5vcwxd1c" path="res://scripts/levels/level_arena.gd" id="2_3cmt3"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_lk1rv"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="3_puvy3"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="4_jsoj4"]
 [ext_resource type="PackedScene" uid="uid://cvxc8c0nrgkl" path="res://scenes/charge_robot.tscn" id="7_lelpm"]
 [ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="10_wkelh"]
 

@@ -1,9 +1,9 @@
 [gd_scene load_steps=25 format=3 uid="uid://cd50461l23avm"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_65lye"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_oejc5"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="3_nhbph"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="4_5m2hr"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_oejc5"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="3_nhbph"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="4_5m2hr"]
 [ext_resource type="PackedScene" uid="uid://bk3puyvoi8pam" path="res://scenes/plateform_robot.tscn" id="6_sjd78"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_7qrqh"]
@@ -37,7 +37,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_no07s"]
+[sub_resource type="Resource" id="Resource_pmjlg"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_nh02n")])
@@ -47,7 +47,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_n3v3g"]
+[sub_resource type="Resource" id="Resource_7f06b"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_shxhc"), SubResource("Resource_3tyit")])
@@ -67,7 +67,7 @@ script = ExtResource("3_nhbph")
 type = 10
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_1t5vc"]
+[sub_resource type="Resource" id="Resource_gkcyo"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_kd6kc"), SubResource("Resource_03til"), SubResource("Resource_w53hb")])
@@ -82,7 +82,7 @@ script = ExtResource("3_nhbph")
 type = 14
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_tp1ct"]
+[sub_resource type="Resource" id="Resource_upj88"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_e1da2"), SubResource("Resource_ag50s")])
@@ -97,7 +97,7 @@ script = ExtResource("3_nhbph")
 type = 11
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_nm6yw"]
+[sub_resource type="Resource" id="Resource_br2su"]
 resource_local_to_scene = true
 script = ExtResource("4_5m2hr")
 instructions = Array[ExtResource("3_nhbph")]([SubResource("Resource_45cfp"), SubResource("Resource_1nl1b"), SubResource("Resource_shxhc"), SubResource("Resource_7lgkg")])
@@ -126,23 +126,23 @@ shape = SubResource("BoxShape3D_m3p8v")
 
 [node name="PlateformRobot" parent="." index="8" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-program = SubResource("Resource_no07s")
+program = SubResource("Resource_pmjlg")
 
 [node name="PlateformRobot6" parent="." index="9" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 5, 0, -2)
-program = SubResource("Resource_n3v3g")
+program = SubResource("Resource_7f06b")
 
 [node name="PlateformRobot2" parent="." index="10" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, 12, 0, -3)
-program = SubResource("Resource_1t5vc")
+program = SubResource("Resource_gkcyo")
 
 [node name="PlateformRobot4" parent="." index="11" instance=ExtResource("6_sjd78")]
 transform = Transform3D(1, 0, 0, 0, 0.999914, 0.0130896, 0, -0.0130896, 0.999914, 14, 0, 0)
-program = SubResource("Resource_tp1ct")
+program = SubResource("Resource_upj88")
 
 [node name="PlateformRobot5" parent="." index="12" instance=ExtResource("6_sjd78")]
 transform = Transform3D(-1, 0, -2.62269e-07, 0, 1, 0, 2.62269e-07, 0, -1, 23, 0, -4)
-program = SubResource("Resource_nm6yw")
+program = SubResource("Resource_br2su")
 
 [node name="Label3D2" type="Label3D" parent="." index="13"]
 unique_name_in_owner = true

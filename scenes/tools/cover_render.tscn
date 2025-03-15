@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://xodkiwykdkpj"]
 
-[ext_resource type="Script" path="res://scripts/tools/cover_render.gd" id="1_gmuv7"]
+[ext_resource type="Script" uid="uid://dvdv3vwq24dib" path="res://scripts/tools/cover_render.gd" id="1_gmuv7"]
 [ext_resource type="MeshLibrary" uid="uid://duy13sblsptvh" path="res://resources/ground.tres" id="1_xt3dt"]
 [ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="3_8owfn"]
 [ext_resource type="PackedScene" uid="uid://cg7kmba6e8crg" path="res://resources/models/all/AnimatedPaperBoy.res" id="3_cs48i"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_wvyc8"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_p7cr6"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="4_wvyc8"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="5_p7cr6"]
 
 [sub_resource type="Environment" id="Environment_d2vet"]
 background_mode = 1

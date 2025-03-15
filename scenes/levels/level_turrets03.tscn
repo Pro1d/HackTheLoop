@@ -1,10 +1,10 @@
 [gd_scene load_steps=36 format=3 uid="uid://dbh25vsdvj7cu"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_cehbh"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_5dtpe"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_5dtpe"]
 [ext_resource type="PackedScene" uid="uid://bk3puyvoi8pam" path="res://scenes/plateform_robot.tscn" id="3_y3vij"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_hw2me"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_4gao3"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="4_hw2me"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="5_4gao3"]
 [ext_resource type="PackedScene" uid="uid://xunfjvpwf7ap" path="res://scenes/turret_robot.tscn" id="6_lis48"]
 [ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="7_s4npt"]
 [ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="8_fubm7"]

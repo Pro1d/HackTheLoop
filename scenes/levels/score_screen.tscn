@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bqor7pjvfeftt"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_vl1ys"]
-[ext_resource type="Script" path="res://scripts/levels/score_screen.gd" id="2_1wl6m"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_aag27"]
+[ext_resource type="Script" uid="uid://4xuxubnr6nis" path="res://scripts/levels/score_screen.gd" id="2_1wl6m"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_aag27"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_xkmht"]
 resource_local_to_scene = true

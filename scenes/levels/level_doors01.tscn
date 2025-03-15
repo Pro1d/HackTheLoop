@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_csct8"]
 [ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="2_houkp"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_pw8kq"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="3_ovd4m"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="4_fa1r3"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_pw8kq"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="3_ovd4m"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="4_fa1r3"]
 [ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="4_klqx4"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8b7qd"]
@@ -76,7 +76,7 @@ script = ExtResource("3_ovd4m")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_nomvb"]
+[sub_resource type="Resource" id="Resource_ca2ft"]
 resource_local_to_scene = true
 script = ExtResource("4_fa1r3")
 instructions = Array[ExtResource("3_ovd4m")]([SubResource("Resource_mdm82"), SubResource("Resource_sksrt"), SubResource("Resource_wnnvu"), SubResource("Resource_0v0na")])
@@ -101,7 +101,7 @@ script = ExtResource("3_ovd4m")
 type = 1
 target_type = 0
 
-[sub_resource type="Resource" id="Resource_lvm85"]
+[sub_resource type="Resource" id="Resource_18uvy"]
 resource_local_to_scene = true
 script = ExtResource("4_fa1r3")
 instructions = Array[ExtResource("3_ovd4m")]([SubResource("Resource_jci4l"), SubResource("Resource_6rfyl"), SubResource("Resource_betbo"), SubResource("Resource_7sbhj")])
@@ -147,12 +147,12 @@ program = SubResource("Resource_p1lnx")
 
 [node name="DoorProgrammable2" parent="." index="10" instance=ExtResource("2_houkp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 5, 0, -3)
-program = SubResource("Resource_nomvb")
+program = SubResource("Resource_ca2ft")
 initially_opened = true
 
 [node name="DoorProgrammable3" parent="." index="11" instance=ExtResource("2_houkp")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 9, 0, -2)
-program = SubResource("Resource_lvm85")
+program = SubResource("Resource_18uvy")
 initially_opened = true
 
 [node name="GroundButton" parent="." index="12" instance=ExtResource("4_klqx4")]

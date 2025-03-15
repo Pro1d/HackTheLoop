@@ -70,8 +70,8 @@ noise = SubResource("FastNoiseLite_laic7")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cby6p"]
 shader = SubResource("Shader_emofs")
 shader_parameter/projector_power = 0.16
-shader_parameter/vignette_param = 10.0
 shader_parameter/distortionTexture = SubResource("NoiseTexture2D_hovo6")
+shader_parameter/vignette_param = 10.0
 
 [sub_resource type="Gradient" id="Gradient_if0gf"]
 offsets = PackedFloat32Array(1)

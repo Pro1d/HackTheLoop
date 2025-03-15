@@ -1,10 +1,10 @@
 [gd_scene load_steps=27 format=3 uid="uid://jfpdyshprk0p"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_bpvrm"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_8vejw"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_8vejw"]
 [ext_resource type="PackedScene" uid="uid://cvxc8c0nrgkl" path="res://scenes/charge_robot.tscn" id="3_hdtvv"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_j4qwn"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_fcb33"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="4_j4qwn"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="5_fcb33"]
 [ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="6_thu6k"]
 [ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="7_c12e8"]
 

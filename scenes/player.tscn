@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b48ciu6n1h4wi"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_0ef8e"]
+[ext_resource type="Script" uid="uid://dd32kbhq3w12d" path="res://scripts/player.gd" id="1_0ef8e"]
 [ext_resource type="PackedScene" uid="uid://cg7kmba6e8crg" path="res://resources/models/all/AnimatedPaperBoy.res" id="2_wkx5o"]
 [ext_resource type="AudioStream" uid="uid://dup2er3wg2mca" path="res://assets/sounds/BookFlip2.ogg" id="3_dubxu"]
 [ext_resource type="AudioStream" uid="uid://djgexwwtnlskw" path="res://assets/sounds/BookFlip12.ogg" id="4_pou3t"]

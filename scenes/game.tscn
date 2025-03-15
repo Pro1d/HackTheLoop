@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ctolgapm0q15t"]
 
-[ext_resource type="Script" path="res://scripts/game.gd" id="1_bxkv1"]
+[ext_resource type="Script" uid="uid://cgv5vfjd4fomh" path="res://scripts/game.gd" id="1_bxkv1"]
 [ext_resource type="PackedScene" uid="uid://cp1kod7c3oexq" path="res://scenes/ui/program_editor.tscn" id="2_b7ri0"]
 [ext_resource type="AudioStream" uid="uid://ckfcy6o8fn2jx" path="res://assets/sounds/bell.ogg" id="3_r8ccl"]
 [ext_resource type="PackedScene" uid="uid://bf2r8r61x2pl7" path="res://scenes/fade_rect.tscn" id="3_wih5s"]

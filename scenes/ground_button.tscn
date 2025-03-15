@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://dnib63rwdcb83"]
 
-[ext_resource type="Script" path="res://scripts/ground_button.gd" id="1_l8sjn"]
+[ext_resource type="Script" uid="uid://cy37r31usr0nc" path="res://scripts/ground_button.gd" id="1_l8sjn"]
 [ext_resource type="ArrayMesh" uid="uid://btr4fp3jwn8gs" path="res://resources/models/all/button.res" id="2_8ytuu"]
 [ext_resource type="AudioStream" uid="uid://dh0db73ohjjau" path="res://assets/sounds/low-ticking.ogg" id="3_ft5j6"]
 [ext_resource type="Material" uid="uid://bij7hjjbwv2yp" path="res://resources/materials/button.tres" id="3_jg3w4"]

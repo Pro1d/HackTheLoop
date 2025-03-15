@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://ciowdytk6nij3"]
 
 [ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="1_552rh"]
-[ext_resource type="Script" path="res://scripts/static_robot.gd" id="1_lkj00"]
-[ext_resource type="Script" path="res://scripts/program_runners/program_runner_robot.gd" id="2_xjs1a"]
+[ext_resource type="Script" uid="uid://bf60tl01vphky" path="res://scripts/static_robot.gd" id="1_lkj00"]
+[ext_resource type="Script" uid="uid://b2ffmpcr50tak" path="res://scripts/program_runners/program_runner_robot.gd" id="2_xjs1a"]
 
 [node name="StaticRobot" type="StaticBody3D"]
 script = ExtResource("1_lkj00")

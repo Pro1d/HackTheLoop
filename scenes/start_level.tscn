@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bsif5orwj2kjg"]
 
-[ext_resource type="Script" path="res://scripts/start_level.gd" id="1_w1fk4"]
+[ext_resource type="Script" uid="uid://k0eww14ta1v2" path="res://scripts/start_level.gd" id="1_w1fk4"]
 [ext_resource type="PackedScene" uid="uid://boytp7sjbiqea" path="res://scenes/end_level.tscn" id="2_6h3wl"]
 [ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door.tscn" id="3_5qb5f"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="3_tnkl6"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="3_tnkl6"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_c0pqj"]
 resource_local_to_scene = true

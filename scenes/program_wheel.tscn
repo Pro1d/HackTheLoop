@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://ms3lu86p6nn7"]
 
-[ext_resource type="Script" path="res://scripts/program_wheel.gd" id="1_7idj1"]
+[ext_resource type="Script" uid="uid://bv6k43f15q7m3" path="res://scripts/program_wheel.gd" id="1_7idj1"]
 [ext_resource type="ArrayMesh" uid="uid://dbog0ell4ovhw" path="res://resources/models/all/ProgramWheelBase.res" id="1_qivsg"]
 [ext_resource type="ArrayMesh" uid="uid://2pgopoc56xhw" path="res://resources/models/all/ProgramBox.res" id="2_x68pd"]
 [ext_resource type="AudioStream" uid="uid://cupoyqdtqlev2" path="res://assets/sounds/ticking2.ogg" id="4_sueey"]

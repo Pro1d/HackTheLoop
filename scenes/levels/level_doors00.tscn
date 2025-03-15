@@ -1,11 +1,11 @@
 [gd_scene load_steps=16 format=3 uid="uid://doqyrh0shrcub"]
 
 [ext_resource type="PackedScene" uid="uid://cin0a35matsjj" path="res://scenes/level_base.tscn" id="1_gr22m"]
-[ext_resource type="Shader" path="res://resources/shaders/end_level.gdshader" id="2_7jp76"]
-[ext_resource type="Script" path="res://scripts/levels/level_doors_00.gd" id="2_pmppw"]
+[ext_resource type="Shader" uid="uid://xx5v3axn1bv3" path="res://resources/shaders/end_level.gdshader" id="2_7jp76"]
+[ext_resource type="Script" uid="uid://cod3qvsxgavq" path="res://scripts/levels/level_doors_00.gd" id="2_pmppw"]
 [ext_resource type="PackedScene" uid="uid://dsql0tf7s12kk" path="res://scenes/door_programmable.tscn" id="3_74kq5"]
-[ext_resource type="Script" path="res://scripts/resources/instruction.gd" id="4_yghjv"]
-[ext_resource type="Script" path="res://scripts/resources/program.gd" id="5_ct3ps"]
+[ext_resource type="Script" uid="uid://b1rumpx8kgds3" path="res://scripts/resources/instruction.gd" id="4_yghjv"]
+[ext_resource type="Script" uid="uid://ced8j7mcnnltx" path="res://scripts/resources/program.gd" id="5_ct3ps"]
 [ext_resource type="PackedScene" uid="uid://dnib63rwdcb83" path="res://scenes/ground_button.tscn" id="6_1fr18"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_rbtu1"]

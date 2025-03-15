@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dsql0tf7s12kk"]
 
 [ext_resource type="PackedScene" uid="uid://yclgl22kcddo" path="res://scenes/door.tscn" id="1_dqpd3"]
-[ext_resource type="Script" path="res://scripts/door_programmable.gd" id="1_fb4vm"]
+[ext_resource type="Script" uid="uid://cp5fkpeomx2cb" path="res://scripts/door_programmable.gd" id="1_fb4vm"]
 [ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="1_nlqf5"]
-[ext_resource type="Script" path="res://scripts/program_runners/program_runner_door.gd" id="8_5qbqx"]
+[ext_resource type="Script" uid="uid://ckueuen1b5pm8" path="res://scripts/program_runners/program_runner_door.gd" id="8_5qbqx"]
 
 [node name="DoorProgrammable" instance=ExtResource("1_dqpd3")]
 script = ExtResource("1_fb4vm")

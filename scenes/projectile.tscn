@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://g1krh2tqphij"]
 
-[ext_resource type="Script" path="res://scripts/projectile.gd" id="1_25bde"]
+[ext_resource type="Script" uid="uid://7tdbtk4yld7v" path="res://scripts/projectile.gd" id="1_25bde"]
 [ext_resource type="Material" uid="uid://b7tfpky1xhgt2" path="res://resources/materials/shiny_iron.tres" id="2_rxe0m"]
 [ext_resource type="AudioStream" uid="uid://cw2y6g7gu25gp" path="res://assets/sounds/shouldergrab.ogg" id="4_yogal"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://3ru5h6bf3d7x"]
 
-[ext_resource type="Script" path="res://scripts/camera_follower.gd" id="1_qgsb4"]
+[ext_resource type="Script" uid="uid://cnlkqb4xhdm1j" path="res://scripts/camera_follower.gd" id="1_qgsb4"]
 
 [node name="Remote" type="Node3D"]
 script = ExtResource("1_qgsb4")

@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bltbmo7reo0oc"]
 
-[ext_resource type="Script" path="res://scripts/mobile_robot.gd" id="1_2f6pu"]
+[ext_resource type="Script" uid="uid://tl1jb5gcnv7l" path="res://scripts/mobile_robot.gd" id="1_2f6pu"]
 [ext_resource type="PackedScene" uid="uid://ms3lu86p6nn7" path="res://scenes/program_wheel.tscn" id="2_mqq52"]
-[ext_resource type="Script" path="res://scripts/program_runners/program_runner_robot.gd" id="4_yiapt"]
+[ext_resource type="Script" uid="uid://b2ffmpcr50tak" path="res://scripts/program_runners/program_runner_robot.gd" id="4_yiapt"]
 [ext_resource type="AudioStream" uid="uid://dmuifebilpt6u" path="res://assets/sounds/alt-toasterstep1.ogg" id="5_r107r"]
 [ext_resource type="AudioStream" uid="uid://diw68oi8my37o" path="res://assets/sounds/alt-toasterstep2.ogg" id="6_0wiwa"]
 [ext_resource type="AudioStream" uid="uid://chrfnh2tklk4t" path="res://assets/sounds/robotics1.ogg" id="7_vse66"]
