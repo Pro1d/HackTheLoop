@@ -16,4 +16,4 @@ max_target_range = 1.25
 
 [node name="ProgramWheel" parent="Offset" index="5" instance=ExtResource("1_nlqf5")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -0.922025, 0.8, 0)
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, -0.814053, 0.8, 0)
