@@ -50,10 +50,10 @@ theme_type_variation = &"PanelContainerCardboard"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer2"]
 layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 16
-theme_override_constants/margin_right = 40
-theme_override_constants/margin_bottom = 16
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = -1
+theme_override_constants/margin_right = 2
+theme_override_constants/margin_bottom = 10
 
 [node name="InstructionsContainer" type="Container" parent="MarginContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer"]
 unique_name_in_owner = true
